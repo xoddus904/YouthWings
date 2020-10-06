@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="정장 대여 화면3-면접회사 정보 입력"
+        android:text="정장 대여 화면3-면접회사 정보 입력 수정본"
         android:textSize="35dp"/>
 
     <Button
