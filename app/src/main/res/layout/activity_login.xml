@@ -13,15 +13,14 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="로그인"
-        android:textSize="35dp"
+        android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="#656565"
-        />
+        android:textColor="#656565" />
 
     <EditText
         android:id="@+id/email_input"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="5dp"
@@ -31,7 +30,7 @@
         android:privateImeOptions="defaultInputmode=korean"
         android:singleLine="true"
         android:textColorHint="#B5B5B5"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:onClick="onClick"
         android:background="#FFFFFF"
         android:paddingTop="3dp"
@@ -41,7 +40,7 @@
     <EditText
         android:id="@+id/password_input"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="40dp"
@@ -51,7 +50,7 @@
         android:privateImeOptions="defaultInputmode=korean"
         android:singleLine="true"
         android:textColorHint="#B5B5B5"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:onClick="onClick"
         android:background="#FFFFFF"
         android:paddingTop="3dp"
@@ -61,13 +60,13 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:text="로그인"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="23dp"
         android:textColor="#FFFFFF"
         android:background="#46549D"
         android:onClick="onClick"/>
@@ -79,7 +78,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:text="아이디/비밀번호 찾기"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textAlignment="center"
         android:textColor="#000000"
         android:onClick="onClick"/>
@@ -87,6 +86,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
@@ -94,22 +95,22 @@
             android:layout_width="100dp"
             android:layout_height="2dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="22dp"
             android:background="#BFBFBF"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Or sign in With"
-            android:textSize="17dp"
-            android:textColor="#BFBFBF"/>
+            android:textSize="16dp"
+            android:textColor="#BFBFBF"
+            android:textAlignment="center"/>
 
         <View
             android:layout_width="100dp"
             android:layout_height="2dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="22dp"
             android:background="#BFBFBF"/>
 
 
@@ -147,7 +148,7 @@
     <Button
         android:id="@+id/btn_join"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"

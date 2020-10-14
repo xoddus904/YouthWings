@@ -2,18 +2,154 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F6F6F6">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F6F6F6">
+
+
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원가입화면"
-        android:textSize="35dp"/>
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="회원가입"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#656565"/>
 
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="완료"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="• 닉네임 (랜덤 적용)"
+        android:textSize="17dp"/>
+
+    <EditText
+        android:id="@+id/nickname_entry"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:hint="닉네임"
+        android:inputType="text"
+        android:maxLength="30"
+        android:privateImeOptions="defaultInputmode=korean"
+        android:singleLine="true"
+        android:textColorHint="#B5B5B5"
+        android:textSize="20dp"
+        android:onClick="onClick"
+        android:background="#FFFFFF"
+        android:paddingTop="3dp"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="• 아이디"
+        android:textSize="17dp"/>
+
+    <EditText
+        android:id="@+id/email_entry"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="35dp"
+        android:hint="이메일"
+        android:inputType="text"
+        android:maxLength="30"
+        android:privateImeOptions="defaultInputmode=korean"
+        android:singleLine="true"
+        android:textColorHint="#B5B5B5"
+        android:textSize="20dp"
+        android:onClick="onClick"
+        android:background="#FFFFFF"
+        android:paddingTop="3dp"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="• 비밀번호"
+        android:textSize="17dp"/>
+
+    <EditText
+        android:id="@+id/password_entry"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:hint="10자 이하"
+        android:inputType="text"
+        android:maxLength="30"
+        android:privateImeOptions="defaultInputmode=korean"
+        android:singleLine="true"
+        android:textColorHint="#B5B5B5"
+        android:textSize="20dp"
+        android:onClick="onClick"
+        android:background="#FFFFFF"
+        android:paddingTop="3dp"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="• 비밀번호 재입력"
+        android:textSize="17dp"/>
+
+    <EditText
+        android:id="@+id/password_re_entry"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="40dp"
+        android:hint="10자 이하"
+        android:inputType="text"
+        android:maxLength="30"
+        android:privateImeOptions="defaultInputmode=korean"
+        android:singleLine="true"
+        android:textColorHint="#B5B5B5"
+        android:textSize="20dp"
+        android:onClick="onClick"
+        android:background="#FFFFFF"
+        android:paddingTop="3dp"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <Button
         android:id="@+id/btn_successjoin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="완료"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:textColor="#FFFFFF"
+        android:background="#46549D"
         android:onClick="onClick"/>
 
 </LinearLayout>
