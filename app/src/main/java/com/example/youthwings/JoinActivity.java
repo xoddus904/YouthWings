@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class JoinActivity extends AppCompatActivity {
 
@@ -22,6 +25,10 @@ public class JoinActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false); //기존 title 지우기
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
+
+        //만든 툴바 타이틀 바꾸기
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("회원가입");
 
     }
 
