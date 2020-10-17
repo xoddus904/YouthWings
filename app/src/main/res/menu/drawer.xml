@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+<group>
     <item
-        android:id="@+id/item1"
+        android:id="@+id/menu_mypage"
         android:icon="@mipmap/ic_launcher_round"
-        android:title="item1 " />
+        android:title="         내 정보"/>
+</group>
 
-    <item
-        android:id="@+id/item2"
-        android:icon="@mipmap/ic_launcher_round"
-        android:title="item2 " />
+    <group
+        android:id="@+id/menu_group">
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="홈으로" />
 
-    <item
-        android:id="@+id/item3"
-        android:icon="@mipmap/ic_launcher_round"
-        android:title="item3 " />
+        <item
+            android:id="@+id/menu_reservation"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="예약하기" />
+
+        <item
+            android:id="@+id/menu_loanlist"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="대여내역" />
+
+        <item
+            android:id="@+id/menu_community"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="취업 커뮤니티" />
+
+        <item
+            android:id="@+id/menu_interviewlist"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="면접 주요 질문 모음" />
+
+        <item
+            android:id="@+id/menu_myresponse"
+           android:icon="@mipmap/ic_launcher_round"
+            android:title="내 답변" />
+    </group>
+
+
 </menu>
