@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
                 String userId = editText_id.getText().toString();
                 String userPwd = editText_pwd.getText().toString();
                 onLogin(userId, userPwd, view);                 // 로그인 실행
-                finish();
                 break;
             case R.id.btn_login_dev:                            // 개발자 로그인 실행 (아이디, 패스워드 패스)
                 intent = new Intent(this, MainActivity.class);
@@ -70,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (result.isSuc()) {
                         intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        finish();
                     } else {
                         Snackbar.make(view, "아이디 또는 비밀번호를 다시 확인하세요.", Snackbar.LENGTH_SHORT).show();
                     }
