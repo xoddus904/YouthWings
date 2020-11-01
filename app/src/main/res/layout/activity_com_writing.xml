@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ComWritingActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:hint="제목"
+            android:id="@+id/writing_title"
+            android:textSize="25dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:hint="여기를 눌러서 글을 작성할 수 있습니다.\n \n
+[커뮤니티 이용규칙 준수] \n
+커뮤니티 이용규칙 전문을 반드시 숙지하신 후 글을 작성해주세요.
+이용규칙을 위반한 경우 작성한 게시물이 삭제되거나,
+글쓰기 제한 등의 제재가 가해질 수 있습니다."
+            android:id="@+id/writing_content"
+            android:background="@null"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
