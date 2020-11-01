@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initLayout();
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager = (ViewPager) findViewById(R.id.main_viewPager);
         adapter = new MainViewPageAdapter(this);
         viewPager.setAdapter(adapter);
 
