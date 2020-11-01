@@ -161,28 +161,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+
+            case R.id.menu_mypage :
+                Toast.makeText(this, "내정보 clicked", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(MainActivity.this, MypageActivity.class);
+                startActivity(intent1);
+                break;
+
             case R.id.menu_home :
                 Toast.makeText(this, "홈으로 clicked", Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent1);
+                Intent intent2 = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.menu_reservation :
                 Toast.makeText(this, "예약하기 clicked", Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(MainActivity.this, SuitLoanActivity.class);
-                startActivity(intent2);
+                Intent intent3 = new Intent(MainActivity.this, SuitLoanActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.menu_loanlist :
                 Toast.makeText(this, "대여내역 clicked", Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(MainActivity.this, LoanListActivity.class);
+                startActivity(intent4);
                 break;
             case R.id.menu_community :
                 Toast.makeText(this, "취업 커뮤니티 clicked", Toast.LENGTH_SHORT).show();
-                Intent intent4 = new Intent(MainActivity.this, CommunityActivity.class);
-                startActivity(intent4);
+                Intent intent5 = new Intent(MainActivity.this, CommunityActivity.class);
+                startActivity(intent5);
                 break;
             case R.id.menu_interviewlist :
                 Toast.makeText(this, "면접 주요 질문 모음 clicked", Toast.LENGTH_SHORT).show();
-                Intent intent5 = new Intent(MainActivity.this, InterviewActivity.class);
-                startActivity(intent5);
+                Intent intent6 = new Intent(MainActivity.this, InterviewActivity.class);
+                startActivity(intent6);
                 break;
             case R.id.menu_myresponse :
                 Toast.makeText(this, "내 답변 clicked", Toast.LENGTH_SHORT).show();
