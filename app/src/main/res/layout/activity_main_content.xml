@@ -8,15 +8,14 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="230dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/extext"
-        android:text="SAMPLE" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/viewPager" />
 
     <Button
         android:id="@+id/main_jobinform"

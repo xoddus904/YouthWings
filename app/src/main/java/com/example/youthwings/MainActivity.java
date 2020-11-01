@@ -6,16 +6,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +22,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -36,12 +32,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle drawerToggle;
     androidx.appcompat.widget.Toolbar toolbar;
 
+    MainViewPageAdapter adapter;
+    ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initLayout();
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        adapter = new MainViewPageAdapter(this);
+        viewPager.setAdapter(adapter);
 
     }
 
@@ -99,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //만든 툴바의 textview를 변경
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText("청춘날개");
-     // getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu_btn);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.main_drawer_root);
