@@ -16,11 +16,11 @@ class MainEmploymentListAdapter extends BaseAdapter {
     TextView textView_mtime;
 
     Context context;
+    ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItem;
 
-    private ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItem = new ArrayList<MainEmploymentListViewItem>();
-
-    public MainEmploymentListAdapter(Context context) {
+    public MainEmploymentListAdapter(Context context, ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItem) {
         this.context = context;
+        this.mainEmploymentListViewItem = mainEmploymentListViewItem;
     }
 
     //Adapter에 사용되는 데이터의 개수를 리턴

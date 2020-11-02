@@ -2,9 +2,9 @@ package com.example.youthwings;
 
 public class MainEmploymentListViewItem {
 
-    String classification;
-    String commutitle;
-    String mtime;
+    private String classification;
+    private String commutitle;
+    private String mtime;
 
     public MainEmploymentListViewItem(String classification, String commutitle, String mtime){
         this.classification = classification;
@@ -12,7 +12,6 @@ public class MainEmploymentListViewItem {
         this.mtime = mtime;
     }
 
-    //변수에 접근
     public String getClassification(){
         return classification;
     }

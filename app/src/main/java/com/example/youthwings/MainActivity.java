@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     ListView listView;
     MainEmploymentListAdapter mainEmploymentListAdapter;
-    ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItems;
+    ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +57,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(viewPageadapter);
 
         //MainEmploymentAdapter 생성
-        mainEmploymentListAdapter = new MainEmploymentListAdapter(MainActivity.this);
+        /*mainEmploymentListAdapter = new MainEmploymentListAdapter(MainActivity.this, mainEmploymentListViewItem);
 
         //리스트뷰 참조 및 Adapter 달기
         listView = (ListView)findViewById(R.id.employmentlist);
-        listView.setAdapter(mainEmploymentListAdapter);
-        mainEmploymentListViewItems = new ArrayList<MainEmploymentListViewItem>();
+        mainEmploymentListViewItem = new ArrayList<MainEmploymentListViewItem>();
 
-        mainEmploymentListViewItems.add( new MainEmploymentListViewItem("Top!","어쩌구저쩌구 쏼라쏼라...","5분전"));
+        mainEmploymentListViewItem.add( new MainEmploymentListViewItem("Top!","어쩌구저쩌구 쏼라쏼라...","5분전"));
+        mainEmploymentListViewItem.add(new MainEmploymentListViewItem("Top!", "어쩌구저쩌구 쏼라쏼라...", "3분전"));
 
-
+        listView.setAdapter(mainEmploymentListAdapter);*/
 
     }
 

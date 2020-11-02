@@ -17,13 +17,12 @@ public class LoanListAdapter extends BaseAdapter {
     TextView loanDetail_textView;
 
     Context context;
+    ArrayList<LoanListViewItem> loanListViewItemArrayList;
 
     public LoanListAdapter(Context context, ArrayList<LoanListViewItem> loanListViewItemArrayList) {
         this.context = context;
         this.loanListViewItemArrayList = loanListViewItemArrayList;
     }
-
-    ArrayList<LoanListViewItem> loanListViewItemArrayList;
 
     @Override
     public int getCount() {
