@@ -20,10 +20,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -32,19 +36,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle drawerToggle;
     androidx.appcompat.widget.Toolbar toolbar;
 
-    MainViewPageAdapter adapter;
     ViewPager viewPager;
+    MainViewPageAdapter viewPageadapter;
+
+    ListView listView;
+    MainEmploymentListAdapter mainEmploymentListAdapter;
+    ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //툴바
         initLayout();
 
+        //이미지 슬라이드
         viewPager = (ViewPager) findViewById(R.id.main_viewPager);
-        adapter = new MainViewPageAdapter(this);
-        viewPager.setAdapter(adapter);
+        viewPageadapter = new MainViewPageAdapter(this);
+        viewPager.setAdapter(viewPageadapter);
+
+        //MainEmploymentAdapter 생성
+        mainEmploymentListAdapter = new MainEmploymentListAdapter(MainActivity.this);
+
+        //리스트뷰 참조 및 Adapter 달기
+        listView = (ListView)findViewById(R.id.employmentlist);
+        listView.setAdapter(mainEmploymentListAdapter);
+        mainEmploymentListViewItems = new ArrayList<MainEmploymentListViewItem>();
+
+        mainEmploymentListViewItems.add( new MainEmploymentListViewItem("Top!","어쩌구저쩌구 쏼라쏼라...","5분전"));
+
+
 
     }
 
