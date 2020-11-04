@@ -21,7 +21,7 @@ public class CommunityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-        /*listView = (ListView)findViewById(R.id.community_list);
+        listView = (ListView)findViewById(R.id.community_list);
 
         communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();
 
@@ -30,7 +30,7 @@ public class CommunityActivity extends AppCompatActivity {
         communityListViewItemArrayList.add(new CommunityListViewItem("저기는 별로다","01.26",66,8));
 
         communityListAdapter = new CommunityListAdapter(CommunityActivity.this, communityListViewItemArrayList);
-        listView.setAdapter(communityListAdapter);*/
+        listView.setAdapter(communityListAdapter);
 
     }
 

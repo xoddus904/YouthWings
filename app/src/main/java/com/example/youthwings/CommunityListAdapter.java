@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.youthwings.CommunityListViewItem;
+import com.example.youthwings.R;
+
 import java.util.ArrayList;
 
 public class CommunityListAdapter extends BaseAdapter {
@@ -18,8 +21,6 @@ public class CommunityListAdapter extends BaseAdapter {
     TextView comTime_textView;
     TextView comLook_textView;
     TextView comRecommand_textView;
-
-
 
     public CommunityListAdapter(Context m_context, ArrayList<CommunityListViewItem> communityListViewItemArrayList) {
         this.m_context = m_context;
@@ -54,10 +55,10 @@ public class CommunityListAdapter extends BaseAdapter {
             comTime_textView.setText(communityListViewItemArrayList.get(position).getCom_time());
 
             comLook_textView = (TextView)convertView.findViewById(R.id.com_look);
-            comLook_textView.setText(communityListViewItemArrayList.get(position).getCom_look());
+            comLook_textView.setText(String.valueOf(communityListViewItemArrayList.get(position).getCom_look()));
 
             comRecommand_textView = (TextView)convertView.findViewById(R.id.com_recommend);
-            comRecommand_textView.setText(communityListViewItemArrayList.get(position).getCom_recommand());
+            comRecommand_textView.setText(String.valueOf(communityListViewItemArrayList.get(position).getCom_recommand()));
         }
 
         return convertView;

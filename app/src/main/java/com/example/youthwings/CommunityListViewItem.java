@@ -1,7 +1,6 @@
 package com.example.youthwings;
 
 public class CommunityListViewItem {
-
     private String com_Title;
     private String com_time;
     private int com_look;
@@ -47,6 +46,5 @@ public class CommunityListViewItem {
         this.com_recommand = com_recommand;
     }
 
-
-
 }
+
