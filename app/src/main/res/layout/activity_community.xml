@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/community_list"/>
+
     </LinearLayout>
 
     <Button
@@ -37,6 +38,5 @@
         android:id="@+id/btn_write"
         android:onClick="onClick"
         android:layout_gravity="right"/>
-
 
 </LinearLayout>

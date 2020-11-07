@@ -9,11 +9,119 @@
 
     <include layout="@layout/toolbar"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="커뮤니티에서 글 목록 누르면 나오는 화면입니다."
-        android:textSize="15dp"
-        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/com_title_detail"
+            android:text="커뮤니티에서 글 목록 누르면 나오는 화면입니다."
+            android:textSize="22dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="2020.11.07"
+                    android:textSize="13dp"
+                    android:id="@+id/com_date_detail"/>
+
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/com_date_detail"
+                android:layout_marginLeft="8dp"
+                android:text="01:26"
+                android:textSize="13dp"
+                android:id="@+id/com_time_datail"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="4dp"
+                android:text="5"
+                android:textSize="13dp"
+                android:id="@+id/com_look_datail"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/com_look_datail"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/com_look_textview"
+                android:text="조회"
+                android:textSize="13dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/com_look_textview"
+                android:layout_marginLeft="4dp"
+                android:text="1"
+                android:textSize="13dp"
+                android:id="@+id/com_recommend_datail"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/com_recommend_datail"
+                android:text="공감"
+                android:textSize="13dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="13dp"
+            android:textSize="17dp"
+            android:text="첫면접이 어쩌구 저저구 다음에는 뭐 어저어쩌어쩡저저그렇구 저렇고 이렇고 저렇고 그렇다고하더라 나는 ㅁ어쩌구저쩌구"
+            android:id="@+id/com_content_detail"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:text="공감(추천)"
+            android:id="@+id/btn_recommend_plus"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="#BFBFBF"/>
+    </LinearLayout>
+
+
 
 </LinearLayout>
