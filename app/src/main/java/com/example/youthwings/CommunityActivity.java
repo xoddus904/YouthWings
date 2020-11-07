@@ -40,9 +40,9 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
         listView = (ListView)findViewById(R.id.community_list);
 
         communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();
-        communityListViewItemArrayList.add(new CommunityListViewItem("여기는 이렇다","04.26",2,8));
-        communityListViewItemArrayList.add(new CommunityListViewItem("저기는 이렇다","10.25",25,2));
-        communityListViewItemArrayList.add(new CommunityListViewItem("저기는 별로다","01.26",66,8));
+        communityListViewItemArrayList.add(new CommunityListViewItem("여기는 이렇다","04:26",2,8));
+        communityListViewItemArrayList.add(new CommunityListViewItem("저기는 이렇다","10:25",25,2));
+        communityListViewItemArrayList.add(new CommunityListViewItem("저기는 별로다","01:26",66,8));
 
         communityListAdapter = new CommunityListAdapter(CommunityActivity.this, communityListViewItemArrayList);
         listView.setAdapter(communityListAdapter);
