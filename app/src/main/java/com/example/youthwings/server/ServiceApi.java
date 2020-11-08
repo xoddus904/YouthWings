@@ -1,5 +1,7 @@
 package com.example.youthwings.server;
 
+import com.example.youthwings.server.model.BoardModel;
+import com.example.youthwings.server.model.BoardRes;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
 
@@ -17,7 +19,15 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+// ***************************************
+// 서버 API 목록입니다.
+// ***************************************
 public interface ServiceApi {
+// ===================================================================================
+
+    // ***************************************
+    // 사용자 목록
+    // ***************************************
 
     // 로그인
     @POST("/account/login")
@@ -27,4 +37,21 @@ public interface ServiceApi {
     @POST("/account")
     Call<UserRes> signUp(@Body UserModel userModel);
 
+// ===================================================================================
+
+    // ***************************************
+    // 커뮤니티 목록
+    // ***************************************
+
+    // 게시글 목록 가져오기
+    @GET("/board")
+    Call<BoardRes> getCommunityList();
+
+    // 게시글 가져오기
+    @GET("/board/{id}")
+    Call<BoardRes> getCommunity(@Path("id") int boardId);
+
+    // 게시글 추천하기
+    @POST("/board/like")
+    Call<BoardRes> recommendBoard(@Body BoardModel boardModel);
 }

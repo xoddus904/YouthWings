@@ -58,7 +58,7 @@ public class CommunityListAdapter extends BaseAdapter {
             comLook_textView.setText(String.valueOf(communityListViewItemArrayList.get(position).getCom_look()));
 
             comRecommand_textView = (TextView)convertView.findViewById(R.id.com_recommend);
-            comRecommand_textView.setText(String.valueOf(communityListViewItemArrayList.get(position).getCom_recommand()));
+            comRecommand_textView.setText(String.valueOf(communityListViewItemArrayList.get(position).getCom_recommend()));
         }
 
         return convertView;

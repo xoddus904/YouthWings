@@ -20,6 +20,7 @@ import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
+import com.example.youthwings.util.SharedPreferenceUtil;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.w3c.dom.Text;
@@ -37,6 +38,7 @@ public class JoinActivity extends AppCompatActivity {
     private boolean chk_id = false;
 
     private EditText editText_id, editText_pwd, editText_re_pwd, editText_nick;
+    private SharedPreferenceUtil sharedPreferenceUtil;
 
     Toolbar toolbar;
 
@@ -155,6 +157,7 @@ public class JoinActivity extends AppCompatActivity {
     }
 
     private void onJoin(String userId, String userPwd) {
+        sharedPreferenceUtil = new SharedPreferenceUtil(this);
         UserModel userModel = new UserModel(userId, userPwd);
         Retrofit retrofit = RetrofitConnector.createRetrofit();
         Call<UserRes> call = retrofit.create(ServiceApi.class).signUp(userModel);
@@ -167,6 +170,7 @@ public class JoinActivity extends AppCompatActivity {
                     // 성공적으로 데이터 가져왔을 시
                     if (result.isSuc()) {
                         Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+                        sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
                         startActivity(intent);
                         finish();
                     }

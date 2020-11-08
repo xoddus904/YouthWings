@@ -1,68 +1,126 @@
 package com.example.youthwings;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.example.youthwings.server.RetrofitConnector;
+import com.example.youthwings.server.ServiceApi;
+import com.example.youthwings.server.model.BoardModel;
+import com.example.youthwings.server.model.BoardRes;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class CommunityActivity extends AppCompatActivity implements View.OnClickListener{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
-    ListView listView;
-    CommunityListAdapter communityListAdapter;
-    ArrayList<CommunityListViewItem> communityListViewItemArrayList;
+public class CommunityActivity extends AppCompatActivity implements View.OnClickListener {
 
-    androidx.appcompat.widget.Toolbar toolbar;
+    private ListView listView;
+    private CommunityListAdapter communityListAdapter;
+    private ArrayList<CommunityListViewItem> communityListViewItemArrayList;
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
+        initLayout();
+        getCommunityList();
+    }
 
-        //툴바관리
-        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
+    private void initLayout() {
+        listView = findViewById(R.id.community_list);                               // 커뮤니티 게시글 리스트뷰
+
+        // ***************************************
+        // 툴바관리
+        // ***************************************
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(""); //액션바 타이틀은 없애기
-        //만든 툴바의 textview를 변경
-        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        getSupportActionBar().setTitle("");                                         // 액션바 타이틀은 없애기
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);                   // 만든 툴바의 textview를 변경
         toolbarTitle.setText("취업 커뮤니티");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);                      // 뒤로가기 버튼
 
-        listView = (ListView)findViewById(R.id.community_list);
+    }
 
-        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();
-        communityListViewItemArrayList.add(new CommunityListViewItem("여기는 이렇다","04:26",2,8));
-        communityListViewItemArrayList.add(new CommunityListViewItem("저기는 이렇다","10:25",25,2));
-        communityListViewItemArrayList.add(new CommunityListViewItem("저기는 별로다","01:26",66,8));
+    // ***************************************
+    // 커뮤니티 게시글 목록 뿌려주기
+    // ***************************************
+    private void setCommunityList(ArrayList<BoardModel> boardModels) {
+        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();    // 리스트뷰 아이템 목록
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");       // 날짜 형식 변환
+
+        // ***************************************
+        // 커뮤니티 게시글 목록 반복문 시작
+        // ***************************************
+        int arraySize = boardModels.size();
+        for (int i = 0; i < arraySize; i++) {
+            int recommend = boardModels.get(i).getLikeModels().size();              // 해당 게시글 좋아요 갯수
+            CommunityListViewItem item = new CommunityListViewItem(
+                    boardModels.get(i).getBoardId(),
+                    boardModels.get(i).getBoardTitle(),
+                    format.format(boardModels.get(i).getBoardDate()),
+                    boardModels.get(i).getBoardLook(),
+                    recommend
+            );
+            communityListViewItemArrayList.add(item);
+        }
 
         communityListAdapter = new CommunityListAdapter(CommunityActivity.this, communityListViewItemArrayList);
         listView.setAdapter(communityListAdapter);
 
-
-        //listview클릭
+        // listView 클릭 이벤트 작성
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Intent intent = new Intent(getApplicationContext(), CommunityActivity2.class);
                 //값 넘김
-                intent.putExtra("title", communityListViewItemArrayList.get(position).getCom_Title());
-                intent.putExtra("time", communityListViewItemArrayList.get(position).getCom_time());
-                intent.putExtra("recommand", Integer.toString(communityListViewItemArrayList.get(position).getCom_recommand()));
-                intent.putExtra("look", Integer.toString(communityListViewItemArrayList.get(position).getCom_look()));
+                intent.putExtra("boardId", communityListViewItemArrayList.get(position).getCom_id());
                 startActivity(intent);
             }
         });
+    }
 
+    // ***************************************
+    // 커뮤니티 게시글 목록 가져오기 (서버 연동)
+    // ***************************************
+    private void getCommunityList() {
+        Retrofit retrofit = RetrofitConnector.createRetrofit();
+        Call<BoardRes> call = retrofit.create(ServiceApi.class).getCommunityList();
+        call.enqueue(new Callback<BoardRes>() {
+            @Override
+            public void onResponse(Call<BoardRes> call, Response<BoardRes> response) {
+                // 서버 연골 성공 시
+                if (response.isSuccessful()) {
+                    BoardRes result = response.body();
+                    Log.d("DEBUG", "################ 게시글 목록 가져오기 시작 ################");
+                    Log.d("DEBUG", result.getBoardModels().get(0).getBoardTitle());
+
+                    setCommunityList(result.getBoardModels());      // 커뮤니티 리스트에 가져온 데이터 뿌려줌
+
+                    Log.d("DEBUG", "################ 게시글 목록 가져오기 종료 ################");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BoardRes> call, Throwable t) {
+                Log.d("Server", "onFailure: " + t.toString());
+            }
+        });
     }
 
     public void onClick(View view) {

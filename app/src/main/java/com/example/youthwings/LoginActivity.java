@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
+import com.example.youthwings.util.SharedPreferenceUtil;
 import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
@@ -22,15 +24,17 @@ import retrofit2.Retrofit;
 public class LoginActivity extends AppCompatActivity {
     private Intent intent;
     private EditText editText_id, editText_pwd;
+    private SharedPreferenceUtil sharedPreferenceUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        initViews();
+        initLayout();
     }
 
-    private void initViews() {
+    private void initLayout() {
+        sharedPreferenceUtil = new SharedPreferenceUtil(this);
         editText_id = findViewById(R.id.email_input);
         editText_pwd = findViewById(R.id.password_input);
     }
@@ -44,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             case R.id.btn_login_dev:                            // 개발자 로그인 실행 (아이디, 패스워드 패스)
                 intent = new Intent(this, MainActivity.class);
+                sharedPreferenceUtil.setSharedString("userId", "develop@dev.com");     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
                 startActivity(intent);
                 finish();
                 break;
@@ -67,11 +72,17 @@ public class LoginActivity extends AppCompatActivity {
                     UserRes result = response.body();
                     // 성공적으로 데이터 가져왔을 시
                     if (result.isSuc()) {
+                        Log.d("DEBUG", "################ 로그인 시작 ################");
+                        Log.d("DEBUG", result.getUserModel().getLoginId());
+
+                        sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
                         intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
+
+                        Log.d("DEBUG", "################ 로그인 종료 ################");
                     } else {
-                        Snackbar.make(view, "아이디 또는 비밀번호를 다시 확인하세요.", Snackbar.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호를 다시 확인하세요.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

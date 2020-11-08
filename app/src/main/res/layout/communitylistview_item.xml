@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/com_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/com_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/com_title"
         android:text="글 제목"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,12 +18,12 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/com_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/com_time"
             android:layout_marginRight="20dp"
             android:text="04:32"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -34,14 +35,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="조회수"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/com_look"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/com_look"
                 android:text="0"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,14 +55,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="추천수"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/com_recommend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/com_recommend"
                 android:text="0"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
         </LinearLayout>
     </LinearLayout>

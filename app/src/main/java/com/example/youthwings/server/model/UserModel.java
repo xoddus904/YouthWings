@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Date;
 
-// 서버로 보낼 값. *JSON 형식으로 전달
-// {farm_pk: farmPk, egg_name: eggName ... }
+// 서버로 보내고 받을 값. *JSON 형식으로 전달
 public class UserModel implements Serializable {
     @SerializedName("user_id")
     private String loginId;
