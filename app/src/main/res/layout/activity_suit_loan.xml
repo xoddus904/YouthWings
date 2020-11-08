@@ -4,12 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="정장 대여 화면-지역선택"
-        android:textSize="35dp"/>
+    <include layout="@layout/toolbar" />
 
     <Button
         android:layout_width="match_parent"
@@ -17,6 +12,7 @@
         android:id="@+id/btn_seoul"
         android:text="서울특별시"
         android:onClick="onClick"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

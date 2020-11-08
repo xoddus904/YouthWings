@@ -13,13 +13,13 @@
         android:orientation="vertical"
         android:gravity="center"
         android:fillViewport="true"
-        android:id="@+id/screollView">
+        android:id="@+id/scrollView">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:gravity="center_horizontal"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/main_viewPager"

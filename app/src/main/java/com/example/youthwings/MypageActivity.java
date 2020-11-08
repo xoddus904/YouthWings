@@ -61,8 +61,7 @@ public class MypageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: { //toolbar의 back키 눌렀을 때
-                Intent intent1 = new Intent(MypageActivity.this, MainActivity.class);
-                startActivity(intent1);
+                finish();
                 break;
             }
         }

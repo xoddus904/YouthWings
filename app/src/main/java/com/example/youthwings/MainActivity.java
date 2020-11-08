@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPageadapter = new MainViewPageAdapter(this);
         viewPager.setAdapter(viewPageadapter);
 
-        //MainEmploymentAdapter 생성
-        /*mainEmploymentListAdapter = new MainEmploymentListAdapter(MainActivity.this, mainEmploymentListViewItem);
 
         //리스트뷰 참조 및 Adapter 달기
         listView = (ListView)findViewById(R.id.employmentlist);
@@ -66,7 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mainEmploymentListViewItem.add( new MainEmploymentListViewItem("Top!","어쩌구저쩌구 쏼라쏼라...","5분전"));
         mainEmploymentListViewItem.add(new MainEmploymentListViewItem("Top!", "어쩌구저쩌구 쏼라쏼라...", "3분전"));
 
-        listView.setAdapter(mainEmploymentListAdapter);*/
+        //MainEmploymentAdapter 생성
+        mainEmploymentListAdapter = new MainEmploymentListAdapter(MainActivity.this, mainEmploymentListViewItem);
+        listView.setAdapter(mainEmploymentListAdapter);
 
     }
 
