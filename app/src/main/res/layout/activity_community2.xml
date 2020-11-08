@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -20,81 +21,74 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="#000"
             android:text="커뮤니티에서 글 목록 누르면 나오는 화면입니다."
-            android:textSize="22dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/com_date_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
+                android:layout_alignParentLeft="true"
+                android:text="2020.11.07"
+                android:textSize="13dp" />
 
-                <TextView
-                    android:id="@+id/com_date_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:text="2020.11.07"
-                    android:textSize="13dp" />
-            </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/com_look_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
+                android:layout_marginRight="4dp"
+                android:layout_toLeftOf="@+id/com_look_detail"
+                android:text="조회"
+                android:textSize="13dp" />
 
-                <TextView
-                    android:id="@+id/com_look_datail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="4dp"
-                    android:text="5"
-                    android:textSize="13dp" />
+            <TextView
+                android:id="@+id/com_look_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:text="5"
+                android:textSize="13dp" />
 
-                <TextView
-                    android:id="@+id/com_look_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_toLeftOf="@+id/com_look_datail"
-                    android:text="조회"
-                    android:textSize="13dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/com_recommend_datail"
+                android:text="공감"
+                android:layout_marginRight="4dp"
+                android:textSize="13dp" />
 
-
-                <TextView
-                    android:id="@+id/com_recommend_datail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:layout_toLeftOf="@+id/com_look_textview"
-                    android:text="1"
-                    android:textSize="13dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/com_recommend_datail"
-                    android:text="공감"
-                    android:textSize="13dp" />
-
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/com_recommend_datail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/com_look_textview"
+                android:text="1"
+                android:textSize="13dp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/com_content_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="13dp"
+            android:layout_marginVertical="15dp"
+            android:textColor="#000"
             android:text="첫면접이 어쩌구 저저구 다음에는 뭐 어저어쩌어쩡저저그렇구 저렇고 이렇고 저렇고 그렇다고하더라 나는 ㅁ어쩌구저쩌구"
-            android:textSize="17dp" />
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btn_recommend_plus"

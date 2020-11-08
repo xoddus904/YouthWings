@@ -3,6 +3,8 @@
     android:id="@+id/com_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="15dp"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="글 제목"
-        android:textSize="25dp" />
+        android:textColor="#000"
+        android:textSize="16dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -23,29 +28,37 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:text="04:32"
-            android:textSize="15dp" />
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <LinearLayout
+            android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="4dp"
                 android:text="조회수"
-                android:textSize="15dp" />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/com_look"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="15dp" />
+                android:textSize="13dp" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -53,16 +66,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="4dp"
                 android:text="추천수"
-                android:textSize="15dp" />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/com_recommend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="15dp" />
+                android:textSize="13dp" />
 
         </LinearLayout>
     </LinearLayout>

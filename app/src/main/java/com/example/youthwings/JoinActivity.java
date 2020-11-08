@@ -12,20 +12,17 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
 import com.example.youthwings.util.SharedPreferenceUtil;
-import com.google.android.material.snackbar.Snackbar;
 
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
@@ -34,7 +31,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class JoinActivity extends AppCompatActivity {
-    final static String PATTERN_EMAIL = "^[a-zA-Z0-9]+@([a-zA-Z0-9]|\\-)+\\.[a-zA-Z0-9]\\S+$";
+    final static String PATTERN_EMAIL = "^[a-zA-Z0-9]+@([a-zA-Z0-9]|\\-)+\\.[a-zA-Z0-9]\\S+$";      // 정규 표현식
     private boolean chk_id = false;
 
     private EditText editText_id, editText_pwd, editText_re_pwd, editText_nick;
@@ -138,14 +135,14 @@ public class JoinActivity extends AppCompatActivity {
     private boolean onCheckData(final View view) {
         editText_re_pwd.setBackground(getResources().getDrawable(R.drawable.view_input));
         if (!chk_id) {
-            Snackbar.make(view, "아이디를 정확하게 입력해 주세요", Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(this, "아이디를 정확하게 입력해 주세요", Toast.LENGTH_SHORT).show();
             editText_id.requestFocus();
 //            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 //            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
             return false;
         }
         if (!editText_pwd.getText().toString().trim().equals(editText_re_pwd.getText().toString().trim())) {
-            Snackbar.make(view, "비밀번호를 정확하게 입력해 주세요", Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(this, "비밀번호를 정확하게 입력해 주세요", Toast.LENGTH_SHORT).show();
             editText_re_pwd.setBackground(getResources().getDrawable(R.drawable.view_input_not));
             editText_re_pwd.requestFocus();
 //            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -169,10 +166,15 @@ public class JoinActivity extends AppCompatActivity {
                     UserRes result = response.body();
                     // 성공적으로 데이터 가져왔을 시
                     if (result.isSuc()) {
-                        Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+                        Log.d("DEBUG", "################ 회원가입 시작 ################");
+                        Log.d("DEBUG", result.getUserModel().getLoginId());
+
                         sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
+                        Intent intent = new Intent(JoinActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
+
+                        Log.d("DEBUG", "################ 회원가입 종료 ################");
                     }
                 }
             }

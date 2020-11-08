@@ -31,11 +31,11 @@ public class CommunityActivity2 extends AppCompatActivity {
     private SharedPreferenceUtil sharedPreferenceUtil;
 
     private Toolbar toolbar;
-    private TextView title_detail_textView;
-    private TextView content_detail_textView;
-    private TextView date_detail_textView;
-    private TextView recommend_detail_textView;
-    private TextView look_detail_textView;
+    private TextView title_detail_textView,
+            content_detail_textView,
+            date_detail_textView,
+            recommend_detail_textView,
+            look_detail_textView;
 
     private int boardId;                // 해당 게시글 번호
     private String userId;              // 사용자 아이디
@@ -66,7 +66,7 @@ public class CommunityActivity2 extends AppCompatActivity {
         content_detail_textView = (TextView) findViewById(R.id.com_content_detail);
         date_detail_textView = (TextView) findViewById(R.id.com_date_detail);
         recommend_detail_textView = (TextView) findViewById(R.id.com_recommend_datail);
-        look_detail_textView = (TextView) findViewById(R.id.com_look_datail);
+        look_detail_textView = (TextView) findViewById(R.id.com_look_detail);
 
         // ***************************************
         // 툴바관리
@@ -97,6 +97,8 @@ public class CommunityActivity2 extends AppCompatActivity {
     // 커뮤니티 게시글 가져오기 (서버 연동)
     // ***************************************
     private void getCommunity() {
+        Log.d("DEBUG", "################ 게시글 가져오기 시작 ################");
+
         Retrofit retrofit = RetrofitConnector.createRetrofit();
         Call<BoardRes> call = retrofit.create(ServiceApi.class).getCommunity(boardId);
         call.enqueue(new Callback<BoardRes>() {
@@ -105,7 +107,6 @@ public class CommunityActivity2 extends AppCompatActivity {
                 // 서버 연골 성공 시
                 if (response.isSuccessful()) {
                     BoardRes result = response.body();
-                    Log.d("DEBUG", "################ 게시글 가져오기 시작 ################");
                     Log.d("DEBUG", result.getBoardModel().getBoardTitle());
                     Log.d("DEBUG", result.getBoardModel().getBoardDate().toString());
 
@@ -130,6 +131,8 @@ public class CommunityActivity2 extends AppCompatActivity {
         boardModel.setUserId(userId);               // 유저 아이디
         boardModel.setBoardId(boardId);             // 해당(추천할) 게시글 번호
 
+        Log.d("DEBUG", "################ 게시글 추천하기 시작 ################");
+
         Retrofit retrofit = RetrofitConnector.createRetrofit();
         Call<BoardRes> call = retrofit.create(ServiceApi.class).recommendBoard(boardModel);
         call.enqueue(new Callback<BoardRes>() {
@@ -138,15 +141,16 @@ public class CommunityActivity2 extends AppCompatActivity {
                 // 서버 연골 성공 시
                 if (response.isSuccessful()) {
                     BoardRes result = response.body();
-                    Log.d("DEBUG", "################ 게시글 추천하기 시작 ################");
                     Log.d("DEBUG", result.isSuc() + "");
 
                     if (result.isSuc()) {
                         onAlertDialog("추천되었습니다!");
-                        recommend_detail_textView.setText(String.valueOf(recommend + 1));
+                        recommend++;
+                        recommend_detail_textView.setText(String.valueOf(recommend));
                     } else {
                         onAlertDialog("취소되었습니다.");
-                        recommend_detail_textView.setText(String.valueOf(recommend - 1));
+                        recommend--;
+                        recommend_detail_textView.setText(String.valueOf(recommend));
                     }
 
                     Log.d("DEBUG", "################ 게시글 추천하기 종료 ################");
@@ -161,7 +165,18 @@ public class CommunityActivity2 extends AppCompatActivity {
 
     }
 
-    private void onAlertDialog(String content) {
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_recommend_plus:
+                onRecommend();
+                break;
+        }
+    }
+
+    // ***************************************
+    // 확인만 있는 알림창
+    // ***************************************
+    public void onAlertDialog(String content) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("청춘날개").setMessage(content);
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -173,21 +188,12 @@ public class CommunityActivity2 extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_recommend_plus:
-                onRecommend();
-                break;
-        }
-    }
-
     //툴바
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: { //toolbar의 back키 눌렀을 때
-                Intent intent1 = new Intent(CommunityActivity2.this, CommunityActivity.class);
-                startActivity(intent1);
+                finish();
                 break;
             }
         }

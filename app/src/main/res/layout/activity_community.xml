@@ -9,24 +9,17 @@
 
     <include layout="@layout/toolbar"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="취업커뮤니티 화면."
-        android:layout_gravity="center"
-        android:textSize="20dp"/>
-
     <LinearLayout
+        android:layout_marginHorizontal="3dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:orientation="vertical">
 
         <ListView
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/community_list"/>
 
     </LinearLayout>

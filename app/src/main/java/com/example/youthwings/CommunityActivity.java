@@ -39,7 +39,6 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
         initLayout();
-        getCommunityList();
     }
 
     private void initLayout() {
@@ -61,15 +60,15 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
     // 커뮤니티 게시글 목록 뿌려주기
     // ***************************************
     private void setCommunityList(ArrayList<BoardModel> boardModels) {
-        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();    // 리스트뷰 아이템 목록
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");       // 날짜 형식 변환
+        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();     // 리스트뷰 아이템 목록
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");  // 날짜 형식 변환
 
         // ***************************************
-        // 커뮤니티 게시글 목록 반복문 시작
+        // 커뮤니티 게시글 목록 생성 시작
         // ***************************************
         int arraySize = boardModels.size();
         for (int i = 0; i < arraySize; i++) {
-            int recommend = boardModels.get(i).getLikeModels().size();              // 해당 게시글 좋아요 갯수
+            int recommend = boardModels.get(i).getLikeModels().size();               // 해당 게시글 좋아요 갯수
             CommunityListViewItem item = new CommunityListViewItem(
                     boardModels.get(i).getBoardId(),
                     boardModels.get(i).getBoardTitle(),
@@ -88,7 +87,7 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), CommunityActivity2.class);
-                //값 넘김
+                // 값 넘김
                 intent.putExtra("boardId", communityListViewItemArrayList.get(position).getCom_id());
                 startActivity(intent);
             }
@@ -99,6 +98,8 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
     // 커뮤니티 게시글 목록 가져오기 (서버 연동)
     // ***************************************
     private void getCommunityList() {
+        Log.d("DEBUG", "################ 게시글 목록 가져오기 시작 ################");
+
         Retrofit retrofit = RetrofitConnector.createRetrofit();
         Call<BoardRes> call = retrofit.create(ServiceApi.class).getCommunityList();
         call.enqueue(new Callback<BoardRes>() {
@@ -107,8 +108,6 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
                 // 서버 연골 성공 시
                 if (response.isSuccessful()) {
                     BoardRes result = response.body();
-                    Log.d("DEBUG", "################ 게시글 목록 가져오기 시작 ################");
-                    Log.d("DEBUG", result.getBoardModels().get(0).getBoardTitle());
 
                     setCommunityList(result.getBoardModels());      // 커뮤니티 리스트에 가져온 데이터 뿌려줌
 
@@ -124,11 +123,13 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void onClick(View view) {
-
         switch (view.getId()) {
+            // ***************************************
+            // 글쓰기 버튼
+            // ***************************************
             case R.id.btn_write:
-                Intent intent1 = new Intent(CommunityActivity.this, ComWritingActivity.class);
-                startActivity(intent1);
+                Intent intent = new Intent(CommunityActivity.this, ComWritingActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -137,12 +138,16 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: { //toolbar의 back키 눌렀을 때
-                Intent intent1 = new Intent(CommunityActivity.this, MainActivity.class);
-                startActivity(intent1);
+                finish();
                 break;
             }
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getCommunityList();
+    }
 }

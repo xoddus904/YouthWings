@@ -54,4 +54,8 @@ public interface ServiceApi {
     // 게시글 추천하기
     @POST("/board/like")
     Call<BoardRes> recommendBoard(@Body BoardModel boardModel);
+
+    // 게시글 작성
+    @POST("/board")
+    Call<BoardRes> postBoard(@Body BoardModel boardModel);
 }
