@@ -4,11 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="면접 주요 질문리스트화면"
-        android:textSize="35dp"/>
+    <include layout="@layout/toolbar" />
 
 </LinearLayout>

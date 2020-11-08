@@ -58,7 +58,7 @@ public class JoinActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(""); //액션바 타이틀은 없애기
         //만든 툴바의 textview를 변경
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("청춘날개");
+        toolbarTitle.setText("회원가입");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
     }
 

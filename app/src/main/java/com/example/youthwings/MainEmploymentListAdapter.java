@@ -26,7 +26,7 @@ class MainEmploymentListAdapter extends BaseAdapter {
     //Adapter에 사용되는 데이터의 개수를 리턴
     @Override
     public int getCount(){
-        return mainEmploymentListViewItem.size();
+        return this.mainEmploymentListViewItem.size();
     }
 
     @Override
