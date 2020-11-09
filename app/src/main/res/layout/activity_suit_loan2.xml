@@ -144,13 +144,12 @@
                             android:textColor="#535353"/>
 
                         <EditText
-                            android:id="@+id/password_re_entry"
+                            android:id="@+id/nameinput"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:background="@drawable/view_input"
                             android:hint="홍길동"
-                            android:inputType="textPassword"
-                            android:maxLength="30"
+                            android:maxLength="10"
                             android:onClick="onClick"
                             android:paddingLeft="20dp"
                             android:paddingTop="3dp"
@@ -194,11 +193,124 @@
                                 android:layout_height="wrap_content"
                                 android:text="여자"
                                 android:textSize="23dp"
-                                android:textColor="#535353"/>
+                                android:textColor="#535353"
+                                />
 
                         </LinearLayout>
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="생년월일"
+                    android:textSize="25dp"
+                    android:textColor="#535353"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <EditText
+                        android:id="@+id/Yearinput"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/view_input"
+                        android:hint="2000"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp"
+                        android:layout_marginRight="10dp" />
+
+                    <EditText
+                        android:id="@+id/monthinput"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/view_input"
+                        android:hint="05"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp"
+                        android:layout_marginRight="10dp"/>
+
+
+                    <EditText
+                        android:id="@+id/dayinput"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/view_input"
+                        android:hint="18"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp"
+                        android:layout_marginRight="10dp" />
+
+                    <Button
+                        android:id="@+id/calendar_input"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/calendar_img"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이메일"
+                    android:textSize="25dp"
+                    android:textColor="#535353"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주소"
+                    android:textSize="25dp"
+                    android:textColor="#535353"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="휴대전화"
+                    android:textSize="25dp"
+                    android:textColor="#535353"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                 </LinearLayout>
 
