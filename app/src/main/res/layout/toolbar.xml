@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="청춘날개"
-        android:textColor="#FFFFFF"
+        android:textColor="#F4F4F4"
         android:textSize="21sp"
         android:textStyle="bold" />
 

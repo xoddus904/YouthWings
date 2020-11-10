@@ -53,7 +53,37 @@ public class SuitLoanActivity extends AppCompatActivity {
             case R.id.btn_seoul:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
                 break;
+            case R.id.btn_busan:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_daegu:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_jeonju:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_suwon:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_cheongju:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_gwangju:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
             case R.id.btn_incheon:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_gimpo:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_yongin:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_uijeongbu:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                break;
+            case R.id.btn_hwaseong:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
                 break;
         }

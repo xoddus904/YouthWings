@@ -6,13 +6,6 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="정장 대여 화면1-지역별 정장대여가능지점"
-        android:textSize="35dp"/>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
