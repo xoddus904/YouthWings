@@ -21,15 +21,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="#000"
             android:text="커뮤니티에서 글 목록 누르면 나오는 화면입니다."
+            android:textColor="#000"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -66,9 +66,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
                 android:layout_toLeftOf="@+id/com_recommend_datail"
                 android:text="공감"
-                android:layout_marginRight="4dp"
                 android:textSize="13dp" />
 
             <TextView
@@ -86,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
-            android:textColor="#000"
             android:text="첫면접이 어쩌구 저저구 다음에는 뭐 어저어쩌어쩡저저그렇구 저렇고 이렇고 저렇고 그렇다고하더라 나는 ㅁ어쩌구저쩌구"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <Button

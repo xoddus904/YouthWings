@@ -6,17 +6,287 @@
 
     <include layout="@layout/toolbar" />
 
-    <Button
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_mapo"
-        android:text="마포지점"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_gangnam"
-        android:text="강남지점"
-        android:onClick="onClick"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/view_round"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#858585" />
+
+                <TextView
+                    android:id="@+id/loan1_areaName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지역 이름"
+                    android:textColor="#535353"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
+
+                <ImageView
+                    android:id="@+id/storeimage1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/view_input" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/storeName_get1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="상점 이름"
+                        android:textColor="#535353"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/address_get1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="주소 : 가나다라마바사 123"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/hours_get1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="영업 시간 : 10:00 ~ 20:00"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/lunchTime_get1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="점심시간 : 12:30 ~ 13:30"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/holiday_get1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="휴일 : 법정 공휴일"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/number_get1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="전화번호 : 02-1234-5678"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
+
+                <ImageView
+                    android:id="@+id/storeimage2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/view_input" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/storeName_get2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="상점 이름"
+                        android:textColor="#535353"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/address_get2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="주소 : 가나다라마바사 123"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/hours_get2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="영업 시간 : 10:00 ~ 20:00"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/lunchTime_get2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="점심시간 : 12:30 ~ 13:30"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/holiday_get2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="휴일 : 법정 공휴일"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/number_get2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="전화번호 : 02-1234-5678"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
+
+                <ImageView
+                    android:id="@+id/storeimage3"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/view_input" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/storeName_get3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="상점 이름"
+                        android:textColor="#535353"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/address_get3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="주소 : 가나다라마바사 123"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/hours_get3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="영업 시간 : 10:00 ~ 20:00"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/lunchTime_get3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="점심시간 : 12:30 ~ 13:30"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/holiday_get3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="휴일 : 법정 공휴일"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/number_get3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="전화번호 : 02-1234-5678"
+                        android:textColor="#8C8C8C"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

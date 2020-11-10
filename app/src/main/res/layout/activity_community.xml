@@ -7,29 +7,29 @@
     android:orientation="vertical"
     tools:context=".CommunityActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
     <LinearLayout
-        android:layout_marginHorizontal="3dp"
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="3dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <ListView
+            android:id="@+id/community_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/community_list"/>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="글쓰기"
-        android:id="@+id/btn_write"
+        android:layout_gravity="right"
         android:onClick="onClick"
-        android:layout_gravity="right"/>
+        android:text="글쓰기" />
 
 </LinearLayout>

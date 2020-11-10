@@ -47,14 +47,19 @@ public class SuitLoanActivity1 extends AppCompatActivity {
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.btn_mapo:
+            case R.id.layout1:
                 Intent intent1 = new Intent(SuitLoanActivity1.this, SuitLoanActivity2.class);
                 startActivity(intent1);
                 break;
 
-            case R.id.btn_gangnam:
+            case R.id.layout2:
                 Intent intent2 = new Intent(SuitLoanActivity1.this, SuitLoanActivity2.class);
                 startActivity(intent2);
+                break;
+
+            case R.id.layout3:
+                Intent intent3 = new Intent(SuitLoanActivity1.this, SuitLoanActivity2.class);
+                startActivity(intent3);
                 break;
         }
     }

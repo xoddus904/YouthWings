@@ -6,26 +6,313 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="정장 대여 화면3-면접회사 정보 입력 수정본"
-        android:textSize="35dp"/>
-
-    <Button
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="예약하기"
-        android:id="@+id/btn_reservation"
-        android:onClick="onClick"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="취소"
-        android:id="@+id/btn_cancel"
-        android:onClick="onClick"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
 
+            <TextView
+                android:id="@+id/areaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:text="지역이름"
+                android:textColor="#737373"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/storeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:text="상점 이름"
+                android:textColor="#535353"
+                android:textSize="30dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/dotted_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="면접회사 정보 입력"
+                android:textColor="#535353"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="회사명"
+                    android:textColor="#535353"
+                    android:textSize="23dp" />
+
+                <EditText
+                    android:id="@+id/company_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/view_input"
+                    android:hint=""
+                    android:maxLength="30"
+                    android:onClick="onClick"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:singleLine="true"
+                    android:textColorHint="#B5B5B5"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="면접일"
+                    android:textColor="#535353"
+                    android:textSize="23dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/Yearinput"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="2000"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/monthinput"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="05"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+
+                    <EditText
+                        android:id="@+id/dayinput"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="18"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+                    <Button
+                        android:id="@+id/calendar_input"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/calendar_img" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="회사 연락처"
+                    android:textColor="#535353"
+                    android:textSize="23dp" />
+
+                <EditText
+                    android:id="@+id/company_number_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/view_input"
+                    android:hint="회사 연락처 또는 담당자 연락처"
+                    android:maxLength="30"
+                    android:onClick="onClick"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:singleLine="true"
+                    android:textColorHint="#B5B5B5"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="면접 증빙서류"
+                    android:textColor="#535353"
+                    android:textSize="23dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/view_input"
+                    android:hint="// 다시 변경할 예정."
+                    android:maxLength="30"
+                    android:onClick="onClick"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="3dp"
+                    android:singleLine="true"
+                    android:textColorHint="#B5B5B5"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#EDEDED"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:text="* 실제 면접을 보는 회사의 면접사실 확인 서류(문자, 이메일 등)를 회사명, 면접일, 연락처가 보여지도록 캡처하여 업로드해 주세요. (PDF파일 업로드 불가 / JPG, PNG파일 가능"
+                        android:textColor="#535353"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* 전화로 면접을 통보 받았을 경우, 취업지원 사실을 확인할 수 있는 자료(입사지원서, 서류접수 확인증 등)를 캡쳐하여 업로드 제출해 주세요."
+                        android:textColor="#535353"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="이용약관 동의"
+                            android:textColor="#535353"
+                            android:textSize="23dp" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="개인정보 처리방침 동의"
+                            android:textColor="#535353"
+                            android:textSize="23dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/use_conditions"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="보기" />
+
+                        <Button
+                            android:id="@+id/personal_information_conditions"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="보기" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_reservation"
+                        android:layout_width="225dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_btn"
+                        android:onClick="onClick"
+                        android:text="예약하기"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
+
+                    <Button
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#9C9C9C"
+                        android:onClick="onClick"
+                        android:text="취소"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

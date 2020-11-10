@@ -7,12 +7,12 @@
     <include layout="@layout/toolbar" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
         android:fillViewport="true"
-        android:id="@+id/scrollView">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,29 +22,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_seoul"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="서울시"/>
+                        android:text="서울시" />
 
                 </LinearLayout>
 
@@ -52,20 +52,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_busan"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="부산시"/>
+                        android:text="부산시" />
 
                 </LinearLayout>
 
@@ -73,20 +73,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_daegu"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="대구시"/>
+                        android:text="대구시" />
 
                 </LinearLayout>
 
@@ -95,29 +95,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_jeonju"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="전주시"/>
+                        android:text="전주시" />
 
                 </LinearLayout>
 
@@ -125,20 +125,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_suwon"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="수원시"/>
+                        android:text="수원시" />
 
                 </LinearLayout>
 
@@ -146,20 +146,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_cheongju"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="청주시"/>
+                        android:text="청주시" />
 
                 </LinearLayout>
 
@@ -168,29 +168,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_gwangju"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="광주시"/>
+                        android:text="광주시" />
 
                 </LinearLayout>
 
@@ -198,20 +198,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_incheon"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="인천시"/>
+                        android:text="인천시" />
 
                 </LinearLayout>
 
@@ -219,20 +219,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_gimpo"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="김포시"/>
+                        android:text="김포시" />
 
                 </LinearLayout>
 
@@ -241,29 +241,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_yongin"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="용인시"/>
+                        android:text="용인시" />
 
                 </LinearLayout>
 
@@ -271,20 +271,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_uijeongbu"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="의정부시"/>
+                        android:text="의정부시" />
 
                 </LinearLayout>
 
@@ -292,20 +292,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_hwaseong"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="화성시"/>
+                        android:text="화성시" />
 
                 </LinearLayout>
 
@@ -314,29 +314,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_changwon"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="창원시"/>
+                        android:text="창원시" />
 
                 </LinearLayout>
 
@@ -344,20 +344,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_goyang"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="고양시"/>
+                        android:text="고양시" />
 
                 </LinearLayout>
 
@@ -365,20 +365,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_namyangju"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="남양주시"/>
+                        android:text="남양주시" />
 
                 </LinearLayout>
 
@@ -387,29 +387,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_anyang"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="안양시"/>
+                        android:text="안양시" />
 
                 </LinearLayout>
 
@@ -417,20 +417,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_hanam"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="하남시"/>
+                        android:text="하남시" />
 
                 </LinearLayout>
 
@@ -438,20 +438,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_uiwang"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="의왕시"/>
+                        android:text="의왕시" />
 
                 </LinearLayout>
 
@@ -460,30 +460,30 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="35dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_gunpo"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="onClick"/>
+                        android:onClick="onClick" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="군포시"/>
+                        android:text="군포시" />
 
                 </LinearLayout>
             </RelativeLayout>

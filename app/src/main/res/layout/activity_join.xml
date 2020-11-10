@@ -25,10 +25,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:textColor="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• 닉네임 (랜덤 적용)"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <EditText
@@ -49,10 +49,10 @@
             android:textSize="15dp" />
 
         <TextView
-            android:textColor="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• 아이디"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <EditText
@@ -73,10 +73,10 @@
             android:textSize="15dp" />
 
         <TextView
-            android:textColor="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• 비밀번호"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <EditText
@@ -97,10 +97,10 @@
             android:textSize="15dp" />
 
         <TextView
-            android:textColor="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• 비밀번호 재입력"
+            android:textColor="#000"
             android:textSize="15dp" />
 
         <EditText

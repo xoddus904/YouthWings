@@ -7,12 +7,12 @@
     <include layout="@layout/toolbar" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
         android:fillViewport="true"
-        android:id="@+id/scrollView">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:id="@+id/main_viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="370dp"
-                android:layout_marginBottom="50dp"/>
+                android:layout_marginBottom="50dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,51 +37,51 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
                     android:text="지역이름"
-                    android:textSize="25dp"
                     android:textColor="#737373"
-                    android:layout_marginBottom="5dp"/>
+                    android:textSize="25dp" />
 
                 <TextView
                     android:id="@+id/storeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="40dp"
                     android:text="상점 이름"
-                    android:textSize="30dp"
                     android:textColor="#535353"
-                    android:layout_marginBottom="40dp"/>
+                    android:textSize="30dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="대여 방법"
-                    android:textSize="25dp"
-                    android:textColor="#535353"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="대여 방법"
+                    android:textColor="#535353"
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="70dp"
                         android:text="방문대여"
-                        android:textSize="23dp"
                         android:textColor="#535353"
-                        android:layout_marginRight="70dp"/>
+                        android:textSize="23dp" />
 
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="택배(온라인)"
-                        android:textSize="23dp"
-                        android:textColor="#535353"/>
+                        android:textColor="#535353"
+                        android:textSize="23dp" />
 
                 </LinearLayout>
 
@@ -89,60 +89,60 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginBottom="20dp"
+                    android:background="#EDEDED"
                     android:gravity="center_vertical"
-                    android:paddingHorizontal="20dp"
                     android:orientation="vertical"
-                    android:background="#EDEDED">
+                    android:paddingHorizontal="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="- 첫 예약시에는 무조건 방문예약 입니다."
-                        android:textSize="15dp"
-                        android:textColor="#535353"/>
+                        android:textColor="#535353"
+                        android:textSize="15dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="- 두번째 예약부터 택배(온라인)이 가능합니다."
-                        android:textSize="15dp"
-                        android:textColor="#535353"/>
+                        android:textColor="#535353"
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
-                    android:background="@drawable/dotted_line"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/dotted_line" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
                     android:text="개인정보입력"
-                    android:textSize="25dp"
                     android:textColor="#535353"
-                    android:layout_marginBottom="20dp"/>
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginRight="20dp">
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="이름"
-                            android:textSize="23dp"
-                            android:textColor="#535353"/>
+                            android:textColor="#535353"
+                            android:textSize="23dp" />
 
                         <EditText
                             android:id="@+id/nameinput"
@@ -171,32 +171,31 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="성별"
-                            android:textSize="23dp"
-                            android:textColor="#535353"/>
+                            android:textColor="#535353"
+                            android:textSize="23dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical"
                             android:layout_marginLeft="12dp"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
 
                             <CheckBox
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="70dp"
                                 android:text="남자"
-                                android:textSize="23dp"
                                 android:textColor="#535353"
-                                android:layout_marginRight="70dp"/>
+                                android:textSize="23dp" />
 
                             <CheckBox
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="여자"
-                                android:textSize="23dp"
                                 android:textColor="#535353"
-                                />
+                                android:textSize="23dp" />
 
                         </LinearLayout>
 
@@ -207,22 +206,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="생년월일"
-                    android:textSize="25dp"
                     android:textColor="#535353"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center_horizontal"
-                    android:layout_marginBottom="20dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/Yearinput"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
                         android:hint="2000"
                         android:maxLength="30"
@@ -231,13 +231,13 @@
                         android:paddingTop="3dp"
                         android:singleLine="true"
                         android:textColorHint="#B5B5B5"
-                        android:textSize="15dp"
-                        android:layout_marginRight="10dp" />
+                        android:textSize="15dp" />
 
                     <EditText
                         android:id="@+id/monthinput"
                         android:layout_width="60dp"
                         android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
                         android:hint="05"
                         android:maxLength="30"
@@ -246,14 +246,14 @@
                         android:paddingTop="3dp"
                         android:singleLine="true"
                         android:textColorHint="#B5B5B5"
-                        android:textSize="15dp"
-                        android:layout_marginRight="10dp"/>
+                        android:textSize="15dp" />
 
 
                     <EditText
                         android:id="@+id/dayinput"
                         android:layout_width="60dp"
                         android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
                         android:hint="18"
                         android:maxLength="30"
@@ -262,37 +262,36 @@
                         android:paddingTop="3dp"
                         android:singleLine="true"
                         android:textColorHint="#B5B5B5"
-                        android:textSize="15dp"
-                        android:layout_marginRight="10dp" />
+                        android:textSize="15dp" />
 
                     <Button
                         android:id="@+id/calendar_input"
                         android:layout_width="60dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/calendar_img"/>
-
+                        android:background="@drawable/calendar_img" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="이메일"
-                    android:textSize="25dp"
                     android:textColor="#535353"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="20dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/email_front"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
                         android:hint="abcd"
                         android:maxLength="30"
@@ -301,19 +300,19 @@
                         android:paddingTop="3dp"
                         android:singleLine="true"
                         android:textColorHint="#B5B5B5"
-                        android:textSize="15dp"
-                        android:layout_marginRight="10dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp" />
 
                     <EditText
                         android:id="@+id/email_back"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
                         android:background="@drawable/view_input"
                         android:hint="abcd.com"
                         android:maxLength="30"
@@ -322,8 +321,7 @@
                         android:paddingTop="3dp"
                         android:singleLine="true"
                         android:textColorHint="#B5B5B5"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="10dp" />
+                        android:textSize="15dp" />
 
 
                 </LinearLayout>
@@ -331,23 +329,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"
                     android:text="주소"
-                    android:textSize="25dp"
                     android:textColor="#535353"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="우편번호"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp" />
 
                 </LinearLayout>
 
@@ -355,6 +353,7 @@
                     android:id="@+id/detail_address"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/view_input"
                     android:hint="상세 주소"
                     android:maxLength="30"
@@ -363,28 +362,28 @@
                     android:paddingTop="3dp"
                     android:singleLine="true"
                     android:textColorHint="#B5B5B5"
-                    android:textSize="15dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="휴대전화"
-                    android:textSize="25dp"
                     android:textColor="#535353"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="72dp"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="5dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/phone_number_input"
                         android:layout_width="248dp"
                         android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
                         android:hint="'-'없이 번호만 입력"
                         android:maxLength="30"
@@ -393,14 +392,13 @@
                         android:paddingTop="3dp"
                         android:singleLine="true"
                         android:textColorHint="#B5B5B5"
-                        android:textSize="15dp"
-                        android:layout_marginRight="10dp" />
+                        android:textSize="15dp" />
 
                     <Button
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="인증번호 발송"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp" />
 
                 </LinearLayout>
 
@@ -408,8 +406,9 @@
                     android:id="@+id/authentication_number_input"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
-                    android:gravity="center_vertical"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/view_input"
+                    android:gravity="center_vertical"
                     android:hint="인증번호 입력"
                     android:maxLength="30"
                     android:onClick="onClick"
@@ -417,16 +416,15 @@
                     android:paddingTop="3dp"
                     android:singleLine="true"
                     android:textColorHint="#B5B5B5"
-                    android:textSize="15dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:textSize="15dp" />
 
                 <Button
                     android:id="@+id/nextbtn_suit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="다음으로"
+                    android:layout_marginBottom="10dp"
                     android:onClick="onClick"
-                    android:layout_marginBottom="10dp"/>
+                    android:text="다음으로" />
 
             </LinearLayout>
 
