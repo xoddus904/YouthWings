@@ -3,6 +3,8 @@ package com.example.youthwings;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CommunityActivity extends AppCompatActivity implements View.OnClickListener {
+public class CommunityActivity extends AppCompatActivity {
 
     private ListView listView;
     private CommunityListAdapter communityListAdapter;
@@ -39,6 +41,14 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
         initLayout();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.toolbarmenu, menu);
+        menu.findItem(R.id.toolbar_help_button).setIcon(R.drawable.icon_help);
+        return true;
     }
 
     private void initLayout() {
@@ -122,24 +132,20 @@ public class CommunityActivity extends AppCompatActivity implements View.OnClick
         });
     }
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            // ***************************************
-            // 글쓰기 버튼
-            // ***************************************
-            case R.id.btn_write:
-                Intent intent = new Intent(CommunityActivity.this, ComWritingActivity.class);
-                startActivity(intent);
-                break;
-        }
-    }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: { //toolbar의 back키 눌렀을 때
                 finish();
                 break;
+            }
+            case R.id.toolbar_help_button: { //글쓰기 버튼인데 아이디는 도움말 버튼과 동일
+                // ***************************************
+                // 글쓰기 버튼
+                // ***************************************
+                    Intent intent = new Intent(CommunityActivity.this, ComWritingActivity.class);
+                    startActivity(intent);
+                    break;
             }
         }
         return super.onOptionsItemSelected(item);
