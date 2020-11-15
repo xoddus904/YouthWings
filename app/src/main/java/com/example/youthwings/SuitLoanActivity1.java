@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SuitLoanActivity1 extends AppCompatActivity {
+
+    TextView getData;
+    Bitmap image;
 
     Toolbar toolbar;
 
@@ -18,7 +25,14 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan1);
 
+        //툴바 뒤로가기
         initLayout();
+
+        //지역 이름 get
+        getAreaName();
+
+        //지역 로고 get
+        getAreaImage();
 
     }
 
@@ -42,6 +56,24 @@ public class SuitLoanActivity1 extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getAreaName(){
+        Intent intent = getIntent();
+        String getAreanameData = intent.getExtras().getString("areaname");
+
+        getData = (TextView)findViewById(R.id.loan1_areaName);
+        getData.setText(getAreanameData);
+
+
+    }
+
+    public void getAreaImage(){
+        Intent intent = getIntent();
+        byte[] arr = getIntent().getByteArrayExtra("areaimage");
+        image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
+        ImageView BigImage = (ImageView)findViewById(R.id.areaImage);
+        BigImage.setImageBitmap(image);
     }
 
     public void onClick(View view) {

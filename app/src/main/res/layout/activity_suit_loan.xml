@@ -39,9 +39,12 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/suitloan_seoulimg"
                         android:onClick="onClick" />
 
+
                     <TextView
+                        android:id="@+id/text_seoul"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="서울시" />
@@ -60,9 +63,11 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/suitloan_busanimg"
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_busan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="부산시" />
@@ -84,6 +89,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_daegu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="대구시" />
@@ -115,6 +121,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_jeonju"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="전주시" />
@@ -136,6 +143,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_suwon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="수원시" />
@@ -157,6 +165,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_cheongju"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="청주시" />
@@ -188,6 +197,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_gwangju"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="광주시" />
@@ -209,6 +219,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_incheon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="인천시" />
@@ -230,6 +241,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_gimpo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="김포시" />
@@ -261,6 +273,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_yongin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="용인시" />
@@ -282,6 +295,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_uijeongbu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="의정부시" />
@@ -303,6 +317,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_hwaseong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="화성시" />
@@ -334,6 +349,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_changwon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="창원시" />
@@ -355,6 +371,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_goyang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="고양시" />
@@ -376,6 +393,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_namyangju"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="남양주시" />
@@ -407,6 +425,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_anyang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="안양시" />
@@ -428,6 +447,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_hanam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="하남시" />
@@ -449,6 +469,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_uiwang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="의왕시" />
@@ -481,6 +502,7 @@
                         android:onClick="onClick" />
 
                     <TextView
+                        android:id="@+id/text_gunpo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="군포시" />

@@ -4,12 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayOutputStream;
+
 public class SuitLoanActivity extends AppCompatActivity {
+
+    TextView sendSeoul, sendBusan, sendDaegu, sendJeonju, sendSuwon, sendCheongju, sendGwangju, sendIncheon, sendGimpo, sendYongin, sendUijeongbu, sendHwaseong, sendChangwon, sendGoyang, sendNamyangju, sendAnyang, sendHanam, sendUiwang, sendGunpo;
 
     private Intent intent;
     private Toolbar toolbar;
@@ -19,7 +28,13 @@ public class SuitLoanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan);
 
+        //툴바 뒤로가기
         initLayout();
+
+        //지역이름 찾음
+        setAreaName();
+
+        setareaImage();
 
     }
 
@@ -45,46 +60,130 @@ public class SuitLoanActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void setAreaName(){
+
+        sendSeoul = (TextView)findViewById(R.id.text_seoul);
+        sendBusan = (TextView)findViewById(R.id.text_busan);
+        sendDaegu = (TextView)findViewById(R.id.text_daegu);
+        sendJeonju = (TextView)findViewById(R.id.text_jeonju);
+        sendSuwon = (TextView)findViewById(R.id.text_suwon);
+        sendCheongju = (TextView)findViewById(R.id.text_cheongju);
+        sendGwangju = (TextView)findViewById(R.id.text_gwangju);
+        sendIncheon = (TextView)findViewById(R.id.text_incheon);
+        sendGimpo = (TextView)findViewById(R.id.text_gimpo);
+        sendYongin = (TextView)findViewById(R.id.text_yongin);
+        sendUijeongbu = (TextView)findViewById(R.id.text_uijeongbu);
+        sendHwaseong = (TextView)findViewById(R.id.text_hwaseong);
+        sendChangwon = (TextView)findViewById(R.id.text_changwon);
+        sendGoyang = (TextView)findViewById(R.id.text_goyang);
+        sendNamyangju = (TextView)findViewById(R.id.text_namyangju);
+        sendAnyang = (TextView)findViewById(R.id.text_anyang);
+        sendHanam = (TextView)findViewById(R.id.text_hanam);
+        sendUiwang = (TextView)findViewById(R.id.text_uiwang);
+        sendGunpo = (TextView)findViewById(R.id.text_gunpo);
+    }
+
+    public void setareaImage(){
+    }
+
 
     public void onClick(View view) {
-        //여기서 각 지역에 해당하는 페이지로 넘어갈 때, 버튼 하나하나 적는 것보다는 putExtra(?)사용해서
-        //정보만 전달해서 다음페이지에서의 각 값만 바뀌게 하는 것이 낫지 않을까요..? (되는 걸로 하십시다)
         switch (view.getId()) {
             case R.id.btn_seoul:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+
+                //이미지
+                Bitmap seoulBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_seoulimg);
+                ByteArrayOutputStream seoulstream = new ByteArrayOutputStream();
+                seoulBitmap.compress(Bitmap.CompressFormat.JPEG, 100, seoulstream);
+                byte[] seoulByteArray = seoulstream.toByteArray();
+
+                intent.putExtra("areaimage",seoulByteArray);
+                intent.putExtra("areaname", sendSeoul.getText().toString());
+
                 break;
+
             case R.id.btn_busan:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+
+                //이미지
+                Bitmap busanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_busanimg);
+                ByteArrayOutputStream busanstream = new ByteArrayOutputStream();
+                busanBitmap.compress(Bitmap.CompressFormat.JPEG, 100, busanstream);
+                byte[] busanByteArray = busanstream.toByteArray();
+
+                intent.putExtra("areaimage",busanByteArray);
+                intent.putExtra("areaname", sendBusan.getText().toString());
+
                 break;
+
             case R.id.btn_daegu:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendDaegu.getText().toString());
                 break;
             case R.id.btn_jeonju:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendJeonju.getText().toString());
                 break;
             case R.id.btn_suwon:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendSuwon.getText().toString());
                 break;
             case R.id.btn_cheongju:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendCheongju.getText().toString());
                 break;
             case R.id.btn_gwangju:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendGwangju.getText().toString());
                 break;
             case R.id.btn_incheon:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendIncheon.getText().toString());
                 break;
             case R.id.btn_gimpo:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendGimpo.getText().toString());
                 break;
             case R.id.btn_yongin:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendYongin.getText().toString());
                 break;
             case R.id.btn_uijeongbu:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendUijeongbu.getText().toString());
                 break;
             case R.id.btn_hwaseong:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendHwaseong.getText().toString());
+                break;
+            case R.id.btn_changwon:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendChangwon.getText().toString());
+                break;
+            case R.id.btn_goyang:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendGoyang.getText().toString());
+                break;
+            case R.id.btn_namyangju:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendNamyangju.getText().toString());
+                break;
+            case R.id.btn_anyang:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendAnyang.getText().toString());
+                break;
+            case R.id.btn_hanam:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendHanam.getText().toString());
+                break;
+            case R.id.btn_uiwang:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendUiwang.getText().toString());
+                break;
+            case R.id.btn_gunpo:
+                intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+                intent.putExtra("areaname", sendGunpo.getText().toString());
                 break;
         }
         startActivity(intent);

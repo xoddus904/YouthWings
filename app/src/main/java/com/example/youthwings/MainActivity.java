@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ViewPager viewPager;
     MainViewPageAdapter viewPageadapter;
 
-    ListView listView;
-    MainEmploymentListAdapter mainEmploymentListAdapter;
-    ArrayList<MainEmploymentListViewItem> mainEmploymentListViewItem;
+    private ListView listView;
+    private CommunityListAdapter communityListAdapter;
+    private ArrayList<CommunityListViewItem> communityListViewItemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +59,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //리스트뷰 참조 및 Adapter 달기
         listView = (ListView)findViewById(R.id.employmentlist);
-        mainEmploymentListViewItem = new ArrayList<MainEmploymentListViewItem>();
+        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();
 
-        mainEmploymentListViewItem.add( new MainEmploymentListViewItem("Top!","어쩌구저쩌구 쏼라쏼라...","5분전"));
-        mainEmploymentListViewItem.add(new MainEmploymentListViewItem("Top!", "어쩌구저쩌구 쏼라쏼라...", "3분전"));
+        /*
+    private int com_id;                 // 해당 게시물 고유 번호
+    private String com_Title;           // 게시물 제목
+    private String com_time;            // 게시물 작성 날짜
+    private int com_look;               // 게시물 조회수
+    private int com_recommend;          // 게시물 추천수*/
+
+        communityListViewItemArrayList.add(new CommunityListViewItem(00,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList.add(new CommunityListViewItem(01, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
 
         //MainEmploymentAdapter 생성
-        mainEmploymentListAdapter = new MainEmploymentListAdapter(MainActivity.this, mainEmploymentListViewItem);
-        listView.setAdapter(mainEmploymentListAdapter);
+        communityListAdapter = new CommunityListAdapter(MainActivity.this, communityListViewItemArrayList);
+        listView.setAdapter(communityListAdapter);
 
     }
 
