@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/storeimage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/view_input" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/storeName_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="상점 이름"
+            android:textColor="#535353"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="주소 : 가나다라마바사 123"
+            android:textColor="#8C8C8C"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/hours_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="영업 시간 : 10:00 ~ 20:00"
+            android:textColor="#8C8C8C"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/lunchTime_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="점심시간 : 12:30 ~ 13:30"
+            android:textColor="#8C8C8C"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/holiday_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="휴일 : 법정 공휴일"
+            android:textColor="#8C8C8C"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/number_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="전화번호 : 02-1234-5678"
+            android:textColor="#8C8C8C"
+            android:textSize="17dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

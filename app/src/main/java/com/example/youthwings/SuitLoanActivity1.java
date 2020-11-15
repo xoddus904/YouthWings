@@ -2,7 +2,9 @@ package com.example.youthwings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,7 +13,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class SuitLoanActivity1 extends AppCompatActivity {
 
@@ -19,6 +24,9 @@ public class SuitLoanActivity1 extends AppCompatActivity {
     Bitmap image;
 
     Toolbar toolbar;
+
+    private ListView listView;
+    private SuitLoanStoreChooseListAdapter suitLoanStoreChooseListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,14 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         //지역 로고 get
         getAreaImage();
 
+        //리스트뷰 참조 및 Adapter 달기
+        /*listView = (ListView)findViewById(R.id.storelist);
+
+        suitLoanStoreChooseListAdapter.addItem(this.getResources(R.drawable.suitloanchoose_opencloset),"","","","","","");
+
+        //SuitLoanStoreChooseListAdapter 생성
+        suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter();
+        listView.setAdapter(suitLoanStoreChooseListAdapter);*/
     }
 
     private void initLayout() {
@@ -79,20 +95,6 @@ public class SuitLoanActivity1 extends AppCompatActivity {
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.layout1:
-                Intent intent1 = new Intent(SuitLoanActivity1.this, SuitLoanActivity2.class);
-                startActivity(intent1);
-                break;
-
-            case R.id.layout2:
-                Intent intent2 = new Intent(SuitLoanActivity1.this, SuitLoanActivity2.class);
-                startActivity(intent2);
-                break;
-
-            case R.id.layout3:
-                Intent intent3 = new Intent(SuitLoanActivity1.this, SuitLoanActivity2.class);
-                startActivity(intent3);
-                break;
         }
     }
 }
