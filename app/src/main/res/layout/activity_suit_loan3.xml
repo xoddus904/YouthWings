@@ -149,8 +149,8 @@
 
                     <Button
                         android:id="@+id/calendar_input"
-                        android:layout_width="60dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="45dp"
                         android:background="@drawable/calendar_img" />
 
                 </LinearLayout>
