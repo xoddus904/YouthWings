@@ -61,15 +61,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         listView = (ListView)findViewById(R.id.employmentlist);
         communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();
 
-        /*
-    private int com_id;                 // 해당 게시물 고유 번호
-    private String com_Title;           // 게시물 제목
-    private String com_time;            // 게시물 작성 날짜
-    private int com_look;               // 게시물 조회수
-    private int com_recommend;          // 게시물 추천수*/
-
         communityListViewItemArrayList.add(new CommunityListViewItem(00,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
         communityListViewItemArrayList.add(new CommunityListViewItem(01, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList.add(new CommunityListViewItem(02,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList.add(new CommunityListViewItem(03, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
 
         //MainEmploymentAdapter 생성
         communityListAdapter = new CommunityListAdapter(MainActivity.this, communityListViewItemArrayList);
