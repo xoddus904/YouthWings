@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.youthwings.presenter.CommunityConstants;
+import com.example.youthwings.presenter.community.CommunityPresenter;
 import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.BoardModel;
@@ -28,11 +30,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CommunityActivity extends AppCompatActivity {
+public class CommunityActivity extends AppCompatActivity implements CommunityConstants.ListView {
 
     private ListView listView;
     private CommunityListAdapter communityListAdapter;
     private ArrayList<CommunityListViewItem> communityListViewItemArrayList;
+    private CommunityConstants.Presenter presenter;
 
     private Toolbar toolbar;
 
@@ -40,6 +43,7 @@ public class CommunityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
+        presenter = new CommunityPresenter(this);
         initLayout();
     }
 
@@ -104,34 +108,6 @@ public class CommunityActivity extends AppCompatActivity {
         });
     }
 
-    // ***************************************
-    // 커뮤니티 게시글 목록 가져오기 (서버 연동)
-    // ***************************************
-    private void getCommunityList() {
-        Log.d("DEBUG", "################ 게시글 목록 가져오기 시작 ################");
-
-        Retrofit retrofit = RetrofitConnector.createRetrofit();
-        Call<BoardRes> call = retrofit.create(ServiceApi.class).getCommunityList();
-        call.enqueue(new Callback<BoardRes>() {
-            @Override
-            public void onResponse(Call<BoardRes> call, Response<BoardRes> response) {
-                // 서버 연골 성공 시
-                if (response.isSuccessful()) {
-                    BoardRes result = response.body();
-
-                    setCommunityList(result.getBoardModels());      // 커뮤니티 리스트에 가져온 데이터 뿌려줌
-
-                    Log.d("DEBUG", "################ 게시글 목록 가져오기 종료 ################");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BoardRes> call, Throwable t) {
-                Log.d("Server", "onFailure: " + t.toString());
-            }
-        });
-    }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -143,9 +119,9 @@ public class CommunityActivity extends AppCompatActivity {
                 // ***************************************
                 // 글쓰기 버튼
                 // ***************************************
-                    Intent intent = new Intent(CommunityActivity.this, ComWritingActivity.class);
-                    startActivity(intent);
-                    break;
+                Intent intent = new Intent(CommunityActivity.this, ComWritingActivity.class);
+                startActivity(intent);
+                break;
             }
         }
         return super.onOptionsItemSelected(item);
@@ -154,6 +130,11 @@ public class CommunityActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getCommunityList();
+        presenter.onGetCommunityList();
+    }
+
+    @Override
+    public void onRequestResult(ArrayList<BoardModel> result) {
+        setCommunityList(result);
     }
 }

@@ -2,61 +2,54 @@ package com.example.youthwings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.app.ActionBar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.youthwings.server.RetrofitConnector;
-import com.example.youthwings.server.ServiceApi;
-import com.example.youthwings.server.model.UserModel;
-import com.example.youthwings.server.model.UserRes;
+import com.example.youthwings.presenter.LoginConstants;
+import com.example.youthwings.presenter.login.LoginPresenter;
 import com.example.youthwings.util.SharedPreferenceUtil;
 
 
 import java.util.regex.Pattern;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-
-public class JoinActivity extends AppCompatActivity {
+public class JoinActivity extends AppCompatActivity implements LoginConstants.View {
     final static String PATTERN_EMAIL = "^[a-zA-Z0-9]+@([a-zA-Z0-9]|\\-)+\\.[a-zA-Z0-9]\\S+$";      // 정규 표현식
     private boolean chk_id = false;
 
     private EditText editText_id, editText_pwd, editText_re_pwd, editText_nick;
     private SharedPreferenceUtil sharedPreferenceUtil;
+    private LoginConstants.Presenter presenter;
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
+        presenter = new LoginPresenter(this);
         initLayout();
-        initViews();            // 뷰 초기화
-        initEditTextEvent();    // EditText Event 초기화
+        initViews();                    // 뷰 초기화
+        initEditTextEvent();            // EditText Event 초기화
     }
 
     private void initLayout() {
-        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar); //만든 툴바 데려오기
-
-        getSupportActionBar().setTitle(""); //액션바 타이틀은 없애기
-        //만든 툴바의 textview를 변경
-        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        // =============================================================
+        // 툴바관리
+        // =============================================================
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);                               //만든 툴바 데려오기
+        getSupportActionBar().setTitle("");                         //액션바 타이틀은 없애기
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);   // 만든 툴바의 textView를 변경
         toolbarTitle.setText("회원가입");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);      //뒤로가기버튼
     }
 
     private void initEditTextEvent() {
@@ -92,23 +85,6 @@ public class JoinActivity extends AppCompatActivity {
         editText_nick = findViewById(R.id.nickname_entry);
     }
 
-    public boolean checkInputPattern(EditText editText, Editable editable) {
-        boolean result = false;
-
-        if (editText.toString().isEmpty()) return result;
-
-        boolean isCorrectInput = Pattern.matches(PATTERN_EMAIL, editable.toString());
-        if (isCorrectInput) {
-            editText.setBackground(getResources().getDrawable(R.drawable.view_input));
-            result = true;
-        } else {
-            editText.setBackground(getResources().getDrawable(R.drawable.view_input_not));
-            result = false;
-        }
-
-        return result;
-    }
-
     //툴바
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -126,12 +102,15 @@ public class JoinActivity extends AppCompatActivity {
                 if (onCheckData(view)) {
                     String userId = editText_id.getText().toString().trim();
                     String userPwd = editText_pwd.getText().toString().trim();
-                    onJoin(userId, userPwd);
+                    presenter.onJoin(userId, userPwd, this);
                 }
                 break;
         }
     }
 
+    // =============================================================
+    // 아이디, 비밀번호 형식 체크 (정규식)
+    // =============================================================
     private boolean onCheckData(final View view) {
         editText_re_pwd.setBackground(getResources().getDrawable(R.drawable.view_input));
         if (!chk_id) {
@@ -153,36 +132,34 @@ public class JoinActivity extends AppCompatActivity {
         return true;
     }
 
-    private void onJoin(String userId, String userPwd) {
-        sharedPreferenceUtil = new SharedPreferenceUtil(this);
-        UserModel userModel = new UserModel(userId, userPwd);
-        Retrofit retrofit = RetrofitConnector.createRetrofit();
-        Call<UserRes> call = retrofit.create(ServiceApi.class).signUp(userModel);
-        call.enqueue(new Callback<UserRes>() {
-            @Override
-            public void onResponse(Call<UserRes> call, Response<UserRes> response) {
-                // 서버 연골 성공 시
-                if (response.isSuccessful()) {
-                    UserRes result = response.body();
-                    // 성공적으로 데이터 가져왔을 시
-                    if (result.isSuc()) {
-                        Log.d("DEBUG", "################ 회원가입 시작 ################");
-                        Log.d("DEBUG", result.getUserModel().getLoginId());
+    // =============================================================
+    // 정규식 패턴
+    // =============================================================
+    public boolean checkInputPattern(EditText editText, Editable editable) {
+        boolean result = false;
 
-                        sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
-                        Intent intent = new Intent(JoinActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+        if (editText.toString().isEmpty()) return result;
 
-                        Log.d("DEBUG", "################ 회원가입 종료 ################");
-                    }
-                }
-            }
+        boolean isCorrectInput = Pattern.matches(PATTERN_EMAIL, editable.toString());
+        if (isCorrectInput) {
+            editText.setBackground(getResources().getDrawable(R.drawable.view_input));
+            result = true;
+        } else {
+            editText.setBackground(getResources().getDrawable(R.drawable.view_input_not));
+            result = false;
+        }
 
-            @Override
-            public void onFailure(Call<UserRes> call, Throwable t) {
-                Log.d("Server", "onFailure: " + t.toString());
-            }
-        });
+        return result;
+    }
+
+    @Override
+    public void onRequestResult(boolean result) {
+        if(result) {
+            Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "동일한 아이디가 존재합니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
