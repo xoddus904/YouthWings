@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.youthwings.presenter.CommunityConstants;
+import com.example.youthwings.presenter.community.CommunityPresenter;
 import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.BoardModel;
@@ -24,16 +26,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ComWritingActivity extends AppCompatActivity {
+public class ComWritingActivity extends AppCompatActivity implements CommunityConstants.WritingView {
     private Toolbar toolbar;
     private EditText title_editText, content_editText;
     private SharedPreferenceUtil sharedPreferenceUtil;
     private String userId;      // 사용자 아이디
+    private CommunityConstants.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_com_writing);
+        presenter = new CommunityPresenter(this);
         initLayout();
     }
 
@@ -75,15 +79,15 @@ public class ComWritingActivity extends AppCompatActivity {
                     onAlertDialog("내용을 적어주세요");
                     return;
                 }
-                onPostBoard();
+                onPostAlert();
                 break;
         }
     }
 
     // ***************************************
-    // 게시글 작성 (서버 연동)
+    // 게시글 작성 알림창
     // ***************************************
-    private void onPostBoard() {
+    private void onPostAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("청춘날개").setMessage("작성한 글은 커뮤니티 이용수칙에 따라 제한될 수 있습니다. \n" +
                 "작성하시겠습니까?");
@@ -97,36 +101,10 @@ public class ComWritingActivity extends AppCompatActivity {
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                Log.d("DEBUG", "################ 게시글 작성하기 시작 ################");
+                String title    = title_editText.getText().toString();      // 게시글 제목
+                String content  = content_editText.getText().toString();    // 게시글 내용
 
-                // 서버에 보낼 값 생성
-                BoardModel boardModel = new BoardModel();
-                boardModel.setBoardTitle(title_editText.getText().toString());          // 게시글 제목
-                boardModel.setBoardContent(content_editText.getText().toString());      // 게시글 내용
-                boardModel.setUserId(userId);                                           // 작성자 아이디
-
-                Retrofit retrofit = RetrofitConnector.createRetrofit();
-                Call<BoardRes> call = retrofit.create(ServiceApi.class).postBoard(boardModel);
-                call.enqueue(new Callback<BoardRes>() {
-                    @Override
-                    public void onResponse(Call<BoardRes> call, Response<BoardRes> response) {
-                        // 서버 연골 성공 시
-                        if (response.isSuccessful()) {
-                            BoardRes result = response.body();
-                            if (result.isSuc()) {
-                                Toast.makeText(getApplicationContext(), "작성되었습니다.", Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-
-                            Log.d("DEBUG", "################ 게시글 작성하기 종료 ################");
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<BoardRes> call, Throwable t) {
-                        Log.d("Server", "onFailure: " + t.toString());
-                    }
-                });
+                presenter.onPostBoard(getApplicationContext(), title, content);              // 게시글 작성 시작
             }
         });
         AlertDialog alertDialog = builder.create();
@@ -170,5 +148,14 @@ public class ComWritingActivity extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    @Override
+    public void onRequestResult(boolean result) {
+        // 게시글 작성 성공 여부
+        if (result) {
+            Toast.makeText(getApplicationContext(), "작성되었습니다.", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 }

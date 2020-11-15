@@ -24,10 +24,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.youthwings.adapter.CommunityListAdapter;
+import com.example.youthwings.adapter.MainViewPageAdapter;
+import com.example.youthwings.server.model.BoardModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private ListView listView;
     private CommunityListAdapter communityListAdapter;
-    private ArrayList<CommunityListViewItem> communityListViewItemArrayList;
+    private ArrayList<BoardModel> communityListViewItemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //리스트뷰 참조 및 Adapter 달기
         listView = (ListView)findViewById(R.id.employmentlist);
-        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();
-
-        communityListViewItemArrayList.add(new CommunityListViewItem(00,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
-        communityListViewItemArrayList.add(new CommunityListViewItem(01, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
-        communityListViewItemArrayList.add(new CommunityListViewItem(02,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
-        communityListViewItemArrayList.add(new CommunityListViewItem(03, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList = new ArrayList<BoardModel>();
+/*
+        communityListViewItemArrayList.add(new BoardModel(00,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList.add(new BoardModel(01, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList.add(new BoardModel(02,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
+        communityListViewItemArrayList.add(new BoardModel(03, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));*/
 
         //MainEmploymentAdapter 생성
         communityListAdapter = new CommunityListAdapter(MainActivity.this, communityListViewItemArrayList);

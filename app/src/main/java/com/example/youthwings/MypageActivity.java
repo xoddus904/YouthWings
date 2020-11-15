@@ -2,7 +2,6 @@ package com.example.youthwings;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.youthwings.adapter.LoanListAdapter;
+import com.example.youthwings.adapter.LoanListViewItem;
 
 import java.util.ArrayList;
 

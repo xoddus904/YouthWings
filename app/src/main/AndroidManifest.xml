@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ComWritingActivity"/>
-        <activity android:name=".CommunityActivity2" />
+        <activity android:name=".ComWritingActivity" />
+        <activity
+            android:name=".CommunityActivity2"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".LoanListActivity" />
         <activity android:name=".MainActivity" />

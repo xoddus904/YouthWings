@@ -5,23 +5,31 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.youthwings.adapter.CommunityReplyAdapter;
 import com.example.youthwings.presenter.CommunityConstants;
 import com.example.youthwings.presenter.community.CommunityPresenter;
 import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.BoardModel;
 import com.example.youthwings.server.model.BoardRes;
+import com.example.youthwings.server.model.ReplyModel;
+import com.example.youthwings.util.AlertUtil;
 import com.example.youthwings.util.SharedPreferenceUtil;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,11 +41,14 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     private SharedPreferenceUtil sharedPreferenceUtil;
 
     private Toolbar toolbar;
-    private TextView title_detail_textView,
-            content_detail_textView,
-            date_detail_textView,
-            recommend_detail_textView,
-            look_detail_textView;
+    private EditText reply_editText;            // 댓글 EditText
+    private TextView title_detail_textView,     // 제목 TextView
+            content_detail_textView,            // 내용 TextView
+            date_detail_textView,               // 날짜 TextView
+            recommend_detail_textView,          // 추천 수 TextView
+            look_detail_textView,               // 조회 수 TextView
+            none_textView;                      // 댓글 내용 없을 때 TextView
+    private ListView listView;                  // 댓글 리스트뷰
 
     private int boardId;                // 해당 게시글 번호
     private String userId;              // 사용자 아이디
@@ -65,14 +76,17 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     }
 
     private void initLayout() {
+        listView = findViewById(R.id.com_reply_list);
+        reply_editText = findViewById(R.id.com_reply_content);
         // =============================================================
         // TextView 초기화
         // =============================================================
-        title_detail_textView = (TextView) findViewById(R.id.com_title_detail);
-        content_detail_textView = (TextView) findViewById(R.id.com_content_detail);
-        date_detail_textView = (TextView) findViewById(R.id.com_date_detail);
-        recommend_detail_textView = (TextView) findViewById(R.id.com_recommend_datail);
-        look_detail_textView = (TextView) findViewById(R.id.com_look_detail);
+        title_detail_textView = findViewById(R.id.com_title_detail);
+        content_detail_textView = findViewById(R.id.com_content_detail);
+        date_detail_textView = findViewById(R.id.com_date_detail);
+        recommend_detail_textView = findViewById(R.id.com_recommend_datail);
+        look_detail_textView = findViewById(R.id.com_look_detail);
+        none_textView = findViewById(R.id.com_reply_none);
 
         // =============================================================
         // 툴바관리
@@ -99,10 +113,38 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
         look_detail_textView.setText(String.valueOf(boardModel.getBoardLook()));
     }
 
+    // =============================================================
+    // 커뮤니티 댓글 뿌려주기
+    // =============================================================
+    private void setReplyList(ArrayList<ReplyModel> replyModels) {
+        // 댓글이 없는 경우
+        if (replyModels.size() <= 0) {
+            listView.setVisibility(View.GONE);
+            none_textView.setVisibility(View.VISIBLE);
+        } else {
+            listView.setVisibility(View.VISIBLE);
+            none_textView.setVisibility(View.GONE);
+        }
+
+        CommunityReplyAdapter adapter = new CommunityReplyAdapter(this, replyModels);
+        listView.setAdapter(adapter);
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_recommend_plus:
-                presenter.onRecommend(userId, boardId);
+                presenter.onRecommend(this, boardId);
+                break;
+            case R.id.com_reply_btn:
+                String replyContent = reply_editText.getText().toString();
+                AlertUtil.DebugLog(replyContent);
+                // 댓글 내용이 없으면
+                if (replyContent.trim().isEmpty()) {
+                    AlertUtil.onAlertDialog(this, "댓글 내용을 입력해주세요.");
+                    return;
+                }
+
+                presenter.onPostReply(this, boardId, replyContent);
                 break;
         }
     }
@@ -138,6 +180,7 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     @Override
     public void onRequestResult(BoardModel result) {
         setTextView(result);
+        setReplyList(result.getReplyModels());
     }
 
     @Override
@@ -150,5 +193,20 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
             recommend--;
         }
         recommend_detail_textView.setText(String.valueOf(recommend));
+    }
+
+    @Override
+    public void onReplyResult(boolean result) {
+        if (result) {
+            AlertUtil.onAlertDialog(this,"댓글이 작성되었습니다.");
+            reply_editText.setText("");
+
+            // 키보드 내리기
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(reply_editText.getWindowToken(), 0);
+        } else {
+            AlertUtil.onAlertDialog(this,"잠시 후 다시 시도해주십시오.");
+        }
+        presenter.onGetCommunity(boardId);
     }
 }

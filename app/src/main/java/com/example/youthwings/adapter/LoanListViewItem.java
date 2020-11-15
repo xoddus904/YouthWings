@@ -1,4 +1,4 @@
-package com.example.youthwings;
+package com.example.youthwings.adapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -22,6 +22,10 @@ public class ReplyModel implements Serializable {
     @SerializedName("reply_date")
     private Date replyDate;
 
+    @SerializedName("user")
+    private UserModel userModel;
+
+
     public ReplyModel() {
     }
 
@@ -63,6 +67,14 @@ public class ReplyModel implements Serializable {
 
     public void setReplyDate(Date replyDate) {
         this.replyDate = replyDate;
+    }
+
+    public UserModel getUserModel() {
+        return userModel;
+    }
+
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
     }
 }
 

@@ -2,6 +2,7 @@ package com.example.youthwings.server;
 
 import com.example.youthwings.server.model.BoardModel;
 import com.example.youthwings.server.model.BoardRes;
+import com.example.youthwings.server.model.ReplyModel;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
 
@@ -14,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
@@ -58,4 +60,19 @@ public interface ServiceApi {
     // 게시글 작성
     @POST("/board")
     Call<BoardRes> postBoard(@Body BoardModel boardModel);
+
+    // 댓글 작성
+    @POST("/board/{id}/reply")
+    Call<BoardRes> postReply(@Path("id") int boardId, @Body ReplyModel replyModel);
+
+    // 댓글 삭제
+    @DELETE("/board/{id}/reply/{reply_id}")
+    Call<BoardRes> delReply(@Path("id") int boardId, @Path("reply_id") int replyId);
+
+    // 댓글 수정
+    @PATCH("/board/{id}/reply/{reply_id}")
+    Call<BoardRes> updateReply(@Path("id") int boardId, @Path("reply_id") int replyId, @Body ReplyModel replyModel);
+
+
+
 }

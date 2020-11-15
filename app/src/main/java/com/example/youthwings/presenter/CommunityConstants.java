@@ -18,10 +18,24 @@ public interface CommunityConstants {
 
         // 커뮤니티 추천 결과
         void onRecommendResult(boolean result);
+
+        // 댓글 작성 결과
+        void onReplyResult(boolean result);
+    }
+
+    interface WritingView{
+        // 게시글 작성 결과
+        void onRequestResult(boolean result);
+
     }
 
 
     interface Presenter {
+        // ---------------------------------------------------
+        // 게시글 작성하기
+        // ---------------------------------------------------
+        void onPostBoard(Context context, String title, String content);
+
         // ---------------------------------------------------
         // 커뮤니티 목록 가져오기
         // ---------------------------------------------------
@@ -35,6 +49,11 @@ public interface CommunityConstants {
         // ---------------------------------------------------
         // 커뮤니티 추천하기
         // ---------------------------------------------------
-        void onRecommend(String userId, int boardId);
+        void onRecommend(Context context, int boardId);
+
+        // ---------------------------------------------------
+        // 댓글 작성하기
+        // ---------------------------------------------------
+        void onPostReply(Context context, int boardId, String content);
     }
 }

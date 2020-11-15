@@ -1,4 +1,4 @@
-package com.example.youthwings;
+package com.example.youthwings.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.youthwings.R;
 
 public class MainViewPageAdapter extends PagerAdapter {
 

@@ -2,7 +2,6 @@ package com.example.youthwings;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,26 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.youthwings.adapter.CommunityListAdapter;
 import com.example.youthwings.presenter.CommunityConstants;
 import com.example.youthwings.presenter.community.CommunityPresenter;
-import com.example.youthwings.server.RetrofitConnector;
-import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.BoardModel;
-import com.example.youthwings.server.model.BoardRes;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class CommunityActivity extends AppCompatActivity implements CommunityConstants.ListView {
 
     private ListView listView;
     private CommunityListAdapter communityListAdapter;
-    private ArrayList<CommunityListViewItem> communityListViewItemArrayList;
     private CommunityConstants.Presenter presenter;
 
     private Toolbar toolbar;
@@ -73,27 +63,8 @@ public class CommunityActivity extends AppCompatActivity implements CommunityCon
     // ***************************************
     // 커뮤니티 게시글 목록 뿌려주기
     // ***************************************
-    private void setCommunityList(ArrayList<BoardModel> boardModels) {
-        communityListViewItemArrayList = new ArrayList<CommunityListViewItem>();     // 리스트뷰 아이템 목록
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");  // 날짜 형식 변환
-
-        // ***************************************
-        // 커뮤니티 게시글 목록 생성 시작
-        // ***************************************
-        int arraySize = boardModels.size();
-        for (int i = 0; i < arraySize; i++) {
-            int recommend = boardModels.get(i).getLikeModels().size();               // 해당 게시글 좋아요 갯수
-            CommunityListViewItem item = new CommunityListViewItem(
-                    boardModels.get(i).getBoardId(),
-                    boardModels.get(i).getBoardTitle(),
-                    format.format(boardModels.get(i).getBoardDate()),
-                    boardModels.get(i).getBoardLook(),
-                    recommend
-            );
-            communityListViewItemArrayList.add(item);
-        }
-
-        communityListAdapter = new CommunityListAdapter(CommunityActivity.this, communityListViewItemArrayList);
+    private void setCommunityList(final ArrayList<BoardModel> boardModels) {
+        communityListAdapter = new CommunityListAdapter(CommunityActivity.this, boardModels);
         listView.setAdapter(communityListAdapter);
 
         // listView 클릭 이벤트 작성
@@ -102,7 +73,7 @@ public class CommunityActivity extends AppCompatActivity implements CommunityCon
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), CommunityActivity2.class);
                 // 값 넘김
-                intent.putExtra("boardId", communityListViewItemArrayList.get(position).getCom_id());
+                intent.putExtra("boardId", boardModels.get(position).getBoardId());
                 startActivity(intent);
             }
         });

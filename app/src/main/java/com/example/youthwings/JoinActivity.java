@@ -3,12 +3,14 @@ package com.example.youthwings;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -116,16 +118,16 @@ public class JoinActivity extends AppCompatActivity implements LoginConstants.Vi
         if (!chk_id) {
             Toast.makeText(this, "아이디를 정확하게 입력해 주세요", Toast.LENGTH_SHORT).show();
             editText_id.requestFocus();
-//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
             return false;
         }
         if (!editText_pwd.getText().toString().trim().equals(editText_re_pwd.getText().toString().trim())) {
             Toast.makeText(this, "비밀번호를 정확하게 입력해 주세요", Toast.LENGTH_SHORT).show();
             editText_re_pwd.setBackground(getResources().getDrawable(R.drawable.view_input_not));
             editText_re_pwd.requestFocus();
-//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
             return false;
         }
 
