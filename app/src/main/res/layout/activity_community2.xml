@@ -26,11 +26,21 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:id="@+id/com_name_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임입니당"
+                android:textColor="#222" />
 
             <TextView
                 android:id="@+id/com_date_detail"
@@ -132,7 +142,7 @@
         <LinearLayout
             android:id="@+id/com_reply_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:gravity="center_vertical"
@@ -140,9 +150,13 @@
             android:paddingHorizontal="10dp">
 
             <EditText
+                android:background="@drawable/view_input"
                 android:id="@+id/com_reply_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:layout_marginVertical="5dp"
                 android:layout_weight="1"
                 android:hint="댓글을 입력하세요."
                 android:maxLength="255"

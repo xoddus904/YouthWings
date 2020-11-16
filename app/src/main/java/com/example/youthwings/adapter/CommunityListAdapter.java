@@ -18,10 +18,7 @@ public class CommunityListAdapter extends BaseAdapter {
     ArrayList<BoardModel> boardModels;
     Context m_context;
 
-    TextView comTitle_textView;
-    TextView comTime_textView;
-    TextView comLook_textView;
-    TextView comRecommend_textView;
+    TextView comTitle_textView, comTime_textView, comLook_textView, comRecommend_textView, comName_textView;
 
     public CommunityListAdapter(Context m_context, ArrayList<BoardModel> boardModels) {
         this.m_context = m_context;
@@ -46,7 +43,7 @@ public class CommunityListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");  // 날짜 형식 변환
+            SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");  // 날짜 형식 변환
 
             convertView = LayoutInflater.from(m_context).inflate(R.layout.community_listview_item, null);
 
@@ -61,6 +58,9 @@ public class CommunityListAdapter extends BaseAdapter {
 
             comRecommend_textView = (TextView)convertView.findViewById(R.id.com_recommend);
             comRecommend_textView.setText(String.valueOf(boardModels.get(position).getLikeModels().size()));
+
+            comName_textView = (TextView)convertView.findViewById(R.id.com_name);
+            comName_textView.setText(boardModels.get(position).getUserModel().getNickName());
         }
 
         return convertView;

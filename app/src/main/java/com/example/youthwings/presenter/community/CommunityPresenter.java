@@ -52,4 +52,9 @@ public class CommunityPresenter implements CommunityConstants.Presenter {
     public void onPostReply(Context context, int boardId, String content) {
         communityService.onPostReply(context, boardId, content);
     }
+
+    @Override
+    public void onDeleteReply(int replyId) {
+        communityService.onDeleteReply(replyId);
+    }
 }

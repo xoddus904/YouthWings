@@ -12,7 +12,7 @@ import com.example.youthwings.presenter.LoginConstants;
 import com.example.youthwings.presenter.login.LoginPresenter;
 import com.example.youthwings.util.SharedPreferenceUtil;
 
-public class LoginActivity extends AppCompatActivity implements LoginConstants.View {
+public class LoginActivity extends AppCompatActivity implements LoginConstants.LoginView {
     private Intent intent;
     private EditText editText_id, editText_pwd;
     private SharedPreferenceUtil sharedPreferenceUtil;

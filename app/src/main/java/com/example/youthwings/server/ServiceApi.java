@@ -39,6 +39,10 @@ public interface ServiceApi {
     @POST("/account")
     Call<UserRes> signUp(@Body UserModel userModel);
 
+    // 닉네임 생성
+    @GET("/account/nickname")
+    Call<UserRes> getNickName();
+
 // ===================================================================================
 
     // ***************************************
@@ -66,12 +70,12 @@ public interface ServiceApi {
     Call<BoardRes> postReply(@Path("id") int boardId, @Body ReplyModel replyModel);
 
     // 댓글 삭제
-    @DELETE("/board/{id}/reply/{reply_id}")
-    Call<BoardRes> delReply(@Path("id") int boardId, @Path("reply_id") int replyId);
+    @DELETE("/board/reply/{reply_id}")
+    Call<BoardRes> delReply(@Path("reply_id") int replyId);
 
     // 댓글 수정
-    @PATCH("/board/{id}/reply/{reply_id}")
-    Call<BoardRes> updateReply(@Path("id") int boardId, @Path("reply_id") int replyId, @Body ReplyModel replyModel);
+    @PATCH("/board/reply/{reply_id}")
+    Call<BoardRes> updateReply(@Path("reply_id") int replyId, @Body ReplyModel replyModel);
 
 
 

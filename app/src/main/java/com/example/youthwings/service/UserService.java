@@ -8,6 +8,7 @@ import com.example.youthwings.server.RetrofitConnector;
 import com.example.youthwings.server.ServiceApi;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
+import com.example.youthwings.util.AlertUtil;
 import com.example.youthwings.util.SharedPreferenceUtil;
 
 import retrofit2.Call;
@@ -17,12 +18,18 @@ import retrofit2.Retrofit;
 
 public class UserService {
     LoginConstants.Presenter presenter;
-    LoginConstants.View loginView;
+    LoginConstants.LoginView loginView;
+    LoginConstants.JoinView joinView;
     SharedPreferenceUtil sharedPreferenceUtil;
 
-    public UserService(LoginConstants.Presenter presenter, LoginConstants.View view) {
+    public UserService(LoginConstants.Presenter presenter, LoginConstants.LoginView view) {
         this.presenter = presenter;
         this.loginView = view;
+    }
+
+    public UserService(LoginConstants.Presenter presenter, LoginConstants.JoinView view) {
+        this.presenter = presenter;
+        this.joinView = view;
     }
 
     // -----------------------------------------------------------------------
@@ -53,6 +60,7 @@ public class UserService {
                     Log.d("DEBUG", "################ 로그인 종료 ################");
                 }
             }
+
             @Override
             public void onFailure(Call<UserRes> call, Throwable t) {
                 Log.d("Server", "onFailure: " + t.toString());
@@ -63,11 +71,13 @@ public class UserService {
     // -----------------------------------------------------------------------
     // 회원가입 함수 (서버 연동)
     // -----------------------------------------------------------------------
-    public void onJoin(String userId, String userPwd, Context context) {
+    public void onJoin(String userId, String userPwd, String nickname, Context context) {
         sharedPreferenceUtil = new SharedPreferenceUtil(context);
         Log.d("DEBUG", "################ 회원가입 시작 ################");
 
         UserModel userModel = new UserModel(userId, userPwd);
+        userModel.setNickName(nickname);
+
         Retrofit retrofit = RetrofitConnector.createRetrofit();
         Call<UserRes> call = retrofit.create(ServiceApi.class).signUp(userModel);
         call.enqueue(new Callback<UserRes>() {
@@ -82,11 +92,39 @@ public class UserService {
                         Log.d("DEBUG", result.getUserModel().getLoginId());
 
                         sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
-                        loginView.onRequestResult(true);
+                        joinView.onRequestResult(true);
 
                         Log.d("DEBUG", "################ 회원가입 종료 ################");
                     } else {
-                        loginView.onRequestResult(false);
+                        joinView.onRequestResult(false);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserRes> call, Throwable t) {
+                Log.d("Server", "onFailure: " + t.toString());
+            }
+        });
+    }
+
+    public void onCreateNickName() {
+        Log.d("DEBUG", "################ 닉네임 생성 시작 ################");
+        Retrofit retrofit = RetrofitConnector.createRetrofit();
+        Call<UserRes> call = retrofit.create(ServiceApi.class).getNickName();
+        call.enqueue(new Callback<UserRes>() {
+            @Override
+            public void onResponse(Call<UserRes> call, Response<UserRes> response) {
+                if (response.isSuccessful()) {
+                    UserRes result = response.body();
+                    if (result.isSuc()) {
+                        Log.d("DEBUG", "########### 닉네임 : " + result.getNickname() + " ###########");
+
+                        joinView.onNickNameResult(result.getNickname());
+
+                        Log.d("DEBUG", "################ 닉네임 생성 종료 ################");
+                    } else {
+                        joinView.onNickNameResult("N");
                     }
                 }
             }

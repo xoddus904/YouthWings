@@ -12,11 +12,18 @@ public class UserRes {
     @SerializedName("user")
     private UserModel userModel;
 
+    @SerializedName("nickname")
+    private String nickname;
+
     public boolean isSuc() {
         return suc;
     }
 
     public UserModel getUserModel() {
         return userModel;
+    }
+
+    public String getNickname() {
+        return nickname;
     }
 }

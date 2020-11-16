@@ -2,7 +2,6 @@ package com.example.youthwings.service;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.youthwings.presenter.CommunityConstants;
 import com.example.youthwings.server.RetrofitConnector;
@@ -196,6 +195,37 @@ public class CommunityService {
                     communityView.onReplyResult(result.isSuc());
 
                     Log.d("DEBUG", "################ 댓글 작성하기 종료 ################");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BoardRes> call, Throwable t) {
+                Log.d("Server", "onFailure: " + t.toString());
+            }
+        });
+    }
+
+    // -----------------------------------------------------------------------
+    // 댓글 삭제
+    // -----------------------------------------------------------------------
+    public void onDeleteReply(int replyId) {
+        Log.d("DEBUG", "################ 댓글 삭제하기 시작 ################");
+
+        ReplyModel replyModel = new ReplyModel();
+        replyModel.setReplyId(replyId);
+
+        Retrofit retrofit = RetrofitConnector.createRetrofit();
+        Call<BoardRes> call = retrofit.create(ServiceApi.class).delReply(replyId);
+        call.enqueue(new Callback<BoardRes>() {
+            @Override
+            public void onResponse(Call<BoardRes> call, Response<BoardRes> response) {
+                // 서버 연골 성공 시
+                if (response.isSuccessful()) {
+                    BoardRes result = response.body();
+                    AlertUtil.DebugLog(result.isSuc() + "");
+                    communityView.onReplyResult(result.isSuc());
+
+                    Log.d("DEBUG", "################ 댓글 삭제하기 종료 ################");
                 }
             }
 

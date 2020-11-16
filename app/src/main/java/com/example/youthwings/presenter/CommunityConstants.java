@@ -55,5 +55,10 @@ public interface CommunityConstants {
         // 댓글 작성하기
         // ---------------------------------------------------
         void onPostReply(Context context, int boardId, String content);
+
+        // ---------------------------------------------------
+        // 댓글 삭제하기
+        // ---------------------------------------------------
+        void onDeleteReply(int replyId);
     }
 }

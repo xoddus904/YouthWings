@@ -1,18 +1,23 @@
 package com.example.youthwings.presenter.login;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.youthwings.presenter.LoginConstants;
 import com.example.youthwings.service.UserService;
 
 public class LoginPresenter implements LoginConstants.Presenter {
-    LoginConstants.View loginView;
+    LoginConstants.LoginView loginView;
+    LoginConstants.JoinView joinView;
     UserService userService;
 
-    public LoginPresenter(LoginConstants.View view) {
+    public LoginPresenter(LoginConstants.LoginView view) {
         loginView = view;
         userService = new UserService(this, loginView);
+    }
+
+    public LoginPresenter(LoginConstants.JoinView view) {
+        joinView = view;
+        userService = new UserService(this, joinView);
     }
 
     @Override
@@ -21,7 +26,12 @@ public class LoginPresenter implements LoginConstants.Presenter {
     }
 
     @Override
-    public void onJoin(String id, String pwd, Context context) {
-        userService.onJoin(id, pwd, context);
+    public void onJoin(String id, String pwd, String nickname, Context context) {
+        userService.onJoin(id, pwd, nickname, context);
+    }
+
+    @Override
+    public void onCreateNickName() {
+        userService.onCreateNickName();
     }
 }

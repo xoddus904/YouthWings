@@ -11,7 +11,7 @@ public class ReplyModel implements Serializable {
     private String userId;
 
     @SerializedName("board_id")
-    private int board_id;
+    private int boardId;
 
     @SerializedName("reply_id")
     private int replyId;
@@ -37,12 +37,12 @@ public class ReplyModel implements Serializable {
         this.userId = userId;
     }
 
-    public int getBoard_id() {
-        return board_id;
+    public int getBoardId() {
+        return boardId;
     }
 
-    public void setBoard_id(int board_id) {
-        this.board_id = board_id;
+    public void setBoardId(int boardId) {
+        this.boardId = boardId;
     }
 
     public int getReplyId() {

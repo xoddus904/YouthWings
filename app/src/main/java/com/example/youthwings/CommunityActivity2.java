@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -47,14 +48,15 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
             date_detail_textView,               // 날짜 TextView
             recommend_detail_textView,          // 추천 수 TextView
             look_detail_textView,               // 조회 수 TextView
-            none_textView;                      // 댓글 내용 없을 때 TextView
+            none_textView,                      // 댓글 내용 없을 때 TextView
+            name_textView;                      // 닉네임 TextView
     private ListView listView;                  // 댓글 리스트뷰
 
-    private int boardId;                // 해당 게시글 번호
+    public int boardId;                // 해당 게시글 번호
     private String userId;              // 사용자 아이디
     private int recommend;              // 해당 게시글 추천 갯수
 
-    private CommunityConstants.Presenter presenter;
+    public CommunityConstants.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +66,12 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
         initLayout();
         initData();
 
-        presenter.onGetCommunity(boardId);
+        presenter.onGetCommunity(boardId); // 게시글 가져오기
     }
 
     private void initData() {
         sharedPreferenceUtil = new SharedPreferenceUtil(this);
         intent = getIntent();       // 이전 액티비티에서 값 가져오기
-
         boardId = intent.getIntExtra("boardId", 0);        // 게시글 번호 세팅
         userId = sharedPreferenceUtil.getSharedString("userId");        // 사용자 아이디 세팅
     }
@@ -78,15 +79,13 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     private void initLayout() {
         listView = findViewById(R.id.com_reply_list);
         reply_editText = findViewById(R.id.com_reply_content);
-        // =============================================================
-        // TextView 초기화
-        // =============================================================
         title_detail_textView = findViewById(R.id.com_title_detail);
         content_detail_textView = findViewById(R.id.com_content_detail);
         date_detail_textView = findViewById(R.id.com_date_detail);
         recommend_detail_textView = findViewById(R.id.com_recommend_datail);
         look_detail_textView = findViewById(R.id.com_look_detail);
         none_textView = findViewById(R.id.com_reply_none);
+        name_textView = findViewById(R.id.com_name_detail);
 
         // =============================================================
         // 툴바관리
@@ -111,6 +110,7 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
         date_detail_textView.setText(format.format(boardModel.getBoardDate()));
         recommend_detail_textView.setText(String.valueOf(recommend));
         look_detail_textView.setText(String.valueOf(boardModel.getBoardLook()));
+        name_textView.setText(boardModel.getUserModel().getNickName());
     }
 
     // =============================================================
@@ -126,7 +126,7 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
             none_textView.setVisibility(View.GONE);
         }
 
-        CommunityReplyAdapter adapter = new CommunityReplyAdapter(this, replyModels);
+        CommunityReplyAdapter adapter = new CommunityReplyAdapter(this, replyModels, boardId);
         listView.setAdapter(adapter);
     }
 
@@ -147,21 +147,6 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
                 presenter.onPostReply(this, boardId, replyContent);
                 break;
         }
-    }
-
-    // =============================================================
-    // 확인만 있는 알림창
-    // =============================================================
-    public void onAlertDialog(String content) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("청춘날개").setMessage(content);
-        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 
     //툴바
@@ -186,10 +171,10 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     @Override
     public void onRecommendResult(boolean result) {
         if (result) {
-            onAlertDialog("추천되었습니다!");
+            AlertUtil.onAlertDialog(this, "추천되었습니다!");
             recommend++;
         } else {
-            onAlertDialog("취소되었습니다.");
+            AlertUtil.onAlertDialog(this, "취소되었습니다.");
             recommend--;
         }
         recommend_detail_textView.setText(String.valueOf(recommend));
@@ -198,14 +183,14 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     @Override
     public void onReplyResult(boolean result) {
         if (result) {
-            AlertUtil.onAlertDialog(this,"댓글이 작성되었습니다.");
+            AlertUtil.onAlertDialog(this, "댓글이 작성되었습니다.");
             reply_editText.setText("");
 
             // 키보드 내리기
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(reply_editText.getWindowToken(), 0);
         } else {
-            AlertUtil.onAlertDialog(this,"잠시 후 다시 시도해주십시오.");
+            AlertUtil.onAlertDialog(this, "잠시 후 다시 시도해주십시오.");
         }
         presenter.onGetCommunity(boardId);
     }

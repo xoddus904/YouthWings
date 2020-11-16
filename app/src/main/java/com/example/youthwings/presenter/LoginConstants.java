@@ -3,8 +3,14 @@ package com.example.youthwings.presenter;
 import android.content.Context;
 
 public interface LoginConstants {
-    interface View {
+    interface LoginView {
         void onRequestResult(boolean result);
+    }
+
+    interface JoinView {
+        void onRequestResult(boolean result);
+
+        void onNickNameResult(String result);
     }
 
     interface Presenter {
@@ -16,7 +22,12 @@ public interface LoginConstants {
         // ---------------------------------------------------
         // 회원가입
         // ---------------------------------------------------
-        void onJoin(String id, String pwd, Context context);
+        void onJoin(String id, String pwd, String nickname, Context context);
+
+        // ---------------------------------------------------
+        // 닉네임 생성
+        // ---------------------------------------------------
+        void onCreateNickName();
 
     }
 }

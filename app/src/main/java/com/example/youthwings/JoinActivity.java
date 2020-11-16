@@ -17,17 +17,17 @@ import android.widget.Toast;
 
 import com.example.youthwings.presenter.LoginConstants;
 import com.example.youthwings.presenter.login.LoginPresenter;
-import com.example.youthwings.util.SharedPreferenceUtil;
+import com.example.youthwings.util.AlertUtil;
 
 
 import java.util.regex.Pattern;
 
-public class JoinActivity extends AppCompatActivity implements LoginConstants.View {
+public class JoinActivity extends AppCompatActivity implements LoginConstants.JoinView {
     final static String PATTERN_EMAIL = "^[a-zA-Z0-9]+@([a-zA-Z0-9]|\\-)+\\.[a-zA-Z0-9]\\S+$";      // 정규 표현식
     private boolean chk_id = false;
 
-    private EditText editText_id, editText_pwd, editText_re_pwd, editText_nick;
-    private SharedPreferenceUtil sharedPreferenceUtil;
+    private EditText editText_id, editText_pwd, editText_re_pwd;
+    private TextView textView_nick;
     private LoginConstants.Presenter presenter;
 
     private Toolbar toolbar;
@@ -40,6 +40,7 @@ public class JoinActivity extends AppCompatActivity implements LoginConstants.Vi
         initLayout();
         initViews();                    // 뷰 초기화
         initEditTextEvent();            // EditText Event 초기화
+        presenter.onCreateNickName();   // 닉네임 생성
     }
 
     private void initLayout() {
@@ -84,7 +85,7 @@ public class JoinActivity extends AppCompatActivity implements LoginConstants.Vi
         editText_id = findViewById(R.id.email_entry);
         editText_pwd = findViewById(R.id.password_entry);
         editText_re_pwd = findViewById(R.id.password_re_entry);
-        editText_nick = findViewById(R.id.nickname_entry);
+        textView_nick = findViewById(R.id.nickname_entry);
     }
 
     //툴바
@@ -104,7 +105,8 @@ public class JoinActivity extends AppCompatActivity implements LoginConstants.Vi
                 if (onCheckData(view)) {
                     String userId = editText_id.getText().toString().trim();
                     String userPwd = editText_pwd.getText().toString().trim();
-                    presenter.onJoin(userId, userPwd, this);
+                    String nickname = textView_nick.getText().toString();
+                    presenter.onJoin(userId, userPwd, nickname, this);
                 }
                 break;
         }
@@ -164,4 +166,13 @@ public class JoinActivity extends AppCompatActivity implements LoginConstants.Vi
             Toast.makeText(this, "동일한 아이디가 존재합니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void onNickNameResult(String result) {
+        if(result.equals("N")){
+            AlertUtil.onAlertDialog(this, "닉네임 부족!!");
+        }
+        textView_nick.setText(result);
+    }
+
 }
