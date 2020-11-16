@@ -1,7 +1,10 @@
 package com.example.youthwings;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,11 +13,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class SuitLoanActivity extends AppCompatActivity {
 
@@ -33,8 +38,6 @@ public class SuitLoanActivity extends AppCompatActivity {
 
         //지역이름 찾음
         setAreaName();
-
-        setareaImage();
 
     }
 
@@ -83,14 +86,16 @@ public class SuitLoanActivity extends AppCompatActivity {
         sendGunpo = (TextView)findViewById(R.id.text_gunpo);
     }
 
-    public void setareaImage(){
-    }
-
-
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_seoul:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+
+                //ID(?)
+                intent.putExtra("CITY","SEOUL");
+
+                //지역 이름
+                intent.putExtra("areaname", sendSeoul.getText().toString());
 
                 //이미지
                 Bitmap seoulBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_seoulimg);
@@ -99,12 +104,17 @@ public class SuitLoanActivity extends AppCompatActivity {
                 byte[] seoulByteArray = seoulstream.toByteArray();
 
                 intent.putExtra("areaimage",seoulByteArray);
-                intent.putExtra("areaname", sendSeoul.getText().toString());
 
                 break;
 
             case R.id.btn_busan:
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
+
+                //ID(?)
+                intent.putExtra("CITY","BUSAN");
+
+                //지역 이름
+                intent.putExtra("areaname", sendBusan.getText().toString());
 
                 //이미지
                 Bitmap busanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_busanimg);
@@ -113,7 +123,6 @@ public class SuitLoanActivity extends AppCompatActivity {
                 byte[] busanByteArray = busanstream.toByteArray();
 
                 intent.putExtra("areaimage",busanByteArray);
-                intent.putExtra("areaname", sendBusan.getText().toString());
 
                 break;
 

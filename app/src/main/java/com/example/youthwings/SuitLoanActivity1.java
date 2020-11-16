@@ -4,19 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class SuitLoanActivity1 extends AppCompatActivity {
 
@@ -43,13 +40,22 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         getAreaImage();
 
         //리스트뷰 참조 및 Adapter 달기
-        /*listView = (ListView)findViewById(R.id.storelist);
-
-        suitLoanStoreChooseListAdapter.addItem(this.getResources(R.drawable.suitloanchoose_opencloset),"","","","","","");
+        listView = (ListView)findViewById(R.id.storelist);
 
         //SuitLoanStoreChooseListAdapter 생성
         suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter();
-        listView.setAdapter(suitLoanStoreChooseListAdapter);*/
+        listView.setAdapter(suitLoanStoreChooseListAdapter);
+
+        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this,R.drawable.suitloanchoose_opencloset),"열린옷장","주소임","영업시간","점심시간","휴일","전화번호");
+
+        // listView 클릭 이벤트 작성
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), SuitLoanActivity2.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initLayout() {
@@ -80,8 +86,6 @@ public class SuitLoanActivity1 extends AppCompatActivity {
 
         getData = (TextView)findViewById(R.id.loan1_areaName);
         getData.setText(getAreanameData);
-
-
     }
 
     public void getAreaImage(){

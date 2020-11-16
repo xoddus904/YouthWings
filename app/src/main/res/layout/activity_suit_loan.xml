@@ -42,7 +42,6 @@
                         android:background="@drawable/suitloan_seoulimg"
                         android:onClick="onClick" />
 
-
                     <TextView
                         android:id="@+id/text_seoul"
                         android:layout_width="wrap_content"
