@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SuitLoanActivity2 extends AppCompatActivity {
@@ -31,6 +33,9 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
+
+        //Spinner
+        Spinner spinner = findViewById(R.id.email_spinner);
     }
 
     //툴바

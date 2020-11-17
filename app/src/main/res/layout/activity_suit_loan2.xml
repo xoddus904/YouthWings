@@ -283,46 +283,58 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/email_front"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/view_input"
-                        android:hint="abcd"
-                        android:maxLength="30"
-                        android:onClick="onClick"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="3dp"
-                        android:singleLine="true"
-                        android:textColorHint="#B5B5B5"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@"
-                        android:textSize="20dp" />
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/email_back"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/view_input"
-                        android:hint="abcd.com"
-                        android:maxLength="30"
-                        android:onClick="onClick"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="3dp"
-                        android:singleLine="true"
-                        android:textColorHint="#B5B5B5"
-                        android:textSize="15dp" />
+                        <EditText
+                            android:id="@+id/email_front"
+                            android:layout_width="170dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/view_input"
+                            android:hint="abcd"
+                            android:maxLength="30"
+                            android:onClick="onClick"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="3dp"
+                            android:singleLine="true"
+                            android:textColorHint="#B5B5B5"
+                            android:textSize="15dp" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/email_back"
+                            android:layout_width="170dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/view_input"
+                            android:hint="abcd.com"
+                            android:maxLength="30"
+                            android:onClick="onClick"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="3dp"
+                            android:singleLine="true"
+                            android:textColorHint="#B5B5B5"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/email_spinner"
+                        android:entries="@array/abcd.com"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
 
                 </LinearLayout>
 

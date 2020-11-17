@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.youthwings.R;
+
+import java.util.ArrayList;
 
 public class MainViewPageAdapter extends PagerAdapter {
 
@@ -18,8 +21,11 @@ public class MainViewPageAdapter extends PagerAdapter {
     private LayoutInflater inflater;
     private Context context;
 
+    ArrayList<String> data;
+
     public MainViewPageAdapter(Context context){
         this.context = context;
+        //this.data = data;
     }
 
     @Override
@@ -29,11 +35,19 @@ public class MainViewPageAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object){
-        return view == ((LinearLayout) object);
+        return view == object;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position){
+
+        /*inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.main_viewpage, null);
+        ImageView image_container = (ImageView)v.findViewById(R.id.imageView);
+        Glide.with(context).load(data.get(position)).into(image_container);
+        container.addView(v);
+        return v;*/
+
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.main_viewpage, container, false);
         ImageView imageView = (ImageView)v.findViewById((R.id.imageView));
@@ -47,7 +61,8 @@ public class MainViewPageAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object){
-        container.invalidate();
+        container.removeView((View)object);
+        //container.invalidate();
     }
 
 }

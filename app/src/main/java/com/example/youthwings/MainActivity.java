@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager = (ViewPager) findViewById(R.id.main_viewPager);
         viewPageadapter = new MainViewPageAdapter(this);
         viewPager.setAdapter(viewPageadapter);
+        /*viewPager.setInterval(5000);
+        viewPager.startMinActivity();*/
 
 
         //리스트뷰 참조 및 Adapter 달기
@@ -140,6 +142,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //이미지 슬라이드 Rolling Scroll ViewPager/AutoScroll
+        /*ArrayList<String> data = new ArrayList<>();
+        data.add("https://www.multicampus.com/system/menu/iframe?p_url=aHR0cHM6Ly9lbC5tdWx0aWNhbXB1cy5jb20vZGVfY29tbW9uL2IyYy9ldmVudC8yMDIwLzEwLzEwMTNfMS8xMDEzXzEuaHRtbA==&htmlHghtPixelSize=6214&p_menu=MTE3I01BSU4=&p_gubun=Qw==&param2=106000000000000&param3=106001000000000");
+        data.add("https://www.multicampus.com/system/menu/iframe?p_url=aHR0cHM6Ly9lbC5tdWx0aWNhbXB1cy5jb20vZGVfY29tbW9uL2IyYy9ldmVudC8yMDIwLzA3LzA3MjJfMS8wNzIyXzIuaHRtbA==&htmlHghtPixelSize=7579&p_menu=MTEyI01BSU4=&p_gubun=Qw==&param2=106000000000000&param3=106002000000000");
+        data.add("https://www.multicampus.com/system/menu/iframe?p_url=aHR0cHM6Ly9lbC5tdWx0aWNhbXB1cy5jb20vZGVfY29tbW9uL2IyYy9ldmVudC8yMDIwLzEwLzEwMjZfMS8xMDI2XzEuaHRtbA==&htmlHghtPixelSize=4154&p_menu=MTIyI01BSU4=&p_gubun=Qw==&param2=106000000000000&param3=106003000000000");
+
+        viewPager = (ViewPager) findViewById(R.id.main_viewPager);
+        viewPageadapter = new MainViewPageAdapter(this, data);
+        viewPager.setAdapter(viewPageadapter);
+        viewPager.setInterval(5000);
+        viewPager.startMinActivity();*/
     }
 
     @Override
