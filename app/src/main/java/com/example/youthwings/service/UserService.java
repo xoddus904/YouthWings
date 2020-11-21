@@ -51,8 +51,11 @@ public class UserService {
                     // 성공적으로 데이터 가져왔을 시
                     if (result.isSuc()) {
                         Log.d("DEBUG", "########### 로그인 아이디 : " + result.getUserModel().getLoginId() + " ###########");
+                        Log.d("DEBUG", "########### 로그인 아이디 : " + result.getUserModel().getNickName() + " ###########");
 
                         sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
+                        sharedPreferenceUtil.setSharedString("userNick", result.getUserModel().getNickName());  // 유저 닉네임 세션(쉐어드프리퍼런스)에 저장.
+                        sharedPreferenceUtil.setSharedString("userName", result.getUserModel().getName());      // 유저 이름 세션(쉐어드프리퍼런스)에 저장.
                         loginView.onRequestResult(true);
                     } else {
                         loginView.onRequestResult(false);
@@ -92,6 +95,8 @@ public class UserService {
                         Log.d("DEBUG", result.getUserModel().getLoginId());
 
                         sharedPreferenceUtil.setSharedString("userId", result.getUserModel().getLoginId());     // 유저 아이디 세션(쉐어드프리퍼런스)에 저장.
+                        sharedPreferenceUtil.setSharedString("userNick", result.getUserModel().getNickName());  // 유저 닉네임 세션(쉐어드프리퍼런스)에 저장.
+                        sharedPreferenceUtil.setSharedString("userName", result.getUserModel().getName());      // 유저 이름 세션(쉐어드프리퍼런스)에 저장.
                         joinView.onRequestResult(true);
 
                         Log.d("DEBUG", "################ 회원가입 종료 ################");

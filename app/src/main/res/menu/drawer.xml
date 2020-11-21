@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_mypage"
         android:icon="@mipmap/ic_launcher_round"
-        android:title="         내 정보"/>
+        android:title="내 정보"/>
 </group>
 
     <group

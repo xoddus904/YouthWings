@@ -41,7 +41,7 @@ public class CommunityActivity extends AppCompatActivity implements CommunityCon
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.toolbarmenu, menu);
-        menu.findItem(R.id.toolbar_help_button).setIcon(R.drawable.icon_help);
+        menu.findItem(R.id.toolbar_help_button).setIcon(R.drawable.icon_edit);
         return true;
     }
 
