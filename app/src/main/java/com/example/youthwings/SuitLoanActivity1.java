@@ -82,7 +82,7 @@ public class SuitLoanActivity1 extends AppCompatActivity {
 
     public void getAreaName(){
         Intent intent = getIntent();
-        String getAreanameData = intent.getExtras().getString("areaname");
+        String getAreanameData = intent.getExtras().getString("AREANAME");
 
         getData = (TextView)findViewById(R.id.loan1_areaName);
         getData.setText(getAreanameData);
@@ -90,7 +90,7 @@ public class SuitLoanActivity1 extends AppCompatActivity {
 
     public void getAreaImage(){
         Intent intent = getIntent();
-        byte[] arr = getIntent().getByteArrayExtra("areaimage");
+        byte[] arr = getIntent().getByteArrayExtra("AREAIMAGE");
         image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
         ImageView BigImage = (ImageView)findViewById(R.id.areaImage);
         BigImage.setImageBitmap(image);

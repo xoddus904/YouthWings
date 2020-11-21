@@ -39,7 +39,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/suitloan_seoulimg"
+                        android:background="@drawable/seoul_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -62,7 +62,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/suitloan_busanimg"
+                        android:background="@drawable/busan_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -85,6 +85,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/daegu_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -117,6 +118,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/jeonju_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -139,6 +141,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/suwon_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -161,6 +164,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/cheongju_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -193,6 +197,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/gwangju_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -215,6 +220,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/incheon_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -237,6 +243,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/gimpo_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -269,6 +276,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/yongin_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -291,6 +299,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/uijeongbu_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -313,6 +322,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/hwaseong_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -345,6 +355,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/changwon_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -367,6 +378,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/goyang_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -389,6 +401,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/namyangju_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -421,6 +434,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/anyang_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -443,6 +457,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/hanam_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -465,6 +480,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/uiwang_logo"
                         android:onClick="onClick" />
 
                     <TextView
@@ -498,6 +514,7 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="8dp"
+                        android:background="@drawable/gunpo_logo"
                         android:onClick="onClick" />
 
                     <TextView
