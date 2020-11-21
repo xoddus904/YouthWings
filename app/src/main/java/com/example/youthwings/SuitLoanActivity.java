@@ -98,7 +98,7 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent.putExtra("AREANAME", sendSeoul.getText().toString());
 
                 //이미지
-                Bitmap seoulBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_seoulimg);
+                Bitmap seoulBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_test_seoul);
                 ByteArrayOutputStream seoulstream = new ByteArrayOutputStream();
                 seoulBitmap.compress(Bitmap.CompressFormat.JPEG, 100, seoulstream);
                 byte[] seoulByteArray = seoulstream.toByteArray();
