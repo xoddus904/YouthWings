@@ -5,18 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.bumptech.glide.Glide;
 import com.example.youthwings.R;
 
 import java.util.ArrayList;
 
 public class MainViewPageAdapter extends PagerAdapter {
-
     private int[] images = {R.drawable.practice1, R.drawable.practice2, R.drawable.practice3};
     private LayoutInflater inflater;
     private Context context;
@@ -50,7 +46,7 @@ public class MainViewPageAdapter extends PagerAdapter {
 
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.main_viewpage, container, false);
-        ImageView imageView = (ImageView)v.findViewById((R.id.imageView));
+        ImageView imageView = (ImageView)v.findViewById((R.id.viewPager_img));
 
         imageView.setImageResource((images[position]));
 

@@ -41,7 +41,9 @@ public class LoginActivity extends AppCompatActivity implements LoginConstants.L
                 break;
             case R.id.btn_login_dev:        // 개발자 로그인 실행 (아이디, 패스워드 패스)
                 intent = new Intent(this, MainActivity.class);
-                sharedPreferenceUtil.setSharedString("userId", "develop@dev.com");     // 테스트 계정 저장.
+                sharedPreferenceUtil.setSharedString("userId"   , "develop@dev.com"       );     // 테스트 계정 저장.
+                sharedPreferenceUtil.setSharedString("userNick" , "할일없이사기를잘치던마법사");     // 유저 닉네임 세션(쉐어드프리퍼런스)에 저장.
+                sharedPreferenceUtil.setSharedString("userName" , "테스트"                 );     // 유저 이름 세션(쉐어드프리퍼런스)에 저장.
                 startActivity(intent);
                 finish();
                 break;

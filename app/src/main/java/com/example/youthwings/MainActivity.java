@@ -19,19 +19,28 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.youthwings.adapter.CommunityListAdapter;
 import com.example.youthwings.adapter.MainViewPageAdapter;
+import com.example.youthwings.presenter.CommunityConstants;
+import com.example.youthwings.presenter.community.CommunityPresenter;
 import com.example.youthwings.server.model.BoardModel;
+import com.example.youthwings.util.AlertUtil;
+import com.example.youthwings.util.SharedPreferenceUtil;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, CommunityConstants.ListView {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -41,39 +50,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ViewPager viewPager;
     MainViewPageAdapter viewPageadapter;
 
-    private ListView listView;
+    private CommunityConstants.Presenter presenter;
     private CommunityListAdapter communityListAdapter;
-    private ArrayList<BoardModel> communityListViewItemArrayList;
+    private SharedPreferenceUtil sharedPreferenceUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferenceUtil = new SharedPreferenceUtil(this);
+        presenter = new CommunityPresenter(this);
 
-        //툴바
         initLayout();
 
         //이미지 슬라이드
         viewPager = (ViewPager) findViewById(R.id.main_viewPager);
         viewPageadapter = new MainViewPageAdapter(this);
         viewPager.setAdapter(viewPageadapter);
-        /*viewPager.setInterval(5000);
-        viewPager.startMinActivity();*/
+    }
 
-
-        //리스트뷰 참조 및 Adapter 달기
-        listView = (ListView)findViewById(R.id.employmentlist);
-        communityListViewItemArrayList = new ArrayList<BoardModel>();
-/*
-        communityListViewItemArrayList.add(new BoardModel(00,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
-        communityListViewItemArrayList.add(new BoardModel(01, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));
-        communityListViewItemArrayList.add(new BoardModel(02,"어쩌구저쩌구 쏼라쏼라...","yyyy-MM-dd HH:mm", 5,8));
-        communityListViewItemArrayList.add(new BoardModel(03, "어쩌구저쩌구 쏼라쏼라...", "yyyy-MM-dd HH:mm", 5,8));*/
-
-        //MainEmploymentAdapter 생성
-        communityListAdapter = new CommunityListAdapter(MainActivity.this, communityListViewItemArrayList);
+    public void initCommunity(ArrayList<BoardModel> boardModels) {
+        communityListAdapter = new CommunityListAdapter(this, boardModels);
+        ListView listView = findViewById(R.id.employmentlist);
         listView.setAdapter(communityListAdapter);
-
     }
 
     @Override
@@ -90,16 +89,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item)) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
-        }
-        else if (item.getItemId() == R.id.toolbar_help_button); {
+        } else if (item.getItemId() == R.id.toolbar_help_button) ;
+        {
             //Toast.makeText(this, "도움말 클릭", Toast.LENGTH_SHORT).show();
             Context mContext = getApplicationContext();
             AlertDialog.Builder alertDialogBuiler = new AlertDialog.Builder(this); // 빌더얻기
 
             //다이얼로그에 이미지로 넣을 거 아니라면 66줄~71줄까지 코드 삭제
-            LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.custom_dialog, null); //레이아웃불러오기
             ImageView imageView = (ImageView) layout.findViewById(R.id.dialog_image); //해당 레이어에서 이미지뷰 불러오기
             imageView.setImageResource(R.drawable.introimg);//이미지뷰의 이미지 변경
@@ -123,17 +122,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initLayout() {
-        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar); //만든 툴바 데려오기
-
         getSupportActionBar().setTitle(""); //액션바 타이틀은 없애기
         //만든 툴바의 textview를 변경
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText("청춘날개");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu_btn);
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.main_drawer_root);
-        navigationView = (NavigationView)findViewById(R.id.nv_main_navigation_root);
+        drawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_root);
+        navigationView = (NavigationView) findViewById(R.id.nv_main_navigation_root);
 
         drawerToggle = new ActionBarDrawerToggle(this,
                 drawerLayout,
@@ -154,14 +152,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(viewPageadapter);
         viewPager.setInterval(5000);
         viewPager.startMinActivity();*/
+        initHeader();
+    }
+
+    private void initHeader() {
+        View header = navigationView.getHeaderView(0);
+
+        // 드로어 데이터 설정
+        TextView drawerNick         = header.findViewById(R.id.drawer_name      );
+        TextView drawerId           = header.findViewById(R.id.drawer_id        );
+        ImageView profileImgView    = header.findViewById(R.id.header_ImageView );
+
+        // 드로어 뷰 설정
+        drawerNick  .setText(sharedPreferenceUtil.getSharedString("userNick"));
+        drawerId    .setText(sharedPreferenceUtil.getSharedString("userId"));
+
+        MultiTransformation multiTransformation = new MultiTransformation(new CircleCrop());
+        Glide.with(this).load(R.drawable.profile1_img).apply(RequestOptions.bitmapTransform(multiTransformation)).into(profileImgView);
     }
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -204,42 +218,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
 
-            case R.id.menu_mypage :
+            case R.id.menu_mypage:
                 Toast.makeText(this, "내정보 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent1 = new Intent(MainActivity.this, MypageActivity.class);
                 startActivity(intent1);
                 break;
 
-            case R.id.menu_home :
+            case R.id.menu_home:
                 Toast.makeText(this, "홈으로 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.menu_reservation :
+            case R.id.menu_reservation:
                 Toast.makeText(this, "예약하기 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent3 = new Intent(MainActivity.this, SuitLoanActivity.class);
                 startActivity(intent3);
                 break;
-            case R.id.menu_loanlist :
+            case R.id.menu_loanlist:
                 Toast.makeText(this, "대여내역 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent4 = new Intent(MainActivity.this, LoanListActivity.class);
                 startActivity(intent4);
                 break;
-            case R.id.menu_community :
+            case R.id.menu_community:
                 Toast.makeText(this, "취업 커뮤니티 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent5 = new Intent(MainActivity.this, CommunityActivity.class);
                 startActivity(intent5);
                 break;
-            case R.id.menu_interviewlist :
+            case R.id.menu_interviewlist:
                 Toast.makeText(this, "면접 주요 질문 모음 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent6 = new Intent(MainActivity.this, InterviewActivity.class);
                 startActivity(intent6);
                 break;
-            case R.id.menu_myresponse :
+            case R.id.menu_myresponse:
                 Toast.makeText(this, "내 답변 clicked", Toast.LENGTH_SHORT).show();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onGetCommunityList();
+    }
+
+    @Override
+    public void onRequestResult(ArrayList<BoardModel> result) {
+        initCommunity(result);
     }
 }
