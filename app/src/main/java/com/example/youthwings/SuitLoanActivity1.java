@@ -15,10 +15,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.navigation.NavigationView;
+
 public class SuitLoanActivity1 extends AppCompatActivity {
 
     TextView getData;
-    Bitmap image;
 
     Toolbar toolbar;
 
@@ -40,13 +45,13 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         getAreaImage();
 
         //리스트뷰 참조 및 Adapter 달기
-        listView = (ListView)findViewById(R.id.storelist);
+        listView = (ListView) findViewById(R.id.storelist);
 
         //SuitLoanStoreChooseListAdapter 생성
         suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter();
         listView.setAdapter(suitLoanStoreChooseListAdapter);
 
-        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this,R.drawable.suitloanchoose_opencloset),"열린옷장","주소임","영업시간","점심시간","휴일","전화번호");
+        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.suitloanchoose_opencloset), "열린옷장", "주소임", "영업시간", "점심시간", "휴일", "전화번호");
 
         // listView 클릭 이벤트 작성
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,6 +74,99 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
     }
 
+    public void getAreaName() {
+        Intent intent = getIntent();
+        String getAreanameData = intent.getExtras().getString("AREANAME");
+
+        getData = (TextView) findViewById(R.id.loan1_areaName);
+        getData.setText(getAreanameData);
+    }
+
+    public void getAreaImage() {
+        ImageView stateImageView = (ImageView) findViewById(R.id.areaImage);
+
+        Intent intent = getIntent();
+        String stateName = intent.getExtras().getString("CITY");
+
+        switch (stateName) {
+            case "서울" :
+                Glide.with(this).load(R.drawable.seoul_logo).into(stateImageView);
+                break;
+
+            case "부산" :
+                Glide.with(this).load(R.drawable.busan_logo).into(stateImageView);
+                break;
+
+            case "대구" :
+                Glide.with(this).load(R.drawable.daegu_logo).into(stateImageView);
+                break;
+
+            case "전주" :
+                Glide.with(this).load(R.drawable.jeonju_logo).into(stateImageView);
+                break;
+
+            case "수원" :
+                Glide.with(this).load(R.drawable.suwon_logo).into(stateImageView);
+                break;
+
+            case "청주" :
+                Glide.with(this).load(R.drawable.cheongju_logo).into(stateImageView);
+                break;
+
+            case "광주" :
+                Glide.with(this).load(R.drawable.gwangju_logo).into(stateImageView);
+                break;
+
+            case "인천" :
+                Glide.with(this).load(R.drawable.incheon_logo).into(stateImageView);
+                break;
+
+            case "김포" :
+                Glide.with(this).load(R.drawable.gimpo_logo).into(stateImageView);
+                break;
+
+            case "용인" :
+                Glide.with(this).load(R.drawable.yongin_logo).into(stateImageView);
+                break;
+
+            case "의정부" :
+                Glide.with(this).load(R.drawable.uijeongbu_logo).into(stateImageView);
+                break;
+
+            case "화성" :
+                Glide.with(this).load(R.drawable.hwaseong_logo).into(stateImageView);
+                break;
+
+            case "창원" :
+                Glide.with(this).load(R.drawable.changwon_logo).into(stateImageView);
+                break;
+
+            case "고양" :
+                Glide.with(this).load(R.drawable.goyang_logo).into(stateImageView);
+                break;
+
+            case "남양주" :
+                Glide.with(this).load(R.drawable.namyangju_logo).into(stateImageView);
+                break;
+
+            case "안양" :
+                Glide.with(this).load(R.drawable.anyang_logo).into(stateImageView);
+                break;
+
+            case "하남" :
+                Glide.with(this).load(R.drawable.hanam_logo).into(stateImageView);
+                break;
+
+            case "의왕" :
+                Glide.with(this).load(R.drawable.uiwang_logo).into(stateImageView);
+                break;
+
+            case "군포" :
+                Glide.with(this).load(R.drawable.gunpo_logo).into(stateImageView);
+                break;
+        }
+    }
+
     //툴바
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -78,22 +176,6 @@ public class SuitLoanActivity1 extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void getAreaName(){
-        Intent intent = getIntent();
-        String getAreanameData = intent.getExtras().getString("AREANAME");
-
-        getData = (TextView)findViewById(R.id.loan1_areaName);
-        getData.setText(getAreanameData);
-    }
-
-    public void getAreaImage(){
-        Intent intent = getIntent();
-        byte[] arr = getIntent().getByteArrayExtra("AREAIMAGE");
-        image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
-        ImageView BigImage = (ImageView)findViewById(R.id.areaImage);
-        BigImage.setImageBitmap(image);
     }
 
     public void onClick(View view) {

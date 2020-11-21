@@ -92,18 +92,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","SEOUL");
+                intent.putExtra("CITY","서울");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendSeoul.getText().toString());
-
-                //이미지
-                Bitmap seoulBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suitloan_test_seoul);
-                ByteArrayOutputStream seoulstream = new ByteArrayOutputStream();
-                seoulBitmap.compress(Bitmap.CompressFormat.JPEG, 100, seoulstream);
-                byte[] seoulByteArray = seoulstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",seoulByteArray);
 
                 break;
 
@@ -111,18 +103,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","BUSAN");
+                intent.putExtra("CITY","부산");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendBusan.getText().toString());
-
-                //이미지
-                Bitmap busanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.busan_logo);
-                ByteArrayOutputStream busanstream = new ByteArrayOutputStream();
-                busanBitmap.compress(Bitmap.CompressFormat.JPEG, 100, busanstream);
-                byte[] busanByteArray = busanstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",busanByteArray);
 
                 break;
 
@@ -130,18 +114,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","DAEGU");
+                intent.putExtra("CITY","대구");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendDaegu.getText().toString());
-
-                //이미지
-                Bitmap daeguBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.daegu_logo);
-                ByteArrayOutputStream daegustream = new ByteArrayOutputStream();
-                daeguBitmap.compress(Bitmap.CompressFormat.JPEG, 100, daegustream);
-                byte[] daeguByteArray = daegustream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",daeguByteArray);
 
                 break;
 
@@ -149,18 +125,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","JEONJU");
+                intent.putExtra("CITY","전주");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendJeonju.getText().toString());
-
-                //이미지
-                Bitmap jeonjuBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.jeonju_logo);
-                ByteArrayOutputStream jeonjustream = new ByteArrayOutputStream();
-                jeonjuBitmap.compress(Bitmap.CompressFormat.JPEG, 100, jeonjustream);
-                byte[] jeonjuByteArray = jeonjustream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",jeonjuByteArray);
 
                 break;
 
@@ -168,18 +136,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","SUWON");
+                intent.putExtra("CITY","수원");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendSuwon.getText().toString());
-
-                //이미지
-                Bitmap suwonBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.suwon_logo);
-                ByteArrayOutputStream suwonstream = new ByteArrayOutputStream();
-                suwonBitmap.compress(Bitmap.CompressFormat.JPEG, 100, suwonstream);
-                byte[] suwonByteArray = suwonstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",suwonByteArray);
 
                 break;
 
@@ -187,18 +147,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","CHEONGJU");
+                intent.putExtra("CITY","청주");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendCheongju.getText().toString());
-
-                //이미지
-                Bitmap cheongjuBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cheongju_logo);
-                ByteArrayOutputStream cheongjustream = new ByteArrayOutputStream();
-                cheongjuBitmap.compress(Bitmap.CompressFormat.JPEG, 100, cheongjustream);
-                byte[] cheongjuByteArray = cheongjustream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",cheongjuByteArray);
 
                 break;
 
@@ -206,18 +158,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","GWANGJU");
+                intent.putExtra("CITY","광주");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendGwangju.getText().toString());
-
-                //이미지
-                Bitmap gwangjuBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gwangju_logo);
-                ByteArrayOutputStream gwangjustream = new ByteArrayOutputStream();
-                gwangjuBitmap.compress(Bitmap.CompressFormat.JPEG, 100, gwangjustream);
-                byte[] gwangjuByteArray = gwangjustream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",gwangjuByteArray);
 
                 break;
 
@@ -225,18 +169,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","INCHEON");
+                intent.putExtra("CITY","인천");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendIncheon.getText().toString());
-
-                //이미지
-                Bitmap incheonBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.incheon_logo);
-                ByteArrayOutputStream incheonstream = new ByteArrayOutputStream();
-                incheonBitmap.compress(Bitmap.CompressFormat.JPEG, 100, incheonstream);
-                byte[] incheonByteArray = incheonstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",incheonByteArray);
 
                 break;
 
@@ -244,18 +180,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","GIMPO");
+                intent.putExtra("CITY","김포");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendGimpo.getText().toString());
-
-                //이미지
-                Bitmap gimpoBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gimpo_logo);
-                ByteArrayOutputStream gimpostream = new ByteArrayOutputStream();
-                gimpoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, gimpostream);
-                byte[] gimpoByteArray = gimpostream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",gimpoByteArray);
 
                 break;
 
@@ -263,18 +191,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","YONGIN");
+                intent.putExtra("CITY","용인");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendYongin.getText().toString());
-
-                //이미지
-                Bitmap yonginBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.yongin_logo);
-                ByteArrayOutputStream yonginstream = new ByteArrayOutputStream();
-                yonginBitmap.compress(Bitmap.CompressFormat.JPEG, 100, yonginstream);
-                byte[] yonginByteArray = yonginstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",yonginByteArray);
 
                 break;
 
@@ -282,18 +202,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","UIJEONGBU");
+                intent.putExtra("CITY","의정부");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendUijeongbu.getText().toString());
-
-                //이미지
-                Bitmap uijeongbuBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.uijeongbu_logo);
-                ByteArrayOutputStream uijeongbustream = new ByteArrayOutputStream();
-                uijeongbuBitmap.compress(Bitmap.CompressFormat.JPEG, 100, uijeongbustream);
-                byte[] uijeongbuByteArray = uijeongbustream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",uijeongbuByteArray);
 
                 break;
 
@@ -301,18 +213,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","HWASEONG");
+                intent.putExtra("CITY","화성");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendHwaseong.getText().toString());
-
-                //이미지
-                Bitmap hwaseongBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hwaseong_logo);
-                ByteArrayOutputStream hwaseongstream = new ByteArrayOutputStream();
-                hwaseongBitmap.compress(Bitmap.CompressFormat.JPEG, 100, hwaseongstream);
-                byte[] hwaseongByteArray = hwaseongstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",hwaseongByteArray);
 
                 break;
 
@@ -320,18 +224,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","CHANGWON");
+                intent.putExtra("CITY","창원");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendChangwon.getText().toString());
-
-                //이미지
-                Bitmap changwonBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.changwon_logo);
-                ByteArrayOutputStream changwonstream = new ByteArrayOutputStream();
-                changwonBitmap.compress(Bitmap.CompressFormat.JPEG, 100, changwonstream);
-                byte[] changwonByteArray = changwonstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",changwonByteArray);
 
                 break;
 
@@ -339,18 +235,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","GOYONG");
+                intent.putExtra("CITY","고양");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendGoyang.getText().toString());
-
-                //이미지
-                Bitmap goyangBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.goyang_logo);
-                ByteArrayOutputStream goyangstream = new ByteArrayOutputStream();
-                goyangBitmap.compress(Bitmap.CompressFormat.JPEG, 100, goyangstream);
-                byte[] goyangByteArray = goyangstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",goyangByteArray);
 
                 break;
 
@@ -358,18 +246,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","NAMYANGJU");
+                intent.putExtra("CITY","남양주");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendNamyangju.getText().toString());
-
-                //이미지
-                Bitmap namyangjuBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.namyangju_logo);
-                ByteArrayOutputStream namyangjustream = new ByteArrayOutputStream();
-                namyangjuBitmap.compress(Bitmap.CompressFormat.JPEG, 100, namyangjustream);
-                byte[] namyangjuByteArray = namyangjustream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",namyangjuByteArray);
 
                 break;
 
@@ -377,18 +257,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","ANYANG");
+                intent.putExtra("CITY","안양");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendAnyang.getText().toString());
-
-                //이미지
-                Bitmap anyangBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.anyang_logo);
-                ByteArrayOutputStream anyangstream = new ByteArrayOutputStream();
-                anyangBitmap.compress(Bitmap.CompressFormat.JPEG, 100, anyangstream);
-                byte[] anyangByteArray = anyangstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",anyangByteArray);
 
                 break;
 
@@ -396,19 +268,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","HANAM");
-
+                intent.putExtra("CITY","하남");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendHanam.getText().toString());
-
-                //이미지
-                Bitmap hanamBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hanam_logo);
-                ByteArrayOutputStream hanamstream = new ByteArrayOutputStream();
-                hanamBitmap.compress(Bitmap.CompressFormat.JPEG, 100, hanamstream);
-                byte[] hanamByteArray = hanamstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",hanamByteArray);
 
                 break;
 
@@ -416,18 +279,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","UIWANG");
+                intent.putExtra("CITY","의왕");
 
                 //지역 이름
-                intent.putExtra("AREANAME", sendUiwang.getText().toString());
-
-                //이미지
-                Bitmap uiwangBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.uiwang_logo);
-                ByteArrayOutputStream uiwangstream = new ByteArrayOutputStream();
-                uiwangBitmap.compress(Bitmap.CompressFormat.JPEG, 100, uiwangstream);
-                byte[] uiwangByteArray = uiwangstream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",uiwangByteArray);
+               intent.putExtra("AREANAME", sendUiwang.getText().toString());
 
                 break;
 
@@ -435,18 +290,10 @@ public class SuitLoanActivity extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity.this, SuitLoanActivity1.class);
 
                 //ID(?)
-                intent.putExtra("CITY","GUNPO");
+                intent.putExtra("CITY","군포");
 
                 //지역 이름
                 intent.putExtra("AREANAME", sendGunpo.getText().toString());
-
-                //이미지
-                Bitmap gunpoBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gunpo_logo);
-                ByteArrayOutputStream gunpostream = new ByteArrayOutputStream();
-                gunpoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, gunpostream);
-                byte[] gunpoByteArray = gunpostream.toByteArray();
-
-                intent.putExtra("AREAIMAGE",gunpoByteArray);
 
                 break;
         }
