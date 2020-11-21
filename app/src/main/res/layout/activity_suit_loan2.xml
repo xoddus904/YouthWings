@@ -61,14 +61,14 @@
                     android:textColor="#535353"
                     android:textSize="25dp" />
 
-                <LinearLayout
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="70dp"
@@ -76,14 +76,14 @@
                         android:textColor="#535353"
                         android:textSize="23dp" />
 
-                    <CheckBox
+                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="택배(온라인)"
                         android:textColor="#535353"
                         android:textSize="23dp" />
 
-                </LinearLayout>
+                </RadioGroup>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -174,7 +174,7 @@
                             android:textColor="#535353"
                             android:textSize="23dp" />
 
-                        <LinearLayout
+                        <RadioGroup
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
@@ -182,7 +182,7 @@
                             android:gravity="center_vertical"
                             android:orientation="vertical">
 
-                            <CheckBox
+                            <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="70dp"
@@ -190,14 +190,14 @@
                                 android:textColor="#535353"
                                 android:textSize="23dp" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="여자"
                                 android:textColor="#535353"
                                 android:textSize="23dp" />
 
-                        </LinearLayout>
+                        </RadioGroup>>
 
                     </LinearLayout>
 
