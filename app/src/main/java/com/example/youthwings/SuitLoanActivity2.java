@@ -93,12 +93,22 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         SimpleDateFormat daySimpleDateFormat = new SimpleDateFormat(dayFormat, Locale.KOREA);
 
         EditText yearEditText = (EditText)findViewById(R.id.yearinput);
-        yearEditText.setText(yearSimpleDateFormat.format(birthdayCalendar.getTime()));
-
         EditText monthEditText = (EditText)findViewById(R.id.monthinput);
-        monthEditText.setText(monthSimpleDateFormat.format(birthdayCalendar.getTime()));
-
         EditText dayEditText = (EditText)findViewById(R.id.dayinput);
+
+        EditText reservation_yearEditText = (EditText)findViewById(R.id.yearinput);
+        EditText reservation_monthEditText = (EditText)findViewById(R.id.monthinput);
+        EditText reservation_dayEditText = (EditText)findViewById(R.id.dayinput);
+
+        //예약 날짜
+        reservation_yearEditText.setText(yearSimpleDateFormat.format(birthdayCalendar.getTime()));
+        reservation_monthEditText.setText(monthSimpleDateFormat.format(birthdayCalendar.getTime()));
+        reservation_dayEditText.setText(daySimpleDateFormat.format(birthdayCalendar.getTime()));
+
+
+        // 생일
+        yearEditText.setText(yearSimpleDateFormat.format(birthdayCalendar.getTime()));
+        monthEditText.setText(monthSimpleDateFormat.format(birthdayCalendar.getTime()));
         dayEditText.setText(daySimpleDateFormat.format(birthdayCalendar.getTime()));
     }
 
