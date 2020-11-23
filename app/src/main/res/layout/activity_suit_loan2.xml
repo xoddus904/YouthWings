@@ -55,7 +55,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
                     android:layout_marginBottom="10dp"
                     android:text="대여 방법"
                     android:textColor="#535353"
@@ -64,7 +63,6 @@
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
@@ -107,6 +105,131 @@
                         android:text="- 두번째 예약부터 택배(온라인)이 가능합니다."
                         android:textColor="#535353"
                         android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="예약 날짜"
+                    android:textColor="#535353"
+                    android:textSize="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/reservation_yearinput"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="2000"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/reservation_monthinput"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="05"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+
+                    <EditText
+                        android:id="@+id/reservation_dayinput"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="18"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+                    <Button
+                        android:id="@+id/reservationDate_input"
+                        android:layout_width="40dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/calendar_img"
+                        android:onClick="onClick" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="예약 시간"
+                    android:textColor="#535353"
+                    android:textSize="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/reservation_hoursinput"
+                        android:layout_width="145dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="05"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+
+                    <EditText
+                        android:id="@+id/reservation_miniteinput"
+                        android:layout_width="145dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/view_input"
+                        android:hint="18"
+                        android:maxLength="30"
+                        android:onClick="onClick"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+                    <Button
+                        android:id="@+id/reservationTime_input"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/clocks_img"
+                        android:onClick="onClick" />
 
                 </LinearLayout>
 
@@ -198,7 +321,6 @@
                                 android:textSize="23dp" />
 
                         </RadioGroup>
-                        >
 
                     </LinearLayout>
 
@@ -267,8 +389,8 @@
 
                     <Button
                         android:id="@+id/calendar_input"
-                        android:layout_width="60dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="45dp"
                         android:background="@drawable/calendar_img"
                         android:onClick="onClick" />
 

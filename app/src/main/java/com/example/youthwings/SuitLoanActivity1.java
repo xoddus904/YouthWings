@@ -51,7 +51,8 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter();
         listView.setAdapter(suitLoanStoreChooseListAdapter);
 
-        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.suitloanchoose_opencloset), "열린옷장", "주소임", "영업시간", "점심시간", "휴일", "전화번호");
+        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.opencloset_logo), "열린옷장", "주소임", "영업시간", "점심시간", "휴일", "전화번호");
+        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.opencloset_logo), "열린옷장", "주소임", "영업시간", "점심시간", "휴일", "전화번호");
 
         // listView 클릭 이벤트 작성
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

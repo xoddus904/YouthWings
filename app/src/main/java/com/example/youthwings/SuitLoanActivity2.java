@@ -64,7 +64,15 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     };
 
     public void birthdayDateselect(){
+        Button reservationButton = (Button)findViewById(R.id.reservationDate_input);
         Button calenderButton = (Button)findViewById(R.id.calendar_input);
+
+        reservationButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                new DatePickerDialog(SuitLoanActivity2.this, birthdayPicker, birthdayCalendar.get(Calendar.YEAR), birthdayCalendar.get(Calendar.MONTH), birthdayCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         calenderButton.setOnClickListener(new View.OnClickListener(){
             @Override
