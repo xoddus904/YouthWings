@@ -79,13 +79,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="면접 주요 질문 모음"
+                    android:text="모의 면접 질문"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <ListView
-                    android:id="@+id/importantimformationlist"
+                    android:id="@+id/interviewlist"
                     android:layout_width="380dp"
                     android:layout_height="250dp"
                     android:layout_gravity="center"

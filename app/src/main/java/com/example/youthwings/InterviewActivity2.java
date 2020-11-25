@@ -10,45 +10,48 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.youthwings.adapter.InterviewListAdpater;
 import com.example.youthwings.adapter.InterviewListItem;
-import com.example.youthwings.adapter.LoanListAdapter;
-import com.example.youthwings.adapter.LoanListViewItem;
+import com.example.youthwings.adapter.ResponseListAdapter;
+import com.example.youthwings.adapter.ResponseListItem;
 
 import java.util.ArrayList;
 
-public class InterviewActivity extends AppCompatActivity {
+public class InterviewActivity2 extends AppCompatActivity {
 
     Toolbar toolbar;
 
     ListView listView;
-    InterviewListAdpater interviewListAdpater;
-    ArrayList<InterviewListItem> interviewListItemArrayList;
+    ResponseListAdapter responseListAdapter;
+    ArrayList<ResponseListItem> responseListItemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interview);
+        setContentView(R.layout.activity_interview2);
 
-        listView = (ListView)findViewById(R.id.interview_list);
-        interviewListItemArrayList = new ArrayList<InterviewListItem>();
+        listView = (ListView)findViewById(R.id.response_listview);
+        responseListItemArrayList = new ArrayList<ResponseListItem>();
 
-        interviewListItemArrayList.add( new InterviewListItem("자기소개를 30초안에 해보세요",24));
-        interviewListItemArrayList.add( new InterviewListItem("인상 깊은 교내/교외 활동은 뭔가요?",185));
+        responseListItemArrayList.add( new ResponseListItem("자기소개를 30초안에 해보세요",2,"쓸말이 없다..."));
+        responseListItemArrayList.add( new ResponseListItem("자기소개를 30초안에 해보세요",2,"가나다라마바사아자차카타파하 최대한 길게 써야하는데 무슨 말을 해야할까요 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 이 기상과 이맘으로 충성을 다하여 괴로우나 즐거우나\n" +
+                "                                abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
 
-        interviewListAdpater = new InterviewListAdpater(InterviewActivity.this, interviewListItemArrayList);
-        listView.setAdapter(interviewListAdpater);
+        responseListAdapter = new ResponseListAdapter(InterviewActivity2.this, responseListItemArrayList);
+        listView.setAdapter(responseListAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
                 // 값 넘김
-                //intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
+               // intent.putExtra("interviewTitle", responseListItemArrayList.get(position).getResponse_nickname());
+                //Toast.makeText();
                 startActivity(intent);
             }
-        });
+        });*/
 
         initLayout();
     }

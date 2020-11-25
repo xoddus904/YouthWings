@@ -56,5 +56,4 @@ public class LoanListViewItem  {
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
-
 }

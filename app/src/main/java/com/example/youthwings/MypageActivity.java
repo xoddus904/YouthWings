@@ -50,7 +50,6 @@ public class MypageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn); //이미지바꾸는 코드인데 이미지가 너무 크다.
 
-
         ArrayList<LoanListViewItem> items = new ArrayList<LoanListViewItem>();
         items.add( new LoanListViewItem("이대점","","",""));
         items.add( new LoanListViewItem("삼성점","","",""));
