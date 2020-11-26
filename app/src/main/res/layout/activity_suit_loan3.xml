@@ -98,7 +98,7 @@
                     android:layout_width="361dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:gravity="horizontal"
+                    android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
                     <EditText
