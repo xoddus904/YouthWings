@@ -102,7 +102,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/Yearinput"
+                        android:id="@+id/yearinput"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:layout_marginRight="10dp"
@@ -148,7 +148,7 @@
                         android:textSize="15dp" />
 
                     <Button
-                        android:id="@+id/calendar_input"
+                        android:id="@+id/interviewcalendar_input"
                         android:layout_width="25dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="6dp"

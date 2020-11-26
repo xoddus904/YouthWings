@@ -30,6 +30,10 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     Calendar reservationCalendar = Calendar.getInstance();
     Calendar birthdayCalendar = Calendar.getInstance();
 
+    //EditText editText_hour = (EditText)findViewById(R.id.reservation_hoursinput);
+    //EditText editText_minute = (EditText)findViewById(R.id.reservation_minuteinput);
+
+    //TimePickerDialog.OnTimeSetListener callbackMethod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +83,21 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         }
     };
 
+    /*public void InitializeListener(){
+        callbackMethod = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                editText_hour.setText(selectedHour);
+                editText_minute.setText(selectedMinute);
+            }
+        };
+    }*/
+
     // 버튼 선택 Dialog 띄우기
     public void Dateselect() {
 
         Button reservationButton = (Button) findViewById(R.id.reservationDate_input);
         Button reservationTimeButton = (Button) findViewById(R.id.reservationTime_input);
-
-        
 
         Button calenderButton = (Button) findViewById(R.id.calendar_input);
 
@@ -108,7 +120,16 @@ public class SuitLoanActivity2 extends AppCompatActivity {
                 final EditText reservationHour = (EditText) findViewById(R.id.reservation_hoursinput);
                 EditText reservationMinute = (EditText) findViewById(R.id.reservation_minuteinput);
 
-                myTimePicker = new TimePicker(SuitLoanActivity2.this, new TimePickerDialog.OnTimeSetListener() {
+
+                callbackMethod = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        editText_hour.setText(selectedHour);
+                        editText_minute.setText(selectedMinute);
+                    }
+                };
+
+                /*myTimePicker = new TimePicker(SuitLoanActivity2.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         /*String timeState = "AM";
@@ -116,7 +137,7 @@ public class SuitLoanActivity2 extends AppCompatActivity {
                         if(selectedHour > 12){
                             selectedHour -= 12;
                             timeState = "PM";
-                        }*
+                        }
 
                         // EditText에 출력할 형식 지정
                         reservationHour.setText(selectedHour);
@@ -137,7 +158,11 @@ public class SuitLoanActivity2 extends AppCompatActivity {
                 }, hour, minute, false); // true의 경우 24시간 형식의 TimePicker출현
 
                 myTimePicker.setTitle("Select Time");
-                myTimePicker.show();
+                myTimePicker.show();*
+
+
+                TimePickerDialog timeDialog = new TimePickerDialog(SuitLoanActivity2.this, callbackMethod, 8,10, true);
+                timeDialog.show();
             }
         });*/
 
@@ -207,6 +232,7 @@ public class SuitLoanActivity2 extends AppCompatActivity {
             case R.id.nextbtn_suit:
                 Intent intent1 = new Intent(SuitLoanActivity2.this, SuitLoanActivity3.class);
                 startActivity(intent1);
+                finish();
                 break;
 
             case R.id.address_input:

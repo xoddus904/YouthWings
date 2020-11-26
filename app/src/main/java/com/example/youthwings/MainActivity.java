@@ -20,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -69,10 +70,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(viewPageadapter);
     }
 
-    public void initCommunity(ArrayList<BoardModel> boardModels) {
+    public void initCommunity(final ArrayList<BoardModel> boardModels) {
         communityListAdapter = new CommunityListAdapter(this, boardModels);
         ListView listView = findViewById(R.id.employmentlist);
         listView.setAdapter(communityListAdapter);
+
+        // listView 클릭 이벤트 작성
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), CommunityActivity2.class);
+                // 값 넘김
+                intent.putExtra("boardId", boardModels.get(position).getBoardId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -194,10 +206,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //activity_main_content.xml에 있는 버튼 기능 구현코드
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.main_jobinform:
-                Intent intent1 = new Intent(MainActivity.this, JobInformActivity.class);
-                startActivity(intent1);
-                break;
             case R.id.main_community:
                 Intent intent2 = new Intent(MainActivity.this, CommunityActivity.class);
                 startActivity(intent2);
@@ -230,22 +238,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent2);
                 break;
             case R.id.menu_reservation:
-                Toast.makeText(this, "예약하기 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent3 = new Intent(MainActivity.this, SuitLoanActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.menu_loanlist:
-                Toast.makeText(this, "대여내역 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent4 = new Intent(MainActivity.this, LoanListActivity.class);
                 startActivity(intent4);
                 break;
             case R.id.menu_community:
-                Toast.makeText(this, "취업 커뮤니티 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent5 = new Intent(MainActivity.this, CommunityActivity.class);
                 startActivity(intent5);
                 break;
             case R.id.menu_interviewlist:
-                Toast.makeText(this, "면접 주요 질문 모음 clicked", Toast.LENGTH_SHORT).show();
                 Intent intent6 = new Intent(MainActivity.this, InterviewActivity.class);
                 startActivity(intent6);
                 break;
