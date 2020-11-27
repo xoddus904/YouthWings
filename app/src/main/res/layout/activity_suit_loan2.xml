@@ -71,12 +71,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="70dp"
                         android:text="방문대여"
+                        android:layout_marginLeft="10dp"
                         android:textColor="#535353"
                         android:textSize="23dp" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:text="택배(온라인)"
                         android:textColor="#535353"
                         android:textSize="23dp" />
@@ -125,11 +127,11 @@
 
                     <EditText
                         android:id="@+id/reservation_yearinput"
-                        android:layout_width="150dp"
+                        android:layout_width="159dp"
                         android:layout_height="50dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
-                        android:hint="2000"
+                        android:hint="YYYY"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -144,7 +146,7 @@
                         android:layout_height="50dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
-                        android:hint="05"
+                        android:hint="MM"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -160,7 +162,7 @@
                         android:layout_height="50dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
-                        android:hint="18"
+                        android:hint="DD"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -171,8 +173,9 @@
 
                     <Button
                         android:id="@+id/reservationDate_input"
-                        android:layout_width="40dp"
-                        android:layout_height="45dp"
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/calendar_img"
                         android:onClick="onClick" />
 
@@ -197,9 +200,9 @@
                         android:id="@+id/reservation_hoursinput"
                         android:layout_width="145dp"
                         android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="15dp"
                         android:background="@drawable/view_input"
-                        android:hint="05"
+                        android:hint="H"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -226,8 +229,8 @@
 
                     <Button
                         android:id="@+id/reservationTime_input"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:background="@drawable/clocks_img"
                         android:onClick="onClickTime" />
 
@@ -256,7 +259,7 @@
                     <LinearLayout
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="10dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -269,8 +272,9 @@
 
                         <EditText
                             android:id="@+id/nameinput"
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_width="170dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_height="50dp"
                             android:background="@drawable/view_input"
                             android:hint="홍길동"
                             android:maxLength="10"
@@ -300,25 +304,25 @@
                         <RadioGroup
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
                             android:layout_marginBottom="10dp"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_marginTop="7dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="70dp"
+                                android:layout_marginRight="10dp"
                                 android:text="남자"
                                 android:textColor="#535353"
-                                android:textSize="23dp" />
+                                android:textSize="20dp" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="여자"
                                 android:textColor="#535353"
-                                android:textSize="23dp" />
+                                android:textSize="20dp" />
 
                         </RadioGroup>
 
@@ -345,9 +349,9 @@
                         android:id="@+id/yearinput"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="15dp"
                         android:background="@drawable/view_input"
-                        android:hint="2000"
+                        android:hint="YYYY"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -360,9 +364,9 @@
                         android:id="@+id/monthinput"
                         android:layout_width="60dp"
                         android:layout_height="50dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="15dp"
                         android:background="@drawable/view_input"
-                        android:hint="05"
+                        android:hint="MM"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -378,7 +382,7 @@
                         android:layout_height="50dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/view_input"
-                        android:hint="18"
+                        android:hint="DD"
                         android:maxLength="30"
                         android:onClick="onClick"
                         android:paddingLeft="20dp"
@@ -389,8 +393,8 @@
 
                     <Button
                         android:id="@+id/calendar_input"
-                        android:layout_width="40dp"
-                        android:layout_height="45dp"
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/calendar_img"
                         android:onClick="onClick" />
 
@@ -419,11 +423,12 @@
 
                         <EditText
                             android:id="@+id/email_front"
-                            android:layout_width="167dp"
+                            android:layout_width="150dp"
                             android:layout_height="50dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginLeft="15dp"
                             android:background="@drawable/view_input"
-                            android:hint="abcd"
+                            android:hint="email"
                             android:maxLength="30"
                             android:onClick="onClick"
                             android:paddingLeft="20dp"
@@ -440,9 +445,10 @@
 
                         <EditText
                             android:id="@+id/email_back"
-                            android:layout_width="167dp"
+                            android:layout_width="150dp"
                             android:layout_height="50dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="15dp"
                             android:background="@drawable/view_input"
                             android:hint="abcd.com"
                             android:maxLength="30"
@@ -457,9 +463,12 @@
 
                     <Spinner
                         android:id="@+id/email_spinner"
-                        android:layout_width="match_parent"
+                        android:layout_width="340dp"
                         android:layout_height="50dp"
-                        android:entries="@array/abcd.com" />
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="15dp"
+                        android:entries="@array/abcd.com"
+                        android:background="#EFEFEF"/>
 
                 </LinearLayout>
 
@@ -473,39 +482,42 @@
                     android:textSize="25dp" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="15dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="270dp"
+                        android:layout_width="243dp"
                         android:layout_height="50dp"
+                        android:background="@drawable/view_input"
                         android:gravity="center_vertical"
+                        android:layout_marginRight="10dp"
                         android:paddingLeft="20dp"
-                        android:textSize="15dp"
                         android:text="주소"
                         android:textColor="#B5B5B5"
-                        android:background="@drawable/view_input"/>
+                        android:textSize="15dp" />
 
                     <Button
                         android:id="@+id/address_input"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_width="80dp"
+                        android:layout_height="57dp"
                         android:onClick="onClick"
                         android:text="우편번호"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
                 <EditText
                     android:id="@+id/detail_address"
-                    android:layout_width="match_parent"
+                    android:layout_width="330dp"
                     android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/view_input"
                     android:hint="상세 주소"
+                    android:layout_marginLeft="15dp"
                     android:maxLength="30"
                     android:onClick="onClick"
                     android:paddingLeft="20dp"
@@ -526,13 +538,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/phone_number_input"
-                        android:layout_width="248dp"
-                        android:layout_height="65dp"
+                        android:layout_width="220dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/view_input"
                         android:hint="'-'없이 번호만 입력"
                         android:maxLength="30"
@@ -544,22 +557,23 @@
                         android:textSize="15dp" />
 
                     <Button
-                        android:layout_width="120dp"
-                        android:layout_height="72dp"
+                        android:layout_width="110dp"
+                        android:layout_height="55dp"
                         android:onClick="onClick"
                         android:text="인증번호 발송"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
                 <EditText
                     android:id="@+id/authentication_number_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/view_input"
                     android:gravity="center_vertical"
                     android:hint="인증번호 입력"
+                    android:layout_marginLeft="15dp"
                     android:maxLength="30"
                     android:onClick="onClick"
                     android:paddingLeft="20dp"
@@ -571,7 +585,7 @@
                 <Button
                     android:id="@+id/nextbtn_suit"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
                     android:onClick="onClick"
                     android:text="다음으로" />
