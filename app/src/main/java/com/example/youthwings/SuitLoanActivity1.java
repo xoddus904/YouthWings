@@ -60,6 +60,7 @@ public class SuitLoanActivity1 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), SuitLoanActivity2.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -177,11 +178,5 @@ public class SuitLoanActivity1 extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onClick(View view) {
-
-        switch (view.getId()) {
-        }
     }
 }

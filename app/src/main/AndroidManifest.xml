@@ -37,7 +37,6 @@
         <activity android:name=".SuitLoanActivity" />
         <activity android:name=".InterviewActivity" />
         <activity android:name=".CommunityActivity" />
-        <activity android:name=".JobInformActivity" />
     </application>
 
 </manifest>
