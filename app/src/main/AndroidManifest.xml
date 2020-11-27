@@ -29,14 +29,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".JoinActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SuitLoanActivity3" />
-        <activity android:name=".SuitLoanActivity2" />
-        <activity android:name=".SuitLoanActivity1" />
-        <activity android:name=".SuitLoanActivity" />
-        <activity android:name=".InterviewActivity" />
-        <activity android:name=".CommunityActivity" />
+        <activity android:name=".JoinActivity"
+            />
+        <activity android:name=".LoginActivity"
+           />
+        <activity android:name=".SuitLoanActivity3"
+            />
+        <activity android:name=".SuitLoanActivity2"
+            />
+        <activity android:name=".SuitLoanActivity1"
+            />
+        <activity android:name=".SuitLoanActivity"
+            />
+        <activity android:name=".InterviewActivity"
+            />
+        <activity android:name=".CommunityActivity"
+            />
+
+
     </application>
 
 </manifest>
