@@ -24,7 +24,8 @@
                 android:padding="3dp"
                 android:text="Q"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="#000000"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -32,7 +33,9 @@
                 android:layout_marginLeft="7dp"
                 android:id="@+id/interview_title_detail"
                 android:text="어쩌구 저쩌구 이렇게 저렇게 할거면 어떻게 할건가 너생각을 말해보세요"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <View
