@@ -10,130 +10,130 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp">
 
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="40dp"
-            android:text="회원가입"
-            android:textColor="#656565"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="• 닉네임 (랜덤 적용)"
-            android:textColor="#000"
-            android:textSize="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="40dp"
+                android:text="회원가입"
+                android:textColor="#656565"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/nickname_entry"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/view_input"
-            android:inputType="text"
-            android:maxLength="30"
-            android:textColor="#111"
-            android:onClick="onClick"
-            android:paddingLeft="20dp"
-            android:paddingTop="3dp"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textSize="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• 닉네임 (랜덤 적용)"
+                android:textColor="#000"
+                android:textSize="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="• 아이디"
-            android:textColor="#000"
-            android:textSize="15dp" />
+            <TextView
+                android:id="@+id/nickname_entry"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/view_input"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="30"
+                android:onClick="onClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:singleLine="true"
+                android:textColor="#111"
+                android:textSize="15dp" />
 
-        <EditText
-            android:id="@+id/email_entry"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="35dp"
-            android:background="@drawable/view_input"
-            android:hint="이메일"
-            android:inputType="textEmailAddress"
-            android:maxLength="30"
-            android:onClick="onClick"
-            android:paddingLeft="20dp"
-            android:paddingTop="3dp"
-            android:singleLine="true"
-            android:textColorHint="#B5B5B5"
-            android:textSize="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• 아이디"
+                android:textColor="#000"
+                android:textSize="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="• 비밀번호"
-            android:textColor="#000"
-            android:textSize="15dp" />
+            <EditText
+                android:id="@+id/email_entry"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="35dp"
+                android:background="@drawable/view_input"
+                android:hint="이메일"
+                android:inputType="textEmailAddress"
+                android:maxLength="30"
+                android:onClick="onClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:singleLine="true"
+                android:textColorHint="#B5B5B5"
+                android:textSize="15dp" />
 
-        <EditText
-            android:id="@+id/password_entry"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/view_input"
-            android:hint="10자 이하"
-            android:inputType="textPassword"
-            android:maxLength="30"
-            android:onClick="onClick"
-            android:paddingLeft="20dp"
-            android:paddingTop="3dp"
-            android:singleLine="true"
-            android:textColorHint="#B5B5B5"
-            android:textSize="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• 비밀번호"
+                android:textColor="#000"
+                android:textSize="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="• 비밀번호 재입력"
-            android:textColor="#000"
-            android:textSize="15dp" />
+            <EditText
+                android:id="@+id/password_entry"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/view_input"
+                android:hint="10자 이하"
+                android:inputType="textPassword"
+                android:maxLength="30"
+                android:onClick="onClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:singleLine="true"
+                android:textColorHint="#B5B5B5"
+                android:textSize="15dp" />
 
-        <EditText
-            android:id="@+id/password_re_entry"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/view_input"
-            android:hint="10자 이하"
-            android:inputType="textPassword"
-            android:maxLength="30"
-            android:onClick="onClick"
-            android:paddingLeft="20dp"
-            android:paddingTop="3dp"
-            android:singleLine="true"
-            android:textColorHint="#B5B5B5"
-            android:textSize="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• 비밀번호 재입력"
+                android:textColor="#000"
+                android:textSize="15dp" />
 
-        <Button
-            android:id="@+id/btn_success_join"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#46549D"
-            android:onClick="onClick"
-            android:text="완료"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/password_re_entry"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/view_input"
+                android:hint="10자 이하"
+                android:inputType="textPassword"
+                android:maxLength="30"
+                android:onClick="onClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:singleLine="true"
+                android:textColorHint="#B5B5B5"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/btn_success_join"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#46549D"
+                android:onClick="onClick"
+                android:text="완료"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

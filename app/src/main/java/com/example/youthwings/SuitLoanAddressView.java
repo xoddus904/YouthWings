@@ -3,6 +3,7 @@ package com.example.youthwings;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -12,26 +13,26 @@ import android.webkit.WebView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.youthwings.util.AlertUtil;
+
 public class SuitLoanAddressView extends AppCompatActivity {
 
     Toolbar toolbar;
 
     private WebView webView;
-    private TextView textAddress;
-    private Handler handler = new Handler();
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan_address_view);
 
-        textAddress = findViewById(R.id.text_address);
+        handler = new Handler();
 
         initLayout();
 
         //WebView 초기화
         init_webView();
-
     }
 
     private void initLayout() {
@@ -43,15 +44,11 @@ public class SuitLoanAddressView extends AppCompatActivity {
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
-
-        //Spinner
-        Spinner spinner = findViewById(R.id.email_spinner);
     }
 
     public void init_webView(){
-
         //WebView 설정
-        webView = (WebView)findViewById(R.id.webView_address);
+        webView = (WebView)findViewById(R.id.address_web_view);
 
         //JavaScript 허용
         webView.getSettings().setJavaScriptEnabled(true);
@@ -66,7 +63,7 @@ public class SuitLoanAddressView extends AppCompatActivity {
         webView.setWebChromeClient((new WebChromeClient()));
 
         //webview url load. php 파일 주소
-        webView.loadUrl("내 php주소 입력");
+        webView.loadUrl("http://studylog.shop:5001/postcode");
 
     }
 
@@ -76,10 +73,14 @@ public class SuitLoanAddressView extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    textAddress.setText(String.format("(%s) %s %s", arg1, arg2, arg3));
-
-                    //WebView를 초기화 하지 않으면 재사용할 수 없음
                     init_webView();
+
+                    String address = String.format("(%s) %s %s", arg1, arg2, arg3);
+                    Intent intent = new Intent();
+                    AlertUtil.DebugLog(address);
+                    intent.putExtra("RESULT", address);
+                    setResult(RESULT_OK, intent);
+                    finish();
                 }
             });
         }
@@ -90,10 +91,21 @@ public class SuitLoanAddressView extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                Intent intent = new Intent();
+                intent.putExtra("RESULT", " ");
+                setResult(RESULT_OK, intent);
                 finish();
-                return true;
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("RESULT", " ");
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.youthwings;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.youthwings.util.AlertUtil;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -26,6 +29,7 @@ import java.util.Locale;
 public class SuitLoanActivity2 extends AppCompatActivity {
 
     Toolbar toolbar;
+    TextView addressTextView;
 
     Calendar reservationCalendar = Calendar.getInstance();
     Calendar birthdayCalendar = Calendar.getInstance();
@@ -58,6 +62,8 @@ public class SuitLoanActivity2 extends AppCompatActivity {
 
         //Spinner
         Spinner spinner = findViewById(R.id.email_spinner);
+
+        addressTextView = findViewById(R.id.loan_address);
     }
 
     //캘린더
@@ -227,18 +233,25 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-
+        Intent intent;
         switch (view.getId()) {
             case R.id.nextbtn_suit:
-                Intent intent1 = new Intent(SuitLoanActivity2.this, SuitLoanActivity3.class);
-                startActivity(intent1);
-                finish();
+                intent = new Intent(SuitLoanActivity2.this, SuitLoanActivity3.class);
+                startActivity(intent);
                 break;
 
             case R.id.address_input:
-                Intent intent2 = new Intent(SuitLoanActivity2.this, SuitLoanAddressView.class);
-                startActivity(intent2);
+                intent = new Intent(SuitLoanActivity2.this, SuitLoanAddressView.class);
+                startActivityForResult(intent, 3000);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        AlertUtil.DebugLog(data + "");
+        AlertUtil.DebugLog("테스트");
+        addressTextView.setText(data.getStringExtra("RESULT").trim());
     }
 }
