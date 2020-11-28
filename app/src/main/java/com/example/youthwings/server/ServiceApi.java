@@ -2,6 +2,8 @@ package com.example.youthwings.server;
 
 import com.example.youthwings.server.model.BoardModel;
 import com.example.youthwings.server.model.BoardRes;
+import com.example.youthwings.server.model.LoanModel;
+import com.example.youthwings.server.model.LoanRes;
 import com.example.youthwings.server.model.ReplyModel;
 import com.example.youthwings.server.model.UserModel;
 import com.example.youthwings.server.model.UserRes;
@@ -77,6 +79,18 @@ public interface ServiceApi {
     @PATCH("/board/reply/{reply_id}")
     Call<BoardRes> updateReply(@Path("reply_id") int replyId, @Body ReplyModel replyModel);
 
+// ===================================================================================
 
+    // ***************************************
+    // 예약 목록
+    // ***************************************
+
+    // 예약 목록 가져오기
+    @GET("/rental/{id}")
+    Call<LoanRes> getLoanList(@Path("id") String userId);
+
+    // 예약 하기
+    @POST("/rental")
+    Call<LoanRes> postLoan(@Body LoanModel loanModel);
 
 }

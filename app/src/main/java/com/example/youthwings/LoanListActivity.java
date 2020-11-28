@@ -10,14 +10,18 @@ import android.widget.TextView;
 
 import com.example.youthwings.adapter.LoanListAdapter;
 import com.example.youthwings.adapter.LoanListViewItem;
+import com.example.youthwings.presenter.LoanConstants;
+import com.example.youthwings.presenter.loan.LoanPresenter;
+import com.example.youthwings.server.model.LoanModel;
+import com.example.youthwings.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 
-public class LoanListActivity extends AppCompatActivity {
+public class LoanListActivity extends AppCompatActivity implements LoanConstants.View {
 
-    ListView listView;
-    LoanListAdapter loanListAdapter;
-    ArrayList<LoanListViewItem> loanListViewItemArrayList;
+    ListView loanListView;
+    LoanConstants.Presenter presenter;
+    SharedPreferenceUtil sharedPreferenceUtil;
 
     androidx.appcompat.widget.Toolbar toolbar;
 
@@ -25,7 +29,12 @@ public class LoanListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_list);
+        sharedPreferenceUtil = new SharedPreferenceUtil(this);
+        presenter = new LoanPresenter(this);
+        init();
+    }
 
+    private void init() {
         //툴바관리
         toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,14 +44,8 @@ public class LoanListActivity extends AppCompatActivity {
         toolbarTitle.setText("내 정보");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
 
-        listView = (ListView)findViewById(R.id.loan_list);
-        loanListViewItemArrayList = new ArrayList<LoanListViewItem>();
-        loanListViewItemArrayList.add( new LoanListViewItem("이대점","2020.08.08","2020.08.10","셔츠"));
-        loanListViewItemArrayList.add( new LoanListViewItem("삼성점","2020.08.09","2020.08.15","셔츠,자켓"));
-        loanListViewItemArrayList.add( new LoanListViewItem("강서점","2020.08.10","2020.08.17","셔츠,넥타이"));
-
-        loanListAdapter = new LoanListAdapter(LoanListActivity.this, loanListViewItemArrayList);
-        listView.setAdapter(loanListAdapter);
+        loanListView = (ListView)findViewById(R.id.loan_list);
+        presenter.onGetLoanList(sharedPreferenceUtil.getSharedString("userId"));
     }
 
     @Override
@@ -54,5 +57,11 @@ public class LoanListActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestResult(ArrayList<LoanModel> result) {
+        LoanListAdapter loanListAdapter = new LoanListAdapter(this, result, 0);
+        loanListView.setAdapter(loanListAdapter);
     }
 }
