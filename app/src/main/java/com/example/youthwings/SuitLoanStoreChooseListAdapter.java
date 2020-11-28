@@ -9,6 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
+import com.example.youthwings.server.model.CompanyModel;
+
 import java.util.ArrayList;
 
 class SuitLoanStoreChooseListAdapter extends BaseAdapter {
@@ -24,22 +28,21 @@ class SuitLoanStoreChooseListAdapter extends BaseAdapter {
     Context context;
 
     //Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<SuitLoanStoreChooseListViewItem> suitLoanStoreChooseListViewItems = new ArrayList<SuitLoanStoreChooseListViewItem>();
+    private ArrayList<CompanyModel> companyModels = new ArrayList<CompanyModel>();
 
     // ListViewAdapter의 생성자
-    public SuitLoanStoreChooseListAdapter(){
+    public SuitLoanStoreChooseListAdapter(Context context, ArrayList<CompanyModel> companyModels){
+        this.context = context;
+        this.companyModels = companyModels;
     }
 
     @Override
     public int getCount() {
-        return suitLoanStoreChooseListViewItems.size();
+        return companyModels.size();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final int pos = position;
-        final Context context = parent.getContext();
-
         // item layout을 inflate하여 convertView 참조 획득.
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -55,17 +58,14 @@ class SuitLoanStoreChooseListAdapter extends BaseAdapter {
         holiday = (TextView)convertView.findViewById(R.id.holiday_get);
         number = (TextView)convertView.findViewById(R.id.number_get);
 
-        // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        SuitLoanStoreChooseListViewItem suitLoanStoreChooseListViewItem = suitLoanStoreChooseListViewItems.get(position);
-
         // 아이템 내 각 위젯에 데이터 반영
-        storeImage.setImageDrawable(suitLoanStoreChooseListViewItem.getStoreimage());
-        storeName.setText(suitLoanStoreChooseListViewItem.getStorename());
-        address.setText(suitLoanStoreChooseListViewItem.getAddress());
-        hours.setText(suitLoanStoreChooseListViewItem.getHours());
-        lunchTime.setText(suitLoanStoreChooseListViewItem.getLunchtime());
-        holiday.setText(suitLoanStoreChooseListViewItem.getHoliday());
-        number.setText(suitLoanStoreChooseListViewItem.getNumber());
+        storeImage.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.opencloset_logo));
+        storeName.setText(companyModels.get(position).getCompanyName());
+        address.setText(companyModels.get(position).getCompanyAddress());
+        hours.setText("09:00 ~ 18:00");
+        lunchTime.setText("12:00 ~ 13:00");
+        holiday.setText("매 주 월요일 휴무");
+        number.setText("02 - 000 - 0000");
 
         return convertView;
     }
@@ -77,22 +77,6 @@ class SuitLoanStoreChooseListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return suitLoanStoreChooseListViewItems.get(position);
+        return companyModels.get(position);
     }
-
-    // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(Drawable storeimage, String storename, String address, String hours, String lunchtime, String holiday, String number) {
-        SuitLoanStoreChooseListViewItem item = new SuitLoanStoreChooseListViewItem();
-
-        item.setStoreimage(storeimage);
-        item.setStorename(storename);
-        item.setAddress(address);
-        item.setHours(hours);
-        item.setLunchtime(lunchtime);
-        item.setHoliday(holiday);
-        item.setNumber(number);
-
-        suitLoanStoreChooseListViewItems.add(item);
-    }
-
 }

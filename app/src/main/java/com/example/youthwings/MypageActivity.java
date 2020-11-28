@@ -91,6 +91,6 @@ public class MypageActivity extends AppCompatActivity implements LoanConstants.V
     public void onRequestResult(ArrayList<LoanModel> result) {
         LoanListAdapter loanListAdapter = new LoanListAdapter(this, result, 0);
         loanListView.setAdapter(loanListAdapter);
-        remainTextView.setText(10 - result.size());
+        remainTextView.setText(10 - result.size() + "");
     }
 }

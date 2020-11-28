@@ -13,21 +13,25 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.youthwings.presenter.LoanConstants;
+import com.example.youthwings.presenter.loan.LoanPresenter;
+import com.example.youthwings.util.AlertUtil;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class SuitLoanActivity3 extends AppCompatActivity {
+public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstants.Post {
 
     Toolbar toolbar;
-
+    LoanConstants.Presenter presenter;
     Calendar interviewCalendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan3);
-
+        presenter = new LoanPresenter(this);
         //툴바
         initLayout();
 
@@ -107,10 +111,21 @@ public class SuitLoanActivity3 extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.btn_reservation:
+                //presenter.onPostLoan();
                 Intent intent = new Intent(SuitLoanActivity3.this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;
+
+        }
+    }
+
+    @Override
+    public void onRequestResult(boolean result) {
+        if(result) {
+            AlertUtil.onAlertDialog(this, "예약되었습니다!");
+        } else {
+            AlertUtil.onAlertDialog(this, "잠시후 다시 시도해주세요.");
 
         }
     }

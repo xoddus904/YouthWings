@@ -19,13 +19,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.youthwings.server.model.CompanyModel;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class SuitLoanActivity1 extends AppCompatActivity {
 
     TextView getData;
 
     Toolbar toolbar;
+    String stateName;
 
     private ListView listView;
     private SuitLoanStoreChooseListAdapter suitLoanStoreChooseListAdapter;
@@ -47,12 +51,16 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         //리스트뷰 참조 및 Adapter 달기
         listView = (ListView) findViewById(R.id.storelist);
 
-        //SuitLoanStoreChooseListAdapter 생성
-        suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter();
-        listView.setAdapter(suitLoanStoreChooseListAdapter);
+        ArrayList<CompanyModel> companyModels = new ArrayList<>();
+        CompanyModel companyModel = new CompanyModel();
+        companyModel.setCompanyAddress(stateName);
+        companyModel.setCompanyName("열린옷장");
 
-        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.opencloset_logo), "열린옷장", "주소임", "영업시간", "점심시간", "휴일", "전화번호");
-        suitLoanStoreChooseListAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.opencloset_logo), "열린옷장", "주소임", "영업시간", "점심시간", "휴일", "전화번호");
+        companyModels.add(companyModel);
+
+        //SuitLoanStoreChooseListAdapter 생성
+        suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter(this, companyModels);
+        listView.setAdapter(suitLoanStoreChooseListAdapter);
 
         // listView 클릭 이벤트 작성
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,7 +96,7 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         ImageView stateImageView = (ImageView) findViewById(R.id.areaImage);
 
         Intent intent = getIntent();
-        String stateName = intent.getExtras().getString("CITY");
+        stateName = intent.getExtras().getString("CITY");
 
         switch (stateName) {
             case "서울" :

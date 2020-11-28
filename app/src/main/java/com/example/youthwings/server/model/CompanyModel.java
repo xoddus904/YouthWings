@@ -20,6 +20,9 @@ public class CompanyModel implements Serializable {
     @SerializedName("company_content")
     private String companyContent;
 
+    @SerializedName("company_address")
+    private String companyAddress;
+
     @SerializedName("company_date")
     private Date companyDate;
 
@@ -86,6 +89,14 @@ public class CompanyModel implements Serializable {
 
     public void setUserModel(UserModel userModel) {
         this.userModel = userModel;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
     }
 }
 

@@ -61,7 +61,7 @@ public class LoanListActivity extends AppCompatActivity implements LoanConstants
 
     @Override
     public void onRequestResult(ArrayList<LoanModel> result) {
-        LoanListAdapter loanListAdapter = new LoanListAdapter(this, result, 0);
+        LoanListAdapter loanListAdapter = new LoanListAdapter(this, result, 1);
         loanListView.setAdapter(loanListAdapter);
     }
 }

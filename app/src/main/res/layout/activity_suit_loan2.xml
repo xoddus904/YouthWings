@@ -502,15 +502,15 @@
 
                     <TextView
                         android:id="@+id/loan_address"
-                        android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
+                        android:layout_weight="1"
                         android:background="@drawable/view_input"
                         android:gravity="center_vertical"
+                        android:hint="주소"
                         android:paddingVertical="5dp"
                         android:paddingLeft="20dp"
-                        android:hint="주소"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
@@ -528,13 +528,13 @@
                     android:id="@+id/detail_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="5dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/view_input"
                     android:hint="상세 주소"
                     android:maxLength="30"
                     android:maxLines="1"
                     android:onClick="onClick"
+                    android:paddingVertical="5dp"
                     android:paddingLeft="20dp"
                     android:textColorHint="#B5B5B5"
                     android:textSize="15dp" />
@@ -555,16 +555,16 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:layout_weight="1"
                         android:id="@+id/phone_number_input"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/view_input"
                         android:hint="'-'없이 번호만 입력"
                         android:maxLength="30"
                         android:maxLines="1"
-                        android:paddingVertical="5dp"
                         android:onClick="onClick"
+                        android:paddingVertical="5dp"
                         android:paddingLeft="20dp"
                         android:textColorHint="#B5B5B5"
                         android:textSize="15dp" />
