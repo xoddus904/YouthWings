@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.youthwings.adapter.CommunityReplyAdapter;
+import com.example.youthwings.adapter.LoanListAdapter;
 import com.example.youthwings.presenter.CommunityConstants;
 import com.example.youthwings.presenter.community.CommunityPresenter;
 import com.example.youthwings.server.RetrofitConnector;
@@ -128,6 +130,32 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
 
         CommunityReplyAdapter adapter = new CommunityReplyAdapter(this, replyModels, boardId);
         listView.setAdapter(adapter);
+        setListViewHeightBasedOnChildren(listView);
+    }
+
+    // =============================================================
+    // 댓글 리스트뷰 길이 늘리기
+    // =============================================================
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        CommunityReplyAdapter listAdapter = (CommunityReplyAdapter) listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 
     public void onClick(View view) {
