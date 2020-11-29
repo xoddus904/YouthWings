@@ -11,6 +11,7 @@ import com.example.youthwings.service.UserService;
 public class LoanPresenter implements LoanConstants.Presenter {
     LoanConstants.View view;
     LoanConstants.Post post;
+    LoanConstants.List list;
     LoanService loanService;
 
     public LoanPresenter(LoanConstants.View view) {
@@ -23,6 +24,11 @@ public class LoanPresenter implements LoanConstants.Presenter {
         loanService = new LoanService(this, post);
     }
 
+    public LoanPresenter(LoanConstants.List list) {
+        this.list = list;
+        loanService = new LoanService(this, list);
+    }
+
 
     @Override
     public void onPostLoan(LoanModel loanModel) {
@@ -32,5 +38,10 @@ public class LoanPresenter implements LoanConstants.Presenter {
     @Override
     public void onGetLoanList(String userId) {
         loanService.onGetLoanList(userId);
+    }
+
+    @Override
+    public void onGetCompanyList(String state) {
+        loanService.onGetCompanyList(state);
     }
 }

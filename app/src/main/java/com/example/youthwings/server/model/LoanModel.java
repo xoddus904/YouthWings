@@ -35,6 +35,12 @@ public class LoanModel implements Serializable {
     @SerializedName("company")
     private CompanyModel companyModel;
 
+    @SerializedName("company_id")
+    private int companyId;
+
+    @SerializedName("user_id")
+    private String userId;
+
     public LoanModel() {
     }
 
@@ -108,6 +114,22 @@ public class LoanModel implements Serializable {
 
     public void setLoanSystem(int loanSystem) {
         this.loanSystem = loanSystem;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
 

@@ -18,6 +18,7 @@ public class LoanService {
     LoanConstants.Presenter presenter;
     LoanConstants.View view;
     LoanConstants.Post post;
+    LoanConstants.List list;
     SharedPreferenceUtil sharedPreferenceUtil;
 
     public LoanService(LoanConstants.Presenter presenter, LoanConstants.View view) {
@@ -28,6 +29,11 @@ public class LoanService {
     public LoanService(LoanConstants.Presenter presenter, LoanConstants.Post post) {
         this.presenter = presenter;
         this.post = post;
+    }
+
+    public LoanService(LoanConstants.Presenter presenter, LoanConstants.List list) {
+        this.presenter = presenter;
+        this.list = list;
     }
 
     // -----------------------------------------------------------------------
@@ -70,6 +76,31 @@ public class LoanService {
                     LoanRes result = response.body();
                     post.onRequestResult(result.isSuc());
                     Log.d("DEBUG", "################ 예약 종료 ################");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoanRes> call, Throwable t) {
+                Log.d("Server", "onFailure: " + t.toString());
+            }
+        });
+    }
+
+    // -----------------------------------------------------------------------
+    // 정장대여점 가져오기 (서버 연동)
+    // -----------------------------------------------------------------------
+    public void onGetCompanyList(String state) {
+        Log.d("DEBUG", "################ 정장대여점 가져오기 시작 ################");
+
+        Retrofit retrofit = RetrofitConnector.createRetrofit();
+        Call<LoanRes> call = retrofit.create(ServiceApi.class).getCompanyList(state);
+        call.enqueue(new Callback<LoanRes>() {
+            @Override
+            public void onResponse(Call<LoanRes> call, Response<LoanRes> response) {
+                if (response.isSuccessful()) {
+                    LoanRes result = response.body();
+                    list.onRequestResult(result.getCompanyModels());
+                    Log.d("DEBUG", "################ 정장대여점 가져오기 종료 ################");
                 }
             }
 

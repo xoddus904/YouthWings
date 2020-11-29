@@ -30,9 +30,21 @@ public class SuitLoanActivity2 extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView addressTextView;
+    TextView storeNameTextView;
+    TextView areaNameTextView;
 
     Calendar reservationCalendar = Calendar.getInstance();
     Calendar birthdayCalendar = Calendar.getInstance();
+
+    EditText reservation_yearEditText;
+    EditText reservation_monthEditText;
+    EditText reservation_dayEditText;
+
+    String reservDate;
+    int companyId;
+    String imageUrl;
+    String areaName;
+    String storeName;
 
     //EditText editText_hour = (EditText)findViewById(R.id.reservation_hoursinput);
     //EditText editText_minute = (EditText)findViewById(R.id.reservation_minuteinput);
@@ -43,11 +55,20 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan2);
+        initData();
 
         initLayout();
 
         //캘린더 및 시간
         Dateselect();
+    }
+
+    private void initData() {
+        Intent intent = getIntent();
+        companyId = intent.getIntExtra("companyId", 1);
+        imageUrl = intent.getStringExtra("imageUrl");
+        areaName = intent.getStringExtra("areaName");
+        storeName = intent.getStringExtra("storeName");
     }
 
     private void initLayout() {
@@ -64,6 +85,11 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.email_spinner);
 
         addressTextView = findViewById(R.id.loan_address);
+        storeNameTextView = findViewById(R.id.loan2_storeName);
+        areaNameTextView = findViewById(R.id.loan2_areaName);
+
+        storeNameTextView.setText(storeName);
+        areaNameTextView.setText(areaName);
     }
 
     //캘린더
@@ -173,16 +199,16 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         });*/
 
 
-        calenderButton.setOnClickListener(new View.OnClickListener(){
+        calenderButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 new DatePickerDialog(SuitLoanActivity2.this, birthdayPicker, birthdayCalendar.get(Calendar.YEAR), birthdayCalendar.get(Calendar.MONTH), birthdayCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
 
     //예약 EditText
-    private  void updateLabeReservation(){
+    private void updateLabeReservation() {
         String yearFormat = "yyyy";
         SimpleDateFormat yearSimpleDateFormat = new SimpleDateFormat(yearFormat, Locale.KOREA);
 
@@ -192,17 +218,21 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         String dayFormat = "dd";
         SimpleDateFormat daySimpleDateFormat = new SimpleDateFormat(dayFormat, Locale.KOREA);
 
-        EditText reservation_yearEditText = (EditText)findViewById(R.id.reservation_yearinput);
-        EditText reservation_monthEditText = (EditText)findViewById(R.id.reservation_monthinput);
-        EditText reservation_dayEditText = (EditText)findViewById(R.id.reservation_dayinput);
+        reservation_yearEditText = (EditText) findViewById(R.id.reservation_yearinput);
+        reservation_monthEditText = (EditText) findViewById(R.id.reservation_monthinput);
+        reservation_dayEditText = (EditText) findViewById(R.id.reservation_dayinput);
 
         reservation_yearEditText.setText(yearSimpleDateFormat.format(reservationCalendar.getTime()));
         reservation_monthEditText.setText(monthSimpleDateFormat.format(reservationCalendar.getTime()));
         reservation_dayEditText.setText(daySimpleDateFormat.format(reservationCalendar.getTime()));
+
+        reservDate = reservation_yearEditText.getText().toString();
+        reservDate += reservation_monthEditText.getText().toString();
+        reservDate += reservation_dayEditText.getText().toString();
     }
 
     // 생일 EditText
-    private  void updateLabeBirthday(){
+    private void updateLabeBirthday() {
         String yearFormat = "yyyy";
         SimpleDateFormat yearSimpleDateFormat = new SimpleDateFormat(yearFormat, Locale.KOREA);
 
@@ -212,9 +242,9 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         String dayFormat = "dd";
         SimpleDateFormat daySimpleDateFormat = new SimpleDateFormat(dayFormat, Locale.KOREA);
 
-        EditText yearEditText = (EditText)findViewById(R.id.yearinput);
-        EditText monthEditText = (EditText)findViewById(R.id.monthinput);
-        EditText dayEditText = (EditText)findViewById(R.id.dayinput);
+        EditText yearEditText = (EditText) findViewById(R.id.yearinput);
+        EditText monthEditText = (EditText) findViewById(R.id.monthinput);
+        EditText dayEditText = (EditText) findViewById(R.id.dayinput);
 
         yearEditText.setText(yearSimpleDateFormat.format(birthdayCalendar.getTime()));
         monthEditText.setText(monthSimpleDateFormat.format(birthdayCalendar.getTime()));
@@ -237,6 +267,10 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.nextbtn_suit:
                 intent = new Intent(SuitLoanActivity2.this, SuitLoanActivity3.class);
+                intent.putExtra("reservDate", reservDate);
+                intent.putExtra("companyId", companyId);
+                intent.putExtra("areaName", areaName);
+                intent.putExtra("storeName", storeName);
                 startActivity(intent);
                 break;
 
@@ -250,8 +284,6 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        AlertUtil.DebugLog(data + "");
-        AlertUtil.DebugLog("테스트");
         addressTextView.setText(data.getStringExtra("RESULT").trim());
     }
 }

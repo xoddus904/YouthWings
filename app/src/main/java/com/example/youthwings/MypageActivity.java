@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -67,6 +68,29 @@ public class MypageActivity extends AppCompatActivity implements LoanConstants.V
         presenter.onGetLoanList(sharedPreferenceUtil.getSharedString("userId"));
     }
 
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        LoanListAdapter listAdapter = (LoanListAdapter) listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_moreloanlist:
@@ -91,6 +115,7 @@ public class MypageActivity extends AppCompatActivity implements LoanConstants.V
     public void onRequestResult(ArrayList<LoanModel> result) {
         LoanListAdapter loanListAdapter = new LoanListAdapter(this, result, 0);
         loanListView.setAdapter(loanListAdapter);
+        setListViewHeightBasedOnChildren(loanListView);
         remainTextView.setText(10 - result.size() + "");
     }
 }

@@ -19,12 +19,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.youthwings.presenter.LoanConstants;
+import com.example.youthwings.presenter.loan.LoanPresenter;
 import com.example.youthwings.server.model.CompanyModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class SuitLoanActivity1 extends AppCompatActivity {
+public class SuitLoanActivity1 extends AppCompatActivity implements LoanConstants.List {
 
     TextView getData;
 
@@ -33,11 +35,13 @@ public class SuitLoanActivity1 extends AppCompatActivity {
 
     private ListView listView;
     private SuitLoanStoreChooseListAdapter suitLoanStoreChooseListAdapter;
+    private LoanConstants.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan1);
+        presenter = new LoanPresenter(this);
 
         //툴바 뒤로가기
         initLayout();
@@ -48,15 +52,12 @@ public class SuitLoanActivity1 extends AppCompatActivity {
         //지역 로고 get
         getAreaImage();
 
+        presenter.onGetCompanyList(stateName);
+    }
+
+    private void initListView(final ArrayList<CompanyModel> companyModels) {
         //리스트뷰 참조 및 Adapter 달기
         listView = (ListView) findViewById(R.id.storelist);
-
-        ArrayList<CompanyModel> companyModels = new ArrayList<>();
-        CompanyModel companyModel = new CompanyModel();
-        companyModel.setCompanyAddress(stateName);
-        companyModel.setCompanyName("열린옷장");
-
-        companyModels.add(companyModel);
 
         //SuitLoanStoreChooseListAdapter 생성
         suitLoanStoreChooseListAdapter = new SuitLoanStoreChooseListAdapter(this, companyModels);
@@ -67,10 +68,19 @@ public class SuitLoanActivity1 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), SuitLoanActivity2.class);
+
+                int companyId = companyModels.get(position).getCompanyId();
+                String imageUrl = companyModels.get(position).getCompanyImageUrl();
+                String storeName = companyModels.get(position).getCompanyName();
+                intent.putExtra("companyId", companyId);
+                intent.putExtra("imageUrl", imageUrl);
+                intent.putExtra("areaName", stateName);
+                intent.putExtra("storeName", storeName);
                 startActivity(intent);
                 finish();
             }
         });
+
     }
 
     private void initLayout() {
@@ -186,5 +196,10 @@ public class SuitLoanActivity1 extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestResult(ArrayList<CompanyModel> result) {
+        initListView(result);
     }
 }

@@ -11,7 +11,7 @@ public class RetrofitConnector {
 
     public static Retrofit createRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl(TEST_URL)
+                .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

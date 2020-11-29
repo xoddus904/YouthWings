@@ -13,11 +13,18 @@ public class LoanRes {
     @SerializedName("rentalList")
     private ArrayList<LoanModel> loanModels;
 
+    @SerializedName("companyList")
+    private ArrayList<CompanyModel> companyModels;
+
     public boolean isSuc() {
         return suc;
     }
 
     public ArrayList<LoanModel> getLoanModels() {
         return loanModels;
+    }
+
+    public ArrayList<CompanyModel> getCompanyModels() {
+        return companyModels;
     }
 }

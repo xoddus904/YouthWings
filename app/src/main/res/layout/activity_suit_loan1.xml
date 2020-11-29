@@ -50,10 +50,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:onClick="onClick"
-                android:orientation="horizontal"
-                android:paddingHorizontal="20dp">
+                android:orientation="horizontal">
 
                 <ListView
+                    android:divider="#FFF"
                     android:id="@+id/storelist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

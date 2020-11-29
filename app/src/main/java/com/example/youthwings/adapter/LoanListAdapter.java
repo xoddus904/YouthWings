@@ -53,7 +53,7 @@ public class LoanListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.loanlistview_item, null);
-            SimpleDateFormat format = new SimpleDateFormat("YYYY MM-dd");  // 날짜 형식 변환
+            SimpleDateFormat format = new SimpleDateFormat("YYYY년 MM월 dd일");  // 날짜 형식 변환
 
             storeName_textView = (TextView)convertView.findViewById(R.id.list_storename);
             storeName_textView.setText(loanModels.get(position).getCompanyModel().getCompanyName());

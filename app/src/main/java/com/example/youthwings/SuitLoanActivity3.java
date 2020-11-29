@@ -15,10 +15,15 @@ import android.widget.TextView;
 
 import com.example.youthwings.presenter.LoanConstants;
 import com.example.youthwings.presenter.loan.LoanPresenter;
+import com.example.youthwings.server.model.CompanyModel;
+import com.example.youthwings.server.model.LoanModel;
 import com.example.youthwings.util.AlertUtil;
+import com.example.youthwings.util.SharedPreferenceUtil;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstants.Post {
@@ -27,17 +32,34 @@ public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstant
     LoanConstants.Presenter presenter;
     Calendar interviewCalendar = Calendar.getInstance();
 
+    int companyId;
+    String reservDate, areaName, storeName;
+    SharedPreferenceUtil sharedPreferenceUtil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suit_loan3);
         presenter = new LoanPresenter(this);
+        initData();
+
         //툴바
         initLayout();
 
         //면접 날짜
         Dateselect();
 
+    }
+
+    private void initData() {
+        sharedPreferenceUtil = new SharedPreferenceUtil(this);
+        Intent intent = getIntent();
+        reservDate = intent.getStringExtra("reservDate");
+        companyId = intent.getIntExtra("companyId", 1);
+        areaName = intent.getStringExtra("areaName");
+        storeName = intent.getStringExtra("storeName");
+
+        AlertUtil.DebugLog(reservDate);
     }
 
     private void initLayout() {
@@ -49,6 +71,12 @@ public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstant
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
+
+        TextView storeNameTextView = findViewById(R.id.loan3_storeName);
+        TextView areaNameTextView = findViewById(R.id.loan3_areaName);
+
+        storeNameTextView.setText(storeName);
+        areaNameTextView.setText(areaName);
     }
 
     //캘린더
@@ -77,7 +105,7 @@ public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstant
     }
 
     //면접 EditText
-    private  void interviewReservation(){
+    private void interviewReservation() {
         String yearFormat = "yyyy";
         SimpleDateFormat yearSimpleDateFormat = new SimpleDateFormat(yearFormat, Locale.KOREA);
 
@@ -87,9 +115,9 @@ public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstant
         String dayFormat = "dd";
         SimpleDateFormat daySimpleDateFormat = new SimpleDateFormat(dayFormat, Locale.KOREA);
 
-        EditText reservation_yearEditText = (EditText)findViewById(R.id.yearinput);
-        EditText reservation_monthEditText = (EditText)findViewById(R.id.monthinput);
-        EditText reservation_dayEditText = (EditText)findViewById(R.id.dayinput);
+        EditText reservation_yearEditText = (EditText) findViewById(R.id.yearinput);
+        EditText reservation_monthEditText = (EditText) findViewById(R.id.monthinput);
+        EditText reservation_dayEditText = (EditText) findViewById(R.id.dayinput);
 
         reservation_yearEditText.setText(yearSimpleDateFormat.format(interviewCalendar.getTime()));
         reservation_monthEditText.setText(monthSimpleDateFormat.format(interviewCalendar.getTime()));
@@ -111,18 +139,22 @@ public class SuitLoanActivity3 extends AppCompatActivity implements LoanConstant
 
         switch (view.getId()) {
             case R.id.btn_reservation:
-                //presenter.onPostLoan();
+                LoanModel loanModel = new LoanModel();
+                loanModel.setUserId(sharedPreferenceUtil.getSharedString("userId"));
+                loanModel.setCompanyId(companyId);
+                loanModel.setLoanContent(reservDate);
+                presenter.onPostLoan(loanModel);
+                AlertUtil.onToastMessage(this, "예약되었습니다!");
                 Intent intent = new Intent(SuitLoanActivity3.this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;
-
         }
     }
 
     @Override
     public void onRequestResult(boolean result) {
-        if(result) {
+        if (result) {
             AlertUtil.onAlertDialog(this, "예약되었습니다!");
         } else {
             AlertUtil.onAlertDialog(this, "잠시후 다시 시도해주세요.");

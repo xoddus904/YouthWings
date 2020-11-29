@@ -93,4 +93,8 @@ public interface ServiceApi {
     @POST("/rental")
     Call<LoanRes> postLoan(@Body LoanModel loanModel);
 
+    // 정장대여점 가져오기
+    @GET("/rental/company/{state}")
+    Call<LoanRes> getCompanyList(@Path("state") String state);
+
 }

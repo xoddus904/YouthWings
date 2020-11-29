@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
 import com.example.youthwings.server.model.CompanyModel;
 
 import java.util.ArrayList;
@@ -58,12 +59,13 @@ class SuitLoanStoreChooseListAdapter extends BaseAdapter {
         holiday = (TextView)convertView.findViewById(R.id.holiday_get);
         number = (TextView)convertView.findViewById(R.id.number_get);
 
+        Glide.with(context).load(companyModels.get(position).getCompanyImageUrl()).into(storeImage);
+
         // 아이템 내 각 위젯에 데이터 반영
-        storeImage.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.opencloset_logo));
         storeName.setText(companyModels.get(position).getCompanyName());
         address.setText(companyModels.get(position).getCompanyAddress());
-        hours.setText("09:00 ~ 18:00");
-        lunchTime.setText("12:00 ~ 13:00");
+        hours.setText("영업시간 - 09:00 ~ 18:00");
+        lunchTime.setText("점심시간 - 12:00 ~ 13:00");
         holiday.setText("매 주 월요일 휴무");
         number.setText("02 - 000 - 0000");
 
