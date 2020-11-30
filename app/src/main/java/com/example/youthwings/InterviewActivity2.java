@@ -74,4 +74,12 @@ public class InterviewActivity2 extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //답근 추천버튼
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id. btn_goodresponse:
+                Toast.makeText(this, "답글 추천버튼클릭", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

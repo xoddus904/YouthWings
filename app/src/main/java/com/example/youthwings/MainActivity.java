@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Context mContext = getApplicationContext();
             AlertDialog.Builder alertDialogBuiler = new AlertDialog.Builder(this); // 빌더얻기
 
-            //다이얼로그에 이미지로 넣을 거 아니라면 66줄~71줄까지 코드 삭제
+            //다이얼로그에 이미지로 넣을 거 아니라면 해당코드 삭제
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.custom_dialog, null); //레이아웃불러오기
             ImageView imageView = (ImageView) layout.findViewById(R.id.dialog_image); //해당 레이어에서 이미지뷰 불러오기
