@@ -20,11 +20,12 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <androidx.viewpager.widget.ViewPager
+            <ImageView
                 android:id="@+id/main_viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="370dp"
-                android:layout_marginBottom="50dp" />
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/changelady_gangnam"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,7 +134,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="3"
                         android:background="@drawable/view_input"
-                        android:hint="YYYY"
+                        android:hint="2020"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -149,7 +150,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/view_input"
-                        android:hint="MM"
+                        android:hint="11"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -167,7 +168,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/view_input"
-                        android:hint="DD"
+                        android:hint="15"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -208,25 +209,8 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="3"
                         android:background="@drawable/view_input"
-                        android:hint="HH"
+                        android:hint="AM/PM 12 : 56"
                         android:inputType="datetime"
-                        android:maxLength="30"
-                        android:maxLines="1"
-                        android:onClick="onClick"
-                        android:paddingVertical="5dp"
-                        android:paddingLeft="20dp"
-                        android:textColorHint="#B5B5B5"
-                        android:textSize="15dp" />
-
-
-                    <EditText
-                        android:id="@+id/reservation_minuteinput"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="3"
-                        android:background="@drawable/view_input"
-                        android:hint="MM"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -361,7 +345,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="2"
                         android:background="@drawable/view_input"
-                        android:hint="YYYY"
+                        android:hint="1999"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -377,7 +361,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:background="@drawable/view_input"
-                        android:hint="MM"
+                        android:hint="07"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -394,7 +378,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/view_input"
-                        android:hint="DD"
+                        android:hint="26"
                         android:maxLength="30"
                         android:maxLines="1"
                         android:onClick="onClick"
@@ -438,7 +422,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:layout_weight="1"
+                            android:layout_weight="3"
                             android:background="@drawable/view_input"
                             android:hint="email"
                             android:maxLength="30"
@@ -460,7 +444,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_weight="3"
+                            android:layout_weight="1"
                             android:background="@drawable/view_input"
                             android:hint="abcd.com"
                             android:maxLength="30"
@@ -599,8 +583,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
+                    android:background="@drawable/blueclick2_btn"
                     android:onClick="onClick"
-                    android:text="다음으로" />
+                    android:text="다음으로"
+                    android:textColor="#FFFFFF"/>
 
             </LinearLayout>
 
