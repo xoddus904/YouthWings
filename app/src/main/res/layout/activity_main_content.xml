@@ -24,10 +24,10 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:id="@+id/main_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <androidx.viewpager.widget.ViewPager
@@ -55,7 +55,7 @@
                 <ListView
                     android:id="@+id/employmentlist"
                     android:layout_width="match_parent"
-                    android:layout_height="290dp"
+                    android:layout_height="285dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:divider="#FFF" />
@@ -68,7 +68,7 @@
                     android:background="#00000000"
                     android:onClick="onClick"
                     android:text="더 보기 >"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -80,29 +80,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
                     android:text="모의 면접 질문"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/interviewlist"
-                    android:layout_width="380dp"
-                    android:layout_height="250dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="285dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"
+                    android:divider="#FFF" />
 
                 <Button
                     android:id="@+id/main_interview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="310dp"
-                    android:layout_marginTop="20dp"
+                    android:background="#00000000"
                     android:onClick="onClick"
                     android:text="더 보기 >"
-                    android:background="#00000000"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -111,11 +112,11 @@
     </ScrollView>
 
     <Button
-        android:elevation="3dp"
         android:id="@+id/main_suitloan"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorAccent"
+        android:elevation="3dp"
         android:onClick="onClick"
         android:text="정장 무료 대여"
         android:textColor="#FFFFFF"

@@ -59,7 +59,8 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/response_listview"/>
+            android:id="@+id/response_listview"
+            android:divider="#FFF"/>
 
 
     </LinearLayout>

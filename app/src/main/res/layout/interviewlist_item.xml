@@ -26,7 +26,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_marginBottom="5dp"
                 android:text="Q."
-                android:textColor="#878383"
+                android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="글 제목"
-                android:textColor="#7E7B7B"
+                android:textColor="#000"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 

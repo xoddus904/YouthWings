@@ -36,6 +36,7 @@ public class InterviewActivity extends AppCompatActivity {
 
         interviewListItemArrayList.add( new InterviewListItem("자기소개를 30초안에 해보세요",24));
         interviewListItemArrayList.add( new InterviewListItem("인상 깊은 교내/교외 활동은 뭔가요?",185));
+        interviewListItemArrayList.add( new InterviewListItem("자신의 장/단점은 무엇인가요?",30));
 
         interviewListAdpater = new InterviewListAdpater(InterviewActivity.this, interviewListItemArrayList);
         listView.setAdapter(interviewListAdpater);
