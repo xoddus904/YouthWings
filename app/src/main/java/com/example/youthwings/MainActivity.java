@@ -31,6 +31,8 @@ import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.youthwings.adapter.CommunityListAdapter;
+import com.example.youthwings.adapter.InterviewListAdpater;
+import com.example.youthwings.adapter.InterviewListItem;
 import com.example.youthwings.adapter.MainViewPageAdapter;
 import com.example.youthwings.presenter.CommunityConstants;
 import com.example.youthwings.presenter.community.CommunityPresenter;
@@ -55,12 +57,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private CommunityListAdapter communityListAdapter;
     private SharedPreferenceUtil sharedPreferenceUtil;
 
+    ListView listView;
+    InterviewListAdpater interviewListAdpater;
+    ArrayList<InterviewListItem> interviewListItemArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferenceUtil = new SharedPreferenceUtil(this);
         presenter = new CommunityPresenter(this);
+
+        // 면접 질문 보여주기
+        initInterview();
 
         initLayout();
 
@@ -70,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(viewPageadapter);
     }
 
+    // 커뮤니티 게시글 보여주기
     public void initCommunity(final ArrayList<BoardModel> boardModels) {
         communityListAdapter = new CommunityListAdapter(this, boardModels);
         ListView listView = findViewById(R.id.employmentlist);
@@ -82,6 +92,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(getApplicationContext(), CommunityActivity2.class);
                 // 값 넘김
                 intent.putExtra("boardId", boardModels.get(position).getBoardId());
+                startActivity(intent);
+            }
+        });
+    }
+
+    // 면접 질문 보여주기
+    public void initInterview() {
+        listView = (ListView)findViewById(R.id.interviewlist);
+        interviewListItemArrayList = new ArrayList<InterviewListItem>();
+
+        interviewListItemArrayList.add( new InterviewListItem("자기소개를 30초안에 해보세요",24));
+        interviewListItemArrayList.add( new InterviewListItem("인상 깊은 교내/교외 활동은 뭔가요?",185));
+
+        interviewListAdpater = new InterviewListAdpater(MainActivity.this, interviewListItemArrayList);
+        listView.setAdapter(interviewListAdpater);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
+                //값 넘김
+                intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
                 startActivity(intent);
             }
         });
@@ -109,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Context mContext = getApplicationContext();
             AlertDialog.Builder alertDialogBuiler = new AlertDialog.Builder(this); // 빌더얻기
 
-            //다이얼로그에 이미지로 넣을 거 아니라면 66줄~71줄까지 코드 삭제
+            //다이얼로그에 이미지로 넣을 거 아니라면 해당코드 삭제
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.custom_dialog, null); //레이아웃불러오기
             ImageView imageView = (ImageView) layout.findViewById(R.id.dialog_image); //해당 레이어에서 이미지뷰 불러오기
@@ -134,9 +166,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initLayout() {
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar); //만든 툴바 데려오기
         getSupportActionBar().setTitle(""); //액션바 타이틀은 없애기
+
         //만든 툴바의 textview를 변경
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText("청춘날개");
@@ -164,6 +198,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(viewPageadapter);
         viewPager.setInterval(5000);
         viewPager.startMinActivity();*/
+
+        //initInterview();
         initHeader();
     }
 

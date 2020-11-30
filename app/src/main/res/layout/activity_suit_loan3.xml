@@ -189,20 +189,38 @@
                     android:textColor="#535353"
                     android:textSize="17dp" />
 
-                <EditText
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/view_input"
-                    android:hint="// 다시 변경할 예정."
-                    android:maxLength="30"
-                    android:onClick="onClick"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="3dp"
-                    android:maxLines="1"
-                    android:textColorHint="#B5B5B5"
-                    android:textSize="15dp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/view_input"
+                        android:hint="파일명.hwp / 파일명.docx"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:onClick="onClick"
+                        android:paddingVertical="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:textColorHint="#B5B5B5"
+                        android:textSize="15dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#234B91"
+                        android:text="파일 업로드"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -240,6 +258,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="3"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -264,18 +283,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
+                        android:layout_weight="0"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
                         <Button
                             android:id="@+id/use_conditions"
-                            android:layout_width="40dp"
+                            android:layout_width="60dp"
                             android:layout_height="40dp"
+                            android:layout_marginBottom="5dp"
                             android:text="보기" />
 
                         <Button
                             android:id="@+id/personal_information_conditions"
-                            android:layout_width="40dp"
+                            android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:text="보기" />
 

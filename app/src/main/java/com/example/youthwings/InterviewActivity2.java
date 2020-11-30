@@ -16,14 +16,15 @@ import com.example.youthwings.adapter.InterviewListAdpater;
 import com.example.youthwings.adapter.InterviewListItem;
 import com.example.youthwings.adapter.ResponseListAdapter;
 import com.example.youthwings.adapter.ResponseListItem;
+import com.example.youthwings.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 
 public class InterviewActivity2 extends AppCompatActivity {
-
     Toolbar toolbar;
 
     ListView listView;
+    TextView textView;
     ResponseListAdapter responseListAdapter;
     ArrayList<ResponseListItem> responseListItemArrayList;
 
@@ -32,26 +33,23 @@ public class InterviewActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interview2);
 
+
+        Intent intent = getIntent();
+        String interviewTitle = intent.getExtras().getString("interviewTitle");
+
+        textView = (TextView)findViewById(R.id.interview_title_detail);
+        textView.setText(interviewTitle);
+
         listView = (ListView)findViewById(R.id.response_listview);
         responseListItemArrayList = new ArrayList<ResponseListItem>();
 
-        responseListItemArrayList.add( new ResponseListItem("자기소개를 30초안에 해보세요",2,"쓸말이 없다..."));
-        responseListItemArrayList.add( new ResponseListItem("자기소개를 30초안에 해보세요",2,"가나다라마바사아자차카타파하 최대한 길게 써야하는데 무슨 말을 해야할까요 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 이 기상과 이맘으로 충성을 다하여 괴로우나 즐거우나\n" +
-                "                                abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+        responseListItemArrayList.add( new ResponseListItem("닉네임1",2,"쓸말이 없다..."));
+        responseListItemArrayList.add( new ResponseListItem("닉네임2",2,"가나다라마바사아자차카타파하 최대한 길게 써야하는데 무슨 말을 해야할까요 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 이 기상과 이맘으로 충성을 다하여 괴로우나 즐거우나\n" +
+                " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
 
         responseListAdapter = new ResponseListAdapter(InterviewActivity2.this, responseListItemArrayList);
         listView.setAdapter(responseListAdapter);
 
-       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
-                // 값 넘김
-               // intent.putExtra("interviewTitle", responseListItemArrayList.get(position).getResponse_nickname());
-                //Toast.makeText();
-                startActivity(intent);
-            }
-        });*/
 
         initLayout();
     }
@@ -76,5 +74,13 @@ public class InterviewActivity2 extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //답근 추천버튼
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id. btn_goodresponse:
+                Toast.makeText(this, "답글 추천버튼클릭", Toast.LENGTH_SHORT).show();
+        }
     }
 }

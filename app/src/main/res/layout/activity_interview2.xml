@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
-                android:text="Q"
+                android:text="Q."
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#000000"/>
@@ -30,7 +30,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
+                android:paddingBottom="23dp"
                 android:id="@+id/interview_title_detail"
                 android:text="어쩌구 저쩌구 이렇게 저렇게 할거면 어떻게 할건가 너생각을 말해보세요"
                 android:textSize="20dp"
@@ -43,7 +45,6 @@
             android:layout_height="2dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="23dp"
             android:layout_marginBottom="20dp"
             android:background="#BFBFBF" />
 
@@ -54,8 +55,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="15dp">
-
-
 
         <ListView
             android:layout_width="match_parent"
