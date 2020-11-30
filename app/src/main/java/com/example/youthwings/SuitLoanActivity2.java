@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -85,6 +86,8 @@ public class SuitLoanActivity2 extends AppCompatActivity {
 
         storeNameTextView.setText(storeName);
         areaNameTextView.setText(areaName);
+
+        Spinner();
     }
 
     //캘린더
@@ -209,15 +212,27 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         dayEditText.setText(daySimpleDateFormat.format(birthdayCalendar.getTime()));
     }
 
-    public void emailSpinnerSelect(){
+    public void Spinner(){
+        final EditText editText = (EditText)findViewById(R.id.email_front);
         Spinner spinner = (Spinner)findViewById(R.id.email_spinner);
+        final EditText textView = (EditText) findViewById(R.id.email_back);
 
-        //Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> spinnerArrayAdapter = ArrayAdapter.createFromResource(this, R.array.email_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(spinnerArrayAdapter);
+        // Spinner 동작처리
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                String str = (String)parent.getItemAtPosition(position);
+                textView.setText(str);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+
+            }
+        });
 
     }
 
