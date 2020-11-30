@@ -68,25 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sharedPreferenceUtil = new SharedPreferenceUtil(this);
         presenter = new CommunityPresenter(this);
 
-        /*interviewListAdpater = new InterviewListAdpater(MainActivity.this, interviewListItemArrayList);
-
-        listView.setAdapter(interviewListAdpater);
-        listView = (ListView)findViewById(R.id.interview_list);
-
-        interviewListItemArrayList = new ArrayList<InterviewListItem>();
-
-        interviewListItemArrayList.add( new InterviewListItem("자기소개를 30초안에 해보세요",24));
-        interviewListItemArrayList.add( new InterviewListItem("인상 깊은 교내/교외 활동은 뭔가요?",185));
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
-                // 값 넘김
-                //intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
-                startActivity(intent);
-            }
-        });*/
+        initInterview();
 
         initLayout();
 
@@ -115,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     // 면접 질문 보여주기
-    /*public void initInterview() {
-        listView = (ListView)findViewById(R.id.interview_list);
+    public void initInterview() {
+        listView = (ListView)findViewById(R.id.interviewlist);
         interviewListItemArrayList = new ArrayList<InterviewListItem>();
 
         interviewListItemArrayList.add( new InterviewListItem("자기소개를 30초안에 해보세요",24));
@@ -129,12 +111,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
-                // 값 넘김
-                //intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
+                //값 넘김
+                intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
                 startActivity(intent);
             }
         });
-    }*/
+    }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
