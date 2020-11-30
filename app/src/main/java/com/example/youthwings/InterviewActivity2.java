@@ -16,11 +16,11 @@ import com.example.youthwings.adapter.InterviewListAdpater;
 import com.example.youthwings.adapter.InterviewListItem;
 import com.example.youthwings.adapter.ResponseListAdapter;
 import com.example.youthwings.adapter.ResponseListItem;
+import com.example.youthwings.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 
 public class InterviewActivity2 extends AppCompatActivity {
-
     Toolbar toolbar;
 
     ListView listView;
@@ -33,6 +33,7 @@ public class InterviewActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interview2);
 
+
         Intent intent = getIntent();
         String interviewTitle = intent.getExtras().getString("interviewTitle");
 
@@ -42,8 +43,8 @@ public class InterviewActivity2 extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.response_listview);
         responseListItemArrayList = new ArrayList<ResponseListItem>();
 
-        responseListItemArrayList.add( new ResponseListItem(interviewTitle,2,"쓸말이 없다..."));
-        responseListItemArrayList.add( new ResponseListItem(interviewTitle,2,"가나다라마바사아자차카타파하 최대한 길게 써야하는데 무슨 말을 해야할까요 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 이 기상과 이맘으로 충성을 다하여 괴로우나 즐거우나\n" +
+        responseListItemArrayList.add( new ResponseListItem("닉네임1",2,"쓸말이 없다..."));
+        responseListItemArrayList.add( new ResponseListItem("닉네임2",2,"가나다라마바사아자차카타파하 최대한 길게 써야하는데 무슨 말을 해야할까요 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 이 기상과 이맘으로 충성을 다하여 괴로우나 즐거우나\n" +
                 " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
 
         responseListAdapter = new ResponseListAdapter(InterviewActivity2.this, responseListItemArrayList);
