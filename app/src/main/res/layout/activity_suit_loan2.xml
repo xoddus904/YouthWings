@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="370dp"
                 android:layout_marginBottom="50dp"
-                android:background="@drawable/changelady_gangnam"/>
+                android:background="@drawable/changelady_gangnam" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -502,8 +502,10 @@
                         android:id="@+id/address_input"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="#234B91"
                         android:onClick="onClick"
                         android:text="우편번호"
+                        android:textColor="#FFFFFF"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -542,6 +544,7 @@
                         android:id="@+id/phone_number_input"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/view_input"
                         android:hint="'-'없이 번호만 입력"
@@ -556,9 +559,11 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="#234B91"
                         android:onClick="onClick"
                         android:text="인증번호 발송"
-                        android:textSize="15dp" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp" />
 
                 </LinearLayout>
 
@@ -583,10 +588,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/blueclick2_btn"
+                    android:background="#234B91"
                     android:onClick="onClick"
                     android:text="다음으로"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
