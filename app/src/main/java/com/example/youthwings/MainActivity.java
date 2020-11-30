@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sharedPreferenceUtil = new SharedPreferenceUtil(this);
         presenter = new CommunityPresenter(this);
 
+        // 면접 질문 보여주기
         initInterview();
 
         initLayout();
