@@ -44,8 +44,8 @@ public class InterviewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
-                // 값 넘김
-                //intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
+                //값 넘김
+                intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
                 startActivity(intent);
             }
         });

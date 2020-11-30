@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     private Intent intent;
     private SharedPreferenceUtil sharedPreferenceUtil;
 
+    private Button recommend_btn;
     private Toolbar toolbar;
     private EditText reply_editText;            // 댓글 EditText
     private TextView title_detail_textView,     // 제목 TextView
@@ -68,6 +70,7 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
         initLayout();
         initData();
 
+        recommend_btn = (Button)findViewById(R.id.btn_recommend_plus);
         presenter.onGetCommunity(boardId); // 게시글 가져오기
     }
 
@@ -200,9 +203,11 @@ public class CommunityActivity2 extends AppCompatActivity implements CommunityCo
     public void onRecommendResult(boolean result) {
         if (result) {
             AlertUtil.onAlertDialog(this, "추천되었습니다!");
+            recommend_btn.setBackgroundResource(R.drawable.yellowstar_img);
             recommend++;
         } else {
             AlertUtil.onAlertDialog(this, "취소되었습니다.");
+            recommend_btn.setBackgroundResource(R.drawable.graystar_img);
             recommend--;
         }
         recommend_detail_textView.setText(String.valueOf(recommend));
