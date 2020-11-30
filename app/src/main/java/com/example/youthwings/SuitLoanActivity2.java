@@ -209,6 +209,18 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         dayEditText.setText(daySimpleDateFormat.format(birthdayCalendar.getTime()));
     }
 
+    public void emailSpinnerSelect(){
+        Spinner spinner = (Spinner)findViewById(R.id.email_spinner);
+
+        //Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> spinnerArrayAdapter = ArrayAdapter.createFromResource(this, R.array.email_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(spinnerArrayAdapter);
+
+    }
+
     //툴바
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
