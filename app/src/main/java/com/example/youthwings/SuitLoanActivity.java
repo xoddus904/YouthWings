@@ -298,6 +298,5 @@ public class SuitLoanActivity extends AppCompatActivity {
                 break;
         }
         startActivity(intent);
-        finish();
     }
 }

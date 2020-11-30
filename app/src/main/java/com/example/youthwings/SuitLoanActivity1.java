@@ -77,7 +77,6 @@ public class SuitLoanActivity1 extends AppCompatActivity implements LoanConstant
                 intent.putExtra("areaName", stateName);
                 intent.putExtra("storeName", storeName);
                 startActivity(intent);
-                finish();
             }
         });
 
