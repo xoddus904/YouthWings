@@ -133,19 +133,19 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
-            android:background="#9C9C9C" />
+            android:background="@drawable/kakaotalk_logo"/>
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
-            android:background="#9C9C9C" />
+            android:background="@drawable/google_logo" />
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentRight="true"
-            android:background="#9C9C9C" />
+            android:background="@drawable/naver_logo" />
 
     </RelativeLayout>
 

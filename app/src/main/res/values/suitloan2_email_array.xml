@@ -3,8 +3,11 @@
 <resources>
 
     <string-array name="abcd.com">
+        <item>직접 입력</item>
         <item>naver.com</item>
         <item>gmail.com</item>
+        <item>nate.com</item>
+        <item>daum.net</item>
     </string-array>
 
 </resources>
