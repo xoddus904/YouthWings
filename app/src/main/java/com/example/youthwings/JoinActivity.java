@@ -159,7 +159,7 @@ public class JoinActivity extends AppCompatActivity implements LoginConstants.Jo
     @Override
     public void onRequestResult(boolean result) {
         if(result) {
-            Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+            Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         } else {
