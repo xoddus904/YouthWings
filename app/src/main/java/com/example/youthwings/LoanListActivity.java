@@ -41,7 +41,7 @@ public class LoanListActivity extends AppCompatActivity implements LoanConstants
         getSupportActionBar().setTitle(""); //액션바 타이틀은 없애기
         //만든 툴바의 textview를 변경
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("내 정보");
+        toolbarTitle.setText("대여내역");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
 
         loanListView = (ListView)findViewById(R.id.loan_list);
