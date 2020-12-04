@@ -40,8 +40,12 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     EditText reservation_yearEditText;
     EditText reservation_monthEditText;
     EditText reservation_dayEditText;
+    EditText textView_Date;
+
+    TimePickerDialog.OnTimeSetListener callbackMethod;
 
     String reservDate;
+
     int companyId;
     String imageUrl;
     String areaName;
@@ -77,9 +81,6 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         toolbarTitle.setText("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
 
-        //Spinner
-        Spinner spinner = findViewById(R.id.email_spinner);
-
         addressTextView = findViewById(R.id.loan_address);
         storeNameTextView = findViewById(R.id.loan2_storeName);
         areaNameTextView = findViewById(R.id.loan2_areaName);
@@ -87,7 +88,34 @@ public class SuitLoanActivity2 extends AppCompatActivity {
         storeNameTextView.setText(storeName);
         areaNameTextView.setText(areaName);
 
+        //이메일
         Spinner();
+
+        //예약 시간 선택
+        textView_Date = (EditText)findViewById(R.id.reservation_hoursinput);
+
+        this.InitalizeView();
+        this.InitializeListener();
+    }
+
+    //시간
+    public void InitalizeView(){
+        textView_Date = (EditText)findViewById(R.id.reservation_hoursinput);
+    }
+
+    public void InitializeListener(){
+        callbackMethod = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                String state = "AM";
+                // 선택한 시간이 12를 넘을경우 "PM"으로 변경 및 -12시간하여 출력 (ex : PM 6시 30분)
+                if (hourOfDay > 12) {
+                    hourOfDay -= 12;
+                    state = "PM";
+                }
+                textView_Date.setText(state + " " + hourOfDay + "시 " + minute + "분");
+            }
+        };
     }
 
     //캘린더
@@ -117,8 +145,6 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     public void Dateselect() {
 
         Button reservationButton = (Button) findViewById(R.id.reservationDate_input);
-        Button reservationTimeButton = (Button) findViewById(R.id.reservationTime_input);
-
         Button calenderButton = (Button) findViewById(R.id.calendar_input);
 
         reservationButton.setOnClickListener(new View.OnClickListener() {
@@ -127,38 +153,6 @@ public class SuitLoanActivity2 extends AppCompatActivity {
                 new DatePickerDialog(SuitLoanActivity2.this, reservationPicker, reservationCalendar.get(Calendar.YEAR), reservationCalendar.get(Calendar.MONTH), reservationCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
-        /*reservationTimeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar myCurrenTime = Calendar.getInstance();
-                int hour = myCurrenTime.get(Calendar.HOUR_OF_DAY);
-                int minute = myCurrenTime.get(Calendar.MINUTE);
-
-                TimePickerDialog myTimePicker;
-
-                final EditText reservationHour = (EditText) findViewById(R.id.reservation_hoursinput);
-
-                myTimePicker = new TimePicker(SuitLoanActivity2.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        String timeState = "AM";
-                        //선택한 시간이 2시를 넘을 경우 "PM"으로 변경 및 -12시간하여 출력
-                        if(selectedHour > 12){
-                            selectedHour -= 12;
-                            timeState = "PM";
-                        }
-
-                        // EditText에 출력할 형식 지정
-                        reservationHour.setText(selectedHour);
-                    }
-                }, hour, minute, false); // true의 경우 24시간 형식의 TimePicker출현
-
-                myTimePicker.setTitle("Select Time");
-                myTimePicker.show();
-            }
-        });*/
-
 
         calenderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,7 +207,6 @@ public class SuitLoanActivity2 extends AppCompatActivity {
     }
 
     public void Spinner(){
-        final EditText editText = (EditText)findViewById(R.id.email_front);
         Spinner spinner = (Spinner)findViewById(R.id.email_spinner);
         final EditText textView = (EditText) findViewById(R.id.email_back);
 
@@ -263,6 +256,10 @@ public class SuitLoanActivity2 extends AppCompatActivity {
                 intent = new Intent(SuitLoanActivity2.this, SuitLoanAddressView.class);
                 startActivityForResult(intent, 3000);
                 break;
+
+            case R.id.reservationTime_input:
+                TimePickerDialog dialog = new TimePickerDialog(this, callbackMethod, 8, 10, true);
+                dialog.show();
         }
     }
 
