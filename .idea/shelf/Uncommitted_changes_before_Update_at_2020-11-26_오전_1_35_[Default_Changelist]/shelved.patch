@@ -1,0 +1,359 @@
+Index: app/src/main/java/com/example/youthwings/InterviewActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.youthwings;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.appcompat.widget.Toolbar;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.widget.TextView;\r\n\r\npublic class InterviewActivity extends AppCompatActivity {\r\n\r\n    Toolbar toolbar;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_interview);\r\n\r\n        initLayout();\r\n    }\r\n\r\n    private void initLayout() {\r\n        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);\r\n        setSupportActionBar(toolbar); //만든 툴바 데려오기\r\n\r\n        getSupportActionBar().setTitle(\"\"); //액션바 타이틀은 없애기\r\n        //만든 툴바의 textview를 변경\r\n        TextView toolbarTitle = findViewById(R.id.toolbar_title);\r\n        toolbarTitle.setText(\"면접 주요 질문\");\r\n        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기버튼\r\n    }\r\n\r\n    //툴바\r\n    @Override\r\n    public boolean onOptionsItemSelected(MenuItem item) {\r\n        switch (item.getItemId()) {\r\n            case android.R.id.home:\r\n                finish();\r\n                return true;\r\n        }\r\n        return super.onOptionsItemSelected(item);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/youthwings/InterviewActivity.java	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/java/com/example/youthwings/InterviewActivity.java	(date 1606320759705)
+@@ -3,19 +3,53 @@
+ import androidx.appcompat.app.AppCompatActivity;
+ import androidx.appcompat.widget.Toolbar;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
+ import android.view.MenuItem;
++import android.view.View;
++import android.widget.AdapterView;
++import android.widget.ListView;
+ import android.widget.TextView;
+ 
++import com.example.youthwings.adapter.InterviewListAdpater;
++import com.example.youthwings.adapter.InterviewListItem;
++import com.example.youthwings.adapter.LoanListAdapter;
++import com.example.youthwings.adapter.LoanListViewItem;
++
++import java.util.ArrayList;
++
+ public class InterviewActivity extends AppCompatActivity {
+ 
+     Toolbar toolbar;
+ 
++    ListView listView;
++    InterviewListAdpater interviewListAdpater;
++    ArrayList<InterviewListItem> interviewListItemArrayList;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_interview);
+ 
++        listView = (ListView)findViewById(R.id.interview_list);
++        interviewListItemArrayList = new ArrayList<InterviewListItem>();
++
++        interviewListItemArrayList.add( new InterviewListItem("자기소개를 30초안에 해보세요",24));
++        interviewListItemArrayList.add( new InterviewListItem("인상 깊은 교내/교외 활동은 뭔가요?",185));
++
++        interviewListAdpater = new InterviewListAdpater(InterviewActivity.this, interviewListItemArrayList);
++        listView.setAdapter(interviewListAdpater);
++
++        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
++            @Override
++            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
++                Intent intent = new Intent(getApplicationContext(), InterviewActivity2.class);
++                // 값 넘김
++                //intent.putExtra("interviewTitle", interviewListItemArrayList.get(position).getInterviewTitle());
++                startActivity(intent);
++            }
++        });
++
+         initLayout();
+     }
+ 
+Index: app/src/main/res/layout/activity_interview.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\">\r\n\r\n    <include layout=\"@layout/toolbar\" />\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_interview.xml	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/res/layout/activity_interview.xml	(date 1606119513690)
+@@ -6,4 +6,20 @@
+ 
+     <include layout="@layout/toolbar" />
+ 
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:layout_gravity="center"
++        android:layout_marginHorizontal="3dp"
++        android:layout_weight="1"
++        android:orientation="vertical">
++
++        <ListView
++            android:id="@+id/interview_list"
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:layout_marginTop="10dp"
++            android:divider="#FFF" />
++
++    </LinearLayout>
+ </LinearLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/youthwings/MypageActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.youthwings;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.appcompat.widget.Toolbar;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.ImageView;\r\nimport android.widget.ListView;\r\nimport android.widget.TextView;\r\n\r\nimport com.bumptech.glide.Glide;\r\nimport com.bumptech.glide.load.MultiTransformation;\r\nimport com.bumptech.glide.load.resource.bitmap.CenterCrop;\r\nimport com.bumptech.glide.load.resource.bitmap.CircleCrop;\r\nimport com.bumptech.glide.load.resource.bitmap.RoundedCorners;\r\nimport com.bumptech.glide.request.RequestOptions;\r\nimport com.example.youthwings.adapter.LoanListAdapter;\r\nimport com.example.youthwings.adapter.LoanListViewItem;\r\nimport com.example.youthwings.util.SharedPreferenceUtil;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class MypageActivity extends AppCompatActivity {\r\n    SharedPreferenceUtil sharedPreferenceUtil;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_mypage);\r\n        sharedPreferenceUtil = new SharedPreferenceUtil(this);\r\n        init();\r\n    }\r\n\r\n    private void init() {\r\n        Toolbar toolbar          = findViewById(R.id.toolbar        );\r\n        ImageView profileImgView = findViewById(R.id.mypage_myimage );\r\n        TextView nickTextView    = findViewById(R.id.mypage_nickname);\r\n        TextView emailTextView   = findViewById(R.id.mypage_email   );\r\n        TextView toolbarTitle    = findViewById(R.id.toolbar_title  );\r\n        ListView listView        = findViewById(R.id.mypage_loanlist);\r\n\r\n        setSupportActionBar(toolbar);\r\n        getSupportActionBar().setTitle(\"\"); //액션바 타이틀은 없애기\r\n        //만든 툴바의 textview를 변경\r\n        toolbarTitle.setText(\"내 정보\");\r\n        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼\r\n        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn); //이미지바꾸는 코드인데 이미지가 너무 크다.\r\n\r\n\r\n        ArrayList<LoanListViewItem> items = new ArrayList<LoanListViewItem>();\r\n        items.add( new LoanListViewItem(\"이대점\",\"\",\"\",\"\"));\r\n        items.add( new LoanListViewItem(\"삼성점\",\"\",\"\",\"\"));\r\n        items.add( new LoanListViewItem(\"강서점\",\"\",\"\",\"\"));\r\n\r\n        LoanListAdapter loanListAdapter = new LoanListAdapter(MypageActivity.this, items);\r\n        listView.setAdapter(loanListAdapter);\r\n\r\n        nickTextView.setText(sharedPreferenceUtil.getSharedString(\"userNick\"));\r\n        emailTextView.setText(sharedPreferenceUtil.getSharedString(\"userId\"));\r\n        MultiTransformation multiTransformation = new MultiTransformation(new CircleCrop());\r\n        Glide.with(this).load(R.drawable.profile1_img).apply(RequestOptions.bitmapTransform(multiTransformation)).into(profileImgView);\r\n    }\r\n\r\n    public void onClick(View view) {\r\n        switch (view.getId()) {\r\n            case R.id.btn_moreloanlist:\r\n                Intent intent1 = new Intent(MypageActivity.this, LoanListActivity.class);\r\n                startActivity(intent1);\r\n                break;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public boolean onOptionsItemSelected(@NonNull MenuItem item) {\r\n        switch (item.getItemId()) {\r\n            case android.R.id.home: { //toolbar의 back키 눌렀을 때\r\n                finish();\r\n                break;\r\n            }\r\n        }\r\n        return super.onOptionsItemSelected(item);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/youthwings/MypageActivity.java	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/java/com/example/youthwings/MypageActivity.java	(date 1606117775809)
+@@ -50,7 +50,6 @@
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
+         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn); //이미지바꾸는 코드인데 이미지가 너무 크다.
+ 
+-
+         ArrayList<LoanListViewItem> items = new ArrayList<LoanListViewItem>();
+         items.add( new LoanListViewItem("이대점","","",""));
+         items.add( new LoanListViewItem("삼성점","","",""));
+Index: app/src/main/res/layout/activity_main_content.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#FFF\"\r\n    android:orientation=\"vertical\">\r\n\r\n    <include layout=\"@layout/toolbar\" />\r\n\r\n    <ScrollView\r\n        android:id=\"@+id/scrollView\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_weight=\"1\"\r\n        android:fillViewport=\"true\"\r\n        android:gravity=\"center\"\r\n        android:orientation=\"vertical\"\r\n        android:overScrollMode=\"never\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:gravity=\"center_horizontal\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <LinearLayout\r\n                android:layout_marginTop=\"10dp\"\r\n                android:id=\"@+id/main_indicator\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <androidx.viewpager.widget.ViewPager\r\n                    android:id=\"@+id/main_viewPager\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"230dp\"\r\n                    android:layout_marginBottom=\"30dp\" />\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"20dp\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:text=\"취업 커뮤니티\"\r\n                    android:textColor=\"#000000\"\r\n                    android:textSize=\"18dp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n                <ListView\r\n                    android:id=\"@+id/employmentlist\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"250dp\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\"\r\n                    android:divider=\"#FFF\" />\r\n\r\n                <Button\r\n                    android:id=\"@+id/main_community\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"310dp\"\r\n                    android:onClick=\"onClick\"\r\n                    android:text=\"더 보기 >\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\">\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"15dp\"\r\n                    android:text=\"면접 주요 질문 모음\"\r\n                    android:textColor=\"#000000\"\r\n                    android:textSize=\"20dp\"\r\n                    android:textStyle=\"bold\" />\r\n\r\n                <ListView\r\n                    android:id=\"@+id/importantimformationlist\"\r\n                    android:layout_width=\"380dp\"\r\n                    android:layout_height=\"250dp\"\r\n                    android:layout_gravity=\"center\"\r\n                    android:layout_marginBottom=\"10dp\" />\r\n\r\n                <Button\r\n                    android:id=\"@+id/main_interview\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"310dp\"\r\n                    android:layout_marginTop=\"20dp\"\r\n                    android:onClick=\"onClick\"\r\n                    android:text=\"더 보기 >\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <Button\r\n                android:id=\"@+id/main_jobinform\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:onClick=\"onClick\"\r\n                android:text=\"취업에 도움이 될 만한 정보\" />\r\n\r\n        </LinearLayout>\r\n\r\n    </ScrollView>\r\n\r\n    <Button\r\n        android:elevation=\"3dp\"\r\n        android:id=\"@+id/main_suitloan\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"@color/colorAccent\"\r\n        android:onClick=\"onClick\"\r\n        android:text=\"정장 무료 대여\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18dp\"\r\n        android:textStyle=\"bold\" />\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main_content.xml	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/res/layout/activity_main_content.xml	(date 1606119513677)
+@@ -79,13 +79,13 @@
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="15dp"
+-                    android:text="면접 주요 질문 모음"
++                    android:text="모의 면접 질문"
+                     android:textColor="#000000"
+                     android:textSize="20dp"
+                     android:textStyle="bold" />
+ 
+                 <ListView
+-                    android:id="@+id/importantimformationlist"
++                    android:id="@+id/interviewlist"
+                     android:layout_width="380dp"
+                     android:layout_height="250dp"
+                     android:layout_gravity="center"
+Index: app/src/main/res/layout/activity_mypage.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    android:background=\"#FFF\"\r\n    tools:context=\".MypageActivity\">\r\n\r\n    <include layout=\"@layout/toolbar\" />\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:gravity=\"center\"\r\n        android:paddingBottom=\"20dp\"\r\n        android:layout_marginBottom=\"20dp\"\r\n        android:background=\"@drawable/view_bottom_stroke\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/mypage_myimage\"\r\n            android:layout_width=\"100dp\"\r\n            android:layout_height=\"100dp\"\r\n            android:layout_marginBottom=\"15dp\"\r\n            android:scaleType=\"centerCrop\"\r\n            android:src=\"@drawable/profile1_img\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/mypage_nickname\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginBottom=\"5dp\"\r\n            android:text=\"닉네임\"\r\n            android:textColor=\"#000\"\r\n            android:textSize=\"17dp\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/mypage_email\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"youthwings@gmail.com\"\r\n            android:textSize=\"13dp\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"20dp\"\r\n        android:gravity=\"center\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"center\"\r\n                android:text=\"2020년 정장대여\"\r\n                android:layout_marginRight=\"5dp\"\r\n                android:textColor=\"#000\"\r\n                android:textSize=\"16dp\"\r\n                android:textStyle=\"bold\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/mypage_remain\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"center\"\r\n                android:text=\"5\"\r\n                android:textColor=\"#000\"\r\n                android:textSize=\"16dp\"\r\n                android:textStyle=\"bold\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"center\"\r\n                android:text=\"회 남았습니다!\"\r\n                android:textColor=\"#000\"\r\n                android:textSize=\"16dp\"\r\n                android:textStyle=\"bold\" />\r\n\r\n        </LinearLayout>\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_gravity=\"center\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"대여내역\"\r\n            android:textSize=\"18dp\"\r\n            android:layout_marginHorizontal=\"20dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:textColor=\"#000\"\r\n            android:textStyle=\"bold\" />\r\n\r\n        <ListView\r\n            android:layout_weight=\"1\"\r\n            android:id=\"@+id/mypage_loanlist\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_gravity=\"center\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/btn_moreloanlist\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginLeft=\"200dp\"\r\n            android:onClick=\"onClick\"\r\n            android:text=\"더보기>\" />\r\n    </LinearLayout>\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_mypage.xml	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/res/layout/activity_mypage.xml	(date 1606118644518)
+@@ -1,12 +1,19 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++
++<ScrollView
++    xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:orientation="vertical"
+-    android:background="#FFF"
+-    tools:context=".MypageActivity">
++    android:background="#FFF">
++
++    <LinearLayout
++        android:orientation="vertical"
++        android:background="#FFF"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        tools:context=".MypageActivity" >
+ 
+     <include layout="@layout/toolbar" />
+ 
+@@ -89,37 +96,105 @@
+         </LinearLayout>
+     </LinearLayout>
+ 
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_gravity="center"
+-        android:layout_marginTop="20dp"
+-        android:orientation="vertical">
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center"
++            android:layout_marginLeft="15dp"
++            android:layout_marginTop="20dp"
++            android:orientation="vertical">
+ 
+-        <TextView
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="대여내역"
+-            android:textSize="18dp"
+-            android:layout_marginHorizontal="20dp"
+-            android:layout_marginBottom="10dp"
+-            android:textColor="#000"
+-            android:textStyle="bold" />
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="대여내역"
++                android:textSize="18dp"
++                android:layout_marginHorizontal="20dp"
++                android:layout_marginBottom="10dp"
++                android:textColor="#000"
++                android:textStyle="bold" />
+ 
+-        <ListView
+-            android:layout_weight="1"
+-            android:id="@+id/mypage_loanlist"
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent"
+-            android:layout_gravity="center" />
++            <ListView
++                android:layout_weight="1"
++                android:id="@+id/mypage_loanlist"
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:layout_gravity="center" />
+ 
+-        <Button
+-            android:id="@+id/btn_moreloanlist"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginLeft="200dp"
+-            android:onClick="onClick"
+-            android:text="더보기>" />
++            <Button
++                android:id="@+id/btn_moreloanlist"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginLeft="200dp"
++                android:onClick="onClick"
++                android:text="더보기>" />
++        </LinearLayout>
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center"
++            android:layout_marginTop="20dp"
++            android:orientation="vertical">
++
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="추천한 내용"
++                android:textSize="18dp"
++                android:layout_marginHorizontal="20dp"
++                android:layout_marginBottom="10dp"
++                android:textColor="#000"
++                android:textStyle="bold" />
++
++            <ListView
++                android:layout_weight="1"
++                android:id="@+id/mypage_goodres"
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:layout_gravity="center" />
++
++            <Button
++                android:id="@+id/btn_moregoodres"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginLeft="200dp"
++                android:onClick="onClick"
++                android:text="더보기>" />
++        </LinearLayout>
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center"
++            android:layout_marginTop="20dp"
++            android:orientation="vertical">
++
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="내 답변"
++                android:textSize="18dp"
++                android:layout_marginHorizontal="20dp"
++                android:layout_marginBottom="10dp"
++                android:textColor="#000"
++                android:textStyle="bold" />
++
++            <ListView
++                android:layout_weight="1"
++                android:id="@+id/mypage_goodres"
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:layout_gravity="center" />
++
++            <Button
++                android:id="@+id/btn_moregoodres"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginLeft="200dp"
++                android:onClick="onClick"
++                android:text="더보기>" />
++        </LinearLayout>
++
+     </LinearLayout>
+-
+-</LinearLayout>
+\ No newline at end of file
++</ScrollView>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ .idea/gradle.xml	(date 1606133329195)
+@@ -15,6 +15,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.youthwings\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\"\r\n        android:usesCleartextTraffic=\"true\">\r\n        <activity android:name=\".SuitLoanAddressView\"></activity>\r\n        <activity android:name=\".ComWritingActivity\" />\r\n        <activity\r\n            android:name=\".CommunityActivity2\"\r\n            android:windowSoftInputMode=\"adjustResize\" />\r\n        <activity android:name=\".MypageActivity\" />\r\n        <activity android:name=\".LoanListActivity\" />\r\n        <activity android:name=\".MainActivity\" />\r\n        <activity android:name=\".IntroActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".JoinActivity\" />\r\n        <activity android:name=\".LoginActivity\" />\r\n        <activity android:name=\".SuitLoanActivity3\" />\r\n        <activity android:name=\".SuitLoanActivity2\" />\r\n        <activity android:name=\".SuitLoanActivity1\" />\r\n        <activity android:name=\".SuitLoanActivity\" />\r\n        <activity android:name=\".InterviewActivity\" />\r\n        <activity android:name=\".CommunityActivity\" />\r\n        <activity android:name=\".JobInformActivity\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/AndroidManifest.xml	(date 1606143823746)
+@@ -13,7 +13,8 @@
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme"
+         android:usesCleartextTraffic="true">
+-        <activity android:name=".SuitLoanAddressView"></activity>
++        <activity android:name=".InterviewActivity2"></activity>
++        <activity android:name=".SuitLoanAddressView" />
+         <activity android:name=".ComWritingActivity" />
+         <activity
+             android:name=".CommunityActivity2"
+Index: app/src/main/java/com/example/youthwings/adapter/LoanListViewItem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.youthwings.adapter;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.os.Bundle;\r\n\r\npublic class LoanListViewItem  {\r\n\r\n    private String storeName;\r\n    private String receivingDate;\r\n    private String returnDate;\r\n    private String loanDetail;\r\n\r\n    //대여목록 자세히\r\n    public LoanListViewItem(String storeName, String receivingDate, String returnDate, String loanDetail) {\r\n        this.storeName = storeName;\r\n        this.receivingDate = receivingDate;\r\n        this.returnDate = returnDate;\r\n        this.loanDetail = loanDetail;\r\n    }\r\n\r\n    //내정보에서 간략하게 대여업체랑 반납날짜만 보여주는\r\n   /* public LoanListViewItem(String storeName, String returnDate) {\r\n        this.storeName = storeName;\r\n        this.returnDate = returnDate;\r\n    }*/\r\n\r\n    public String getReceivingDate() {\r\n        return receivingDate;\r\n    }\r\n\r\n    public void setReceivingDate(String receivingDate) {\r\n        this.receivingDate = receivingDate;\r\n    }\r\n\r\n    public String getReturnDate() {\r\n        return returnDate;\r\n    }\r\n\r\n    public void setReturnDate(String returnDate) {\r\n        this.returnDate = returnDate;\r\n    }\r\n\r\n    public String getLoanDetail() {\r\n        return loanDetail;\r\n    }\r\n\r\n    public void setLoanDetail(String loanDetail) {\r\n        this.loanDetail = loanDetail;\r\n    }\r\n\r\n    public String getStoreName() {\r\n        return storeName;\r\n    }\r\n\r\n    public void setStoreName(String storeName) {\r\n        this.storeName = storeName;\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/youthwings/adapter/LoanListViewItem.java	(revision 829d7aafa578dfac2c607df74638f36194a08f86)
++++ app/src/main/java/com/example/youthwings/adapter/LoanListViewItem.java	(date 1606117492244)
+@@ -56,5 +56,4 @@
+     public void setStoreName(String storeName) {
+         this.storeName = storeName;
+     }
+-
+ }
+\ No newline at end of file
