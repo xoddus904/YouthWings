@@ -38,8 +38,13 @@ public class InterviewActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interview2);
 
+        Intent intent = getIntent();
+        String interviewTitle = intent.getExtras().getString("interviewTitle");
+
         //제목 가져오기
         textView = (TextView)findViewById(R.id.interview_title_detail);
+
+        textView.setText(interviewTitle);
 
         //답변 리스트
         listView = (ListView)findViewById(R.id.response_listview);
